@@ -36,6 +36,10 @@ body{
   overflow-x:hidden;
 }
 
+body.video-open{
+  overflow:hidden;
+}
+
 a{
   color:inherit;
   text-decoration:none;
@@ -555,6 +559,8 @@ img{
 .video-wrapper{
   position:relative;
   background:#000;
+  cursor:pointer;
+  overflow:hidden;
 }
 
 .video-wrapper video{
@@ -589,9 +595,111 @@ img{
   letter-spacing:1px;
 }
 
+/* =========================
+   VIDEO OVERLAY
+========================= */
+
+.video-overlay{
+  position:fixed;
+  inset:0;
+  z-index:5000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,.94);
+  padding:40px;
+  opacity:0;
+  transition:opacity .25s ease;
+}
+
+.video-overlay.active{
+  display:flex;
+  opacity:1;
+}
+
+.video-overlay-inner{
+  position:relative;
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.video-overlay video{
+  display:block;
+  width:auto;
+  height:auto;
+  max-width:calc(100vw - 80px);
+  max-height:calc(100vh - 80px);
+  object-fit:contain;
+  background:#000;
+  border-radius:10px;
+  box-shadow:0 20px 80px rgba(0,0,0,.7);
+  cursor:pointer;
+}
+
+.video-close{
+  position:absolute;
+  top:0;
+  right:0;
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.25);
+  background:rgba(0,0,0,.65);
+  color:white;
+  font-size:27px;
+  line-height:1;
+  cursor:pointer;
+  z-index:10;
+  transition:.2s;
+}
+
+.video-close:hover{
+  background:var(--green);
+  color:#03110a;
+}
+
+.video-overlay-hint{
+  position:absolute;
+  bottom:5px;
+  left:50%;
+  transform:translateX(-50%);
+  color:rgba(255,255,255,.65);
+  font-size:11px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  pointer-events:none;
+}
+
 @media(max-width:760px){
+
   .video-grid{
     grid-template-columns:1fr;
+  }
+
+  .video-overlay{
+    padding:15px;
+  }
+
+  .video-overlay video{
+    max-width:calc(100vw - 30px);
+    max-height:calc(100vh - 30px);
+    border-radius:6px;
+  }
+
+  .video-close{
+    top:5px;
+    right:5px;
+    width:42px;
+    height:42px;
+  }
+
+  .video-overlay-hint{
+    bottom:-2px;
+    white-space:nowrap;
+    font-size:9px;
   }
 }
 
@@ -780,10 +888,6 @@ footer{
   fill:white;
 }
 
-/* =========================
-   MOBILE
-========================= */
-
 @media(max-width:480px){
   .floating-whatsapp{
     width:54px;
@@ -808,15 +912,13 @@ footer{
 
 <nav class="navbar">
 
-  <!-- LOGOTIPO ELIMINADO.
-       AHORA SE USA IDENTIDAD TEXTUAL QUE SIEMPRE SE VE. -->
-
   <a href="#inicio" class="brand">
     <div class="brand-mark"></div>
     A SOLO <span>UNCLICK</span>
   </a>
 
   <div class="nav-links">
+
     <a href="#sistema">Cómo funciona</a>
     <a href="#testimonios">Resultados</a>
     <a href="#planes">Planes</a>
@@ -829,6 +931,7 @@ footer{
     >
       5 DÍAS GRATIS
     </a>
+
   </div>
 
 </nav>
@@ -958,68 +1061,45 @@ footer{
 
   </div>
 
-
   <div class="flow-grid">
 
     <div class="flow-card">
-
       <div class="flow-number">01</div>
-
       <h3>Publicidad</h3>
-
       <p>
         Utilizamos Meta Ads y Google Ads para encontrar
         personas que pueden necesitar tu producto o servicio.
       </p>
-
       <div class="flow-arrow">→</div>
-
     </div>
 
-
     <div class="flow-card">
-
       <div class="flow-number">02</div>
-
       <h3>Interés</h3>
-
       <p>
         El anuncio presenta una propuesta clara
         diseñada para captar la atención de potenciales clientes.
       </p>
-
       <div class="flow-arrow">→</div>
-
     </div>
 
-
     <div class="flow-card">
-
       <div class="flow-number">03</div>
-
       <h3>WhatsApp</h3>
-
       <p>
         La persona interesada entra directamente
         en conversación con tu negocio.
       </p>
-
       <div class="flow-arrow">→</div>
-
     </div>
 
-
     <div class="flow-card">
-
       <div class="flow-number">04</div>
-
       <h3>Cliente</h3>
-
       <p>
         Tu negocio recibe una oportunidad real
         de venta y puede cerrar directamente por WhatsApp.
       </p>
-
     </div>
 
   </div>
@@ -1028,7 +1108,7 @@ footer{
 
 
 <!-- =========================
-     INTERNACIONAL
+     INTERNATIONAL
 ========================= -->
 
 <section class="section international">
@@ -1080,42 +1160,26 @@ footer{
 
   </div>
 
-
   <div class="interface-stack">
 
     <div class="interface-card">
-      <img
-        src="pantallazointerfaz1.jpeg"
-        alt="Interfaz A Solo UnClick 1"
-      >
+      <img src="pantallazointerfaz1.jpeg" alt="Interfaz A Solo UnClick 1">
     </div>
 
     <div class="interface-card">
-      <img
-        src="pantallazointerfaz2.jpeg"
-        alt="Interfaz A Solo UnClick 2"
-      >
+      <img src="pantallazointerfaz2.jpeg" alt="Interfaz A Solo UnClick 2">
     </div>
 
     <div class="interface-card">
-      <img
-        src="pantallazointerfaz3.jpeg"
-        alt="Interfaz A Solo UnClick 3"
-      >
+      <img src="pantallazointerfaz3.jpeg" alt="Interfaz A Solo UnClick 3">
     </div>
 
     <div class="interface-card">
-      <img
-        src="pantallazointerfaz4.jpeg"
-        alt="Interfaz A Solo UnClick 4"
-      >
+      <img src="pantallazointerfaz4.jpeg" alt="Interfaz A Solo UnClick 4">
     </div>
 
     <div class="interface-card">
-      <img
-        src="pantallazointerfaz5.jpeg"
-        alt="Interfaz A Solo UnClick 5"
-      >
+      <img src="pantallazointerfaz5.jpeg" alt="Interfaz A Solo UnClick 5">
     </div>
 
   </div>
@@ -1140,9 +1204,7 @@ footer{
     </h2>
 
     <p>
-      Mira directamente las experiencias de nuestros clientes.
-      Los videos comienzan sin sonido. Haz clic sobre el video
-      para activar el audio.
+      Pulsa cualquier video para verlo ampliado y completo.
     </p>
 
   </div>
@@ -1150,11 +1212,14 @@ footer{
 
   <div class="video-grid">
 
+    <!-- VIDEO 1 -->
+
     <div class="video-card">
 
       <div class="video-wrapper">
 
         <video
+          class="testimonial-video"
           muted
           autoplay
           loop
@@ -1170,12 +1235,10 @@ footer{
 
         <h3>Fernando · Chile</h3>
 
-        <p>
-          Testimonio de cliente.
-        </p>
+        <p>Testimonio de cliente.</p>
 
         <span class="video-hint">
-          Haz clic para activar sonido
+          Pulsa para ampliar y reproducir
         </span>
 
       </div>
@@ -1183,11 +1246,14 @@ footer{
     </div>
 
 
+    <!-- VIDEO 2 -->
+
     <div class="video-card">
 
       <div class="video-wrapper">
 
         <video
+          class="testimonial-video"
           muted
           autoplay
           loop
@@ -1203,12 +1269,10 @@ footer{
 
         <h3>Gini · Transporta Guliana</h3>
 
-        <p>
-          Testimonio de cliente.
-        </p>
+        <p>Testimonio de cliente.</p>
 
         <span class="video-hint">
-          Haz clic para activar sonido
+          Pulsa para ampliar y reproducir
         </span>
 
       </div>
@@ -1216,11 +1280,14 @@ footer{
     </div>
 
 
+    <!-- VIDEO 3 -->
+
     <div class="video-card">
 
       <div class="video-wrapper">
 
         <video
+          class="testimonial-video"
           muted
           autoplay
           loop
@@ -1236,12 +1303,10 @@ footer{
 
         <h3>Mudanzas Los Méndez</h3>
 
-        <p>
-          Testimonio de cliente.
-        </p>
+        <p>Testimonio de cliente.</p>
 
         <span class="video-hint">
-          Haz clic para activar sonido
+          Pulsa para ampliar y reproducir
         </span>
 
       </div>
@@ -1249,11 +1314,14 @@ footer{
     </div>
 
 
+    <!-- VIDEO 4 -->
+
     <div class="video-card">
 
       <div class="video-wrapper">
 
         <video
+          class="testimonial-video"
           muted
           autoplay
           loop
@@ -1269,12 +1337,10 @@ footer{
 
         <h3>Pablo Pinzón · Colombia</h3>
 
-        <p>
-          Testimonio de cliente.
-        </p>
+        <p>Testimonio de cliente.</p>
 
         <span class="video-hint">
-          Haz clic para activar sonido
+          Pulsa para ampliar y reproducir
         </span>
 
       </div>
@@ -1284,6 +1350,42 @@ footer{
   </div>
 
 </section>
+
+
+<!-- =========================
+     VIDEO OVERLAY
+========================= -->
+
+<div
+  class="video-overlay"
+  id="videoOverlay"
+  aria-hidden="true"
+>
+
+  <div class="video-overlay-inner">
+
+    <video
+      id="expandedVideo"
+      playsinline
+      preload="metadata"
+    ></video>
+
+    <button
+      type="button"
+      class="video-close"
+      id="videoClose"
+      aria-label="Cerrar video"
+    >
+      ×
+    </button>
+
+    <div class="video-overlay-hint">
+      Pulsa nuevamente para volver
+    </div>
+
+  </div>
+
+</div>
 
 
 <!-- =========================
@@ -1309,15 +1411,11 @@ footer{
 
   </div>
 
-
   <div class="plans-grid">
 
     <div class="plan-card">
 
-      <img
-        src="planmensual1.jpeg"
-        alt="Plan mensual 1"
-      >
+      <img src="planmensual1.jpeg" alt="Plan mensual 1">
 
       <a
         href="https://wa.me/56976169158?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20plan%201"
@@ -1339,10 +1437,7 @@ footer{
 
     <div class="plan-card">
 
-      <img
-        src="planmensual2.jpeg"
-        alt="Plan mensual 2"
-      >
+      <img src="planmensual2.jpeg" alt="Plan mensual 2">
 
       <a
         href="https://wa.me/56976169158?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20plan%202"
@@ -1364,10 +1459,7 @@ footer{
 
     <div class="plan-card">
 
-      <img
-        src="planmensual3.jpeg"
-        alt="Plan mensual 3"
-      >
+      <img src="planmensual3.jpeg" alt="Plan mensual 3">
 
       <a
         href="https://wa.me/56976169158?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20plan%203"
@@ -1444,10 +1536,7 @@ footer{
       A SOLO <span>UNCLICK</span>
     </div>
 
-
     <div class="socials">
-
-      <!-- WHATSAPP -->
 
       <a
         class="social"
@@ -1463,9 +1552,6 @@ footer{
 
       </a>
 
-
-      <!-- FACEBOOK -->
-
       <a
         class="social"
         href="https://www.facebook.com/people/A-Solo-Un-Click/61591429061157/"
@@ -1479,9 +1565,6 @@ footer{
         </svg>
 
       </a>
-
-
-      <!-- INSTAGRAM -->
 
       <a
         class="social"
@@ -1501,7 +1584,6 @@ footer{
     </div>
 
   </div>
-
 
   <div class="footer-copy">
     © 2026 A Solo UnClick. Todos los derechos reservados.
@@ -1560,25 +1642,20 @@ const interfaceCards =
 
 const interfaceObserver =
   new IntersectionObserver(
-
     entries => {
 
       entries.forEach(entry => {
 
         if(entry.isIntersecting){
-
           entry.target.classList.add("visible");
-
         }
 
       });
 
     },
-
     {
       threshold:.15
     }
-
   );
 
 interfaceCards.forEach(card => {
@@ -1587,27 +1664,183 @@ interfaceCards.forEach(card => {
 
 
 /* =========================
-   TESTIMONIAL VIDEOS
+   TESTIMONIAL VIDEO SYSTEM
 ========================= */
 
-const videos =
-  document.querySelectorAll("video");
+const videoWrappers =
+  document.querySelectorAll(".video-wrapper");
 
-videos.forEach(video => {
+const originalVideos =
+  document.querySelectorAll(".testimonial-video");
+
+const videoOverlay =
+  document.getElementById("videoOverlay");
+
+const expandedVideo =
+  document.getElementById("expandedVideo");
+
+const videoClose =
+  document.getElementById("videoClose");
+
+let activeOriginalVideo = null;
+
+
+/* =========================
+   NORMAL VIDEOS
+   LOOP + SILENCIO
+========================= */
+
+originalVideos.forEach(video => {
 
   video.muted = true;
+  video.loop = true;
+  video.autoplay = true;
+  video.playsInline = true;
 
-  video.addEventListener("click", () => {
+  video.play().catch(() => {});
 
-    videos.forEach(other => {
+});
 
-      if(other !== video){
-        other.muted = true;
-      }
 
-    });
+/* =========================
+   ABRIR VIDEO AMPLIADO
+========================= */
 
-    video.muted = !video.muted;
+function openVideo(originalVideo){
+
+  /* Si ya hay otro video abierto, cerrarlo primero */
+  if(activeOriginalVideo){
+    closeExpandedVideo();
+  }
+
+  activeOriginalVideo = originalVideo;
+
+  /* Guardamos exactamente el archivo del video */
+  const source =
+    originalVideo.querySelector("source");
+
+  if(!source){
+    return;
+  }
+
+  /* Pausar video pequeño */
+  originalVideo.pause();
+
+  /* Cargar el mismo video en el visor */
+  expandedVideo.src = source.src;
+
+  expandedVideo.currentTime = 0;
+
+  expandedVideo.muted = false;
+
+  expandedVideo.controls = false;
+
+  expandedVideo.loop = false;
+
+  expandedVideo.playsInline = true;
+
+  /* Mostrar overlay */
+  videoOverlay.classList.add("active");
+
+  videoOverlay.setAttribute(
+    "aria-hidden",
+    "false"
+  );
+
+  document.body.classList.add("video-open");
+
+  /*
+     Esperamos a que el video esté listo
+     antes de reproducirlo.
+  */
+  expandedVideo.load();
+
+  expandedVideo.onloadedmetadata = () => {
+
+    expandedVideo.currentTime = 0;
+
+    const playPromise =
+      expandedVideo.play();
+
+    if(playPromise){
+      playPromise.catch(() => {
+
+        /*
+          Algunos navegadores pueden bloquear
+          autoplay con sonido. El usuario ya hizo
+          clic, por lo que normalmente se permite.
+        */
+
+        expandedVideo.muted = true;
+
+        expandedVideo.play().catch(() => {});
+
+      });
+    }
+
+  };
+
+}
+
+
+/* =========================
+   CERRAR VIDEO
+========================= */
+
+function closeExpandedVideo(){
+
+  if(!activeOriginalVideo){
+    return;
+  }
+
+  /*
+     Detener completamente el video ampliado
+  */
+  expandedVideo.pause();
+
+  expandedVideo.currentTime = 0;
+
+  expandedVideo.removeAttribute("src");
+
+  expandedVideo.load();
+
+  /*
+     Volver al video original
+  */
+  activeOriginalVideo.muted = true;
+
+  activeOriginalVideo.loop = true;
+
+  activeOriginalVideo.currentTime = 0;
+
+  activeOriginalVideo.play().catch(() => {});
+
+  activeOriginalVideo = null;
+
+  videoOverlay.classList.remove("active");
+
+  videoOverlay.setAttribute(
+    "aria-hidden",
+    "true"
+  );
+
+  document.body.classList.remove("video-open");
+
+}
+
+
+/* =========================
+   CLIC EN VIDEO NORMAL
+========================= */
+
+videoWrappers.forEach(wrapper => {
+
+  const video =
+    wrapper.querySelector("video");
+
+  wrapper.addEventListener("click", () => {
+
+    openVideo(video);
 
   });
 
@@ -1615,7 +1848,85 @@ videos.forEach(video => {
 
 
 /* =========================
-   RE-MUTE WHEN LEAVING PAGE
+   CLIC EN VIDEO AMPLIADO
+   = CERRAR
+========================= */
+
+expandedVideo.addEventListener("click", () => {
+
+  closeExpandedVideo();
+
+});
+
+
+/* =========================
+   BOTÓN X
+========================= */
+
+videoClose.addEventListener("click", event => {
+
+  event.stopPropagation();
+
+  closeExpandedVideo();
+
+});
+
+
+/* =========================
+   CLIC EN FONDO
+========================= */
+
+videoOverlay.addEventListener("click", event => {
+
+  if(event.target === videoOverlay){
+
+    closeExpandedVideo();
+
+  }
+
+});
+
+
+/* =========================
+   TECLA ESC
+========================= */
+
+document.addEventListener("keydown", event => {
+
+  if(
+    event.key === "Escape" &&
+    activeOriginalVideo
+  ){
+
+    closeExpandedVideo();
+
+  }
+
+});
+
+
+/* =========================
+   SI EL VIDEO AMPLIADO TERMINA
+========================= */
+
+expandedVideo.addEventListener(
+  "ended",
+  () => {
+
+    /*
+       Cuando termina, no lo dejamos
+       en negro. Volvemos automáticamente
+       al video pequeño.
+    */
+
+    closeExpandedVideo();
+
+  }
+);
+
+
+/* =========================
+   AL SALIR DE LA PÁGINA
 ========================= */
 
 document.addEventListener(
@@ -1624,8 +1935,16 @@ document.addEventListener(
 
     if(document.hidden){
 
-      videos.forEach(video => {
+      if(activeOriginalVideo){
+
+        closeExpandedVideo();
+
+      }
+
+      originalVideos.forEach(video => {
+
         video.muted = true;
+
       });
 
     }
