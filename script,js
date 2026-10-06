@@ -4,7 +4,7 @@ document.addEventListener(
 
 
     /* ==================================================
-       CAMBIO AUTOMÁTICO DE BANNERS DEL HERO
+       CAMBIO AUTOMÁTICO DE BANNERS
     ================================================== */
 
     const hero =
@@ -27,10 +27,7 @@ document.addEventListener(
 
 
     /* ==================================================
-       INTERFAZ ENJAMBRE
-
-       Cada pantalla entra progresivamente
-       mientras el usuario baja.
+       PANTALLAZOS EN ENJAMBRE
     ================================================== */
 
     const interfaceCards =
@@ -39,22 +36,23 @@ document.addEventListener(
       );
 
 
-    if (
-      "IntersectionObserver"
-      in window
-    ) {
+    if ("IntersectionObserver" in window) {
+
 
       const interfaceObserver =
         new IntersectionObserver(
 
           function (entries) {
 
+
             entries.forEach(
               function (entry) {
+
 
                 if (
                   entry.isIntersecting
                 ) {
+
 
                   entry.target
                     .classList
@@ -66,18 +64,22 @@ document.addEventListener(
                       entry.target
                     );
 
+
                 }
 
               }
             );
 
+
           },
 
           {
+
             threshold: 0.16,
 
             rootMargin:
               "0px 0px -8% 0px"
+
           }
 
         );
@@ -92,9 +94,9 @@ document.addEventListener(
         }
       );
 
-    }
 
-    else {
+    } else {
+
 
       interfaceCards.forEach(
         function (card) {
@@ -105,6 +107,7 @@ document.addEventListener(
         }
       );
 
+
     }
 
 
@@ -112,15 +115,15 @@ document.addEventListener(
     /* ==================================================
        VIDEOS DE TESTIMONIOS
 
-       - Autoplay
-       - Loop
-       - Todos comienzan silenciados
-       - Todos continúan reproduciéndose
-       - Al tocar uno se activa su sonido
-       - Los demás siguen reproduciéndose
-         pero se silencian
-       - Si se toca nuevamente el mismo,
-         vuelve a silenciarse
+       TODOS:
+       - autoplay
+       - loop
+       - muted inicialmente
+
+       AL TOCAR:
+       - activa sonido
+       - los demás se silencian
+       - ninguno se detiene
     ================================================== */
 
     const videoCards =
@@ -132,8 +135,10 @@ document.addEventListener(
     videoCards.forEach(
       function (card) {
 
+
         const video =
           card.querySelector("video");
+
 
         const hint =
           card.querySelector(
@@ -146,8 +151,6 @@ document.addEventListener(
         }
 
 
-        /* configuración inicial */
-
         video.muted = true;
 
         video.loop = true;
@@ -155,7 +158,7 @@ document.addEventListener(
         video.playsInline = true;
 
 
-        /* intentar reproducir */
+        /* AUTOPLAY */
 
         const playPromise =
           video.play();
@@ -165,53 +168,57 @@ document.addEventListener(
           playPromise !== undefined
         ) {
 
+
           playPromise.catch(
             function () {
 
               /*
-                Algunos navegadores pueden
-                bloquear autoplay.
+                Algunos navegadores
+                bloquean autoplay.
 
-                Cuando el usuario interactúe
-                se iniciará normalmente.
+                El video comenzará
+                cuando el usuario
+                interactúe.
               */
 
             }
           );
 
+
         }
 
 
-        /* tocar video */
+
+        /* ==================================================
+           TOCAR VIDEO
+        ================================================== */
 
         card.addEventListener(
           "click",
           function () {
 
 
-            const willActivateSound =
+            const activarAudio =
               video.muted;
 
 
-            /*
-              Silenciar todos los demás,
-              pero NO detenerlos.
-            */
+
+            /* SILENCIAR LOS OTROS */
 
             videoCards.forEach(
               function (otherCard) {
 
+
                 const otherVideo =
-                  otherCard
-                    .querySelector(
-                      "video"
-                    );
+                  otherCard.querySelector(
+                    "video"
+                  );
+
 
                 const otherHint =
-                  otherCard
-                    .querySelector(
-                      ".sound-hint"
-                    );
+                  otherCard.querySelector(
+                    ".sound-hint"
+                  );
 
 
                 if (
@@ -219,7 +226,9 @@ document.addEventListener(
                   otherVideo !== video
                 ) {
 
-                  otherVideo.muted = true;
+
+                  otherVideo.muted =
+                    true;
 
 
                   otherCard
@@ -236,22 +245,24 @@ document.addEventListener(
 
                   }
 
+
                 }
+
 
               }
             );
 
 
-            /*
-              activar o desactivar
-              el seleccionado
-            */
+
+            /* ACTIVAR / DESACTIVAR */
 
             video.muted =
-              !willActivateSound;
+              !activarAudio;
 
 
-            if (willActivateSound) {
+
+            if (activarAudio) {
+
 
               card.classList
                 .add(
@@ -266,9 +277,9 @@ document.addEventListener(
 
               }
 
-            }
 
-            else {
+            } else {
+
 
               card.classList
                 .remove(
@@ -283,13 +294,12 @@ document.addEventListener(
 
               }
 
+
             }
 
 
-            /*
-              Si por alguna razón
-              estaba detenido, reproducir.
-            */
+
+            /* SI ESTÁ DETENIDO, REANUDAR */
 
             if (video.paused) {
 
@@ -300,8 +310,10 @@ document.addEventListener(
 
             }
 
+
           }
         );
+
 
       }
     );
@@ -309,26 +321,26 @@ document.addEventListener(
 
 
     /* ==================================================
-       SI LA PÁGINA PIERDE EL FOCO
-
-       Silenciamos todos los videos.
+       CUANDO EL USUARIO SALE DE LA PÁGINA
     ================================================== */
 
     document.addEventListener(
       "visibilitychange",
       function () {
 
-        if (
-          document.hidden
-        ) {
+
+        if (document.hidden) {
+
 
           videoCards.forEach(
             function (card) {
+
 
               const video =
                 card.querySelector(
                   "video"
                 );
+
 
               const hint =
                 card.querySelector(
@@ -338,7 +350,8 @@ document.addEventListener(
 
               if (video) {
 
-                video.muted = true;
+                video.muted =
+                  true;
 
               }
 
@@ -356,10 +369,13 @@ document.addEventListener(
 
               }
 
+
             }
           );
 
+
         }
+
 
       }
     );
