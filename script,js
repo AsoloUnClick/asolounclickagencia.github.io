@@ -1,385 +1,332 @@
 document.addEventListener(
-  "DOMContentLoaded",
-  function () {
+"DOMContentLoaded",
+function () {
 
 
-    /* ==================================================
-       CAMBIO AUTOMÁTICO DE BANNERS
-    ================================================== */
+/* ==================================================
+BANNERS
+================================================== */
 
-    const hero =
-      document.querySelector(".hero");
+const hero =
+document.querySelector(".hero");
 
 
-    if (hero) {
+if (hero) {
 
-      setInterval(
-        function () {
+setInterval(
+function () {
 
-          hero.classList.toggle("alt");
+hero.classList.toggle("alt");
 
-        },
-        6500
-      );
+},
+6500
+);
 
-    }
+}
 
 
 
-    /* ==================================================
-       PANTALLAZOS EN ENJAMBRE
-    ================================================== */
+/* ==================================================
+INTERFAZ ENJAMBRE
+================================================== */
 
-    const interfaceCards =
-      document.querySelectorAll(
-        ".interface-card"
-      );
+const interfaceCards =
+document.querySelectorAll(
+".interface-card"
+);
 
 
-    if ("IntersectionObserver" in window) {
+if ("IntersectionObserver" in window) {
 
+const interfaceObserver =
+new IntersectionObserver(
 
-      const interfaceObserver =
-        new IntersectionObserver(
+function (entries) {
 
-          function (entries) {
+entries.forEach(
+function (entry) {
 
+if (entry.isIntersecting) {
 
-            entries.forEach(
-              function (entry) {
+entry.target
+.classList
+.add("visible");
 
+interfaceObserver
+.unobserve(
+entry.target
+);
 
-                if (
-                  entry.isIntersecting
-                ) {
+}
 
+}
+);
 
-                  entry.target
-                    .classList
-                    .add("visible");
+},
 
+{
+threshold:0.12,
+rootMargin:"0px 0px -5% 0px"
+}
 
-                  interfaceObserver
-                    .unobserve(
-                      entry.target
-                    );
+);
 
 
-                }
+interfaceCards.forEach(
+function (card) {
 
-              }
-            );
+interfaceObserver.observe(card);
 
+}
+);
 
-          },
+}
 
-          {
+else {
 
-            threshold: 0.16,
+interfaceCards.forEach(
+function (card) {
 
-            rootMargin:
-              "0px 0px -8% 0px"
+card.classList.add("visible");
 
-          }
+}
+);
 
-        );
+}
 
 
-      interfaceCards.forEach(
-        function (card) {
 
-          interfaceObserver
-            .observe(card);
+/* ==================================================
+VIDEOS
 
-        }
-      );
+Todos:
+- autoplay
+- muted
+- loop
+- playsinline
 
+Al tocar:
+- activa sonido
+- los demás quedan silenciados
+- ninguno se detiene
+================================================== */
 
-    } else {
+const videoCards =
+document.querySelectorAll(
+".video-card"
+);
 
 
-      interfaceCards.forEach(
-        function (card) {
+videoCards.forEach(
+function (card) {
 
-          card.classList
-            .add("visible");
 
-        }
-      );
+const video =
+card.querySelector("video");
 
 
-    }
+const hint =
+card.querySelector(".sound-hint");
 
 
+if (!video) {
+return;
+}
 
-    /* ==================================================
-       VIDEOS DE TESTIMONIOS
 
-       TODOS:
-       - autoplay
-       - loop
-       - muted inicialmente
+video.muted = true;
 
-       AL TOCAR:
-       - activa sonido
-       - los demás se silencian
-       - ninguno se detiene
-    ================================================== */
+video.loop = true;
 
-    const videoCards =
-      document.querySelectorAll(
-        ".video-card"
-      );
+video.playsInline = true;
 
 
-    videoCards.forEach(
-      function (card) {
+/* AUTOPLAY */
 
+const playPromise =
+video.play();
 
-        const video =
-          card.querySelector("video");
 
+if (playPromise !== undefined) {
 
-        const hint =
-          card.querySelector(
-            ".sound-hint"
-          );
+playPromise.catch(
+function () {}
+);
 
+}
 
-        if (!video) {
-          return;
-        }
 
 
-        video.muted = true;
+/* TOCAR VIDEO */
 
-        video.loop = true;
+card.addEventListener(
+"click",
+function () {
 
-        video.playsInline = true;
 
+const activarSonido =
+video.muted;
 
-        /* AUTOPLAY */
 
-        const playPromise =
-          video.play();
+/* SILENCIAR LOS OTROS */
 
+videoCards.forEach(
+function (otherCard) {
 
-        if (
-          playPromise !== undefined
-        ) {
 
+const otherVideo =
+otherCard.querySelector(
+"video"
+);
 
-          playPromise.catch(
-            function () {
 
-              /*
-                Algunos navegadores
-                bloquean autoplay.
+const otherHint =
+otherCard.querySelector(
+".sound-hint"
+);
 
-                El video comenzará
-                cuando el usuario
-                interactúe.
-              */
 
-            }
-          );
+if (
+otherVideo &&
+otherVideo !== video
+) {
 
 
-        }
+otherVideo.muted = true;
 
 
+otherCard.classList.remove(
+"audio-active"
+);
 
-        /* ==================================================
-           TOCAR VIDEO
-        ================================================== */
 
-        card.addEventListener(
-          "click",
-          function () {
+if (otherHint) {
 
+otherHint.innerHTML =
+'<i class="fa-solid fa-volume-xmark"></i> TOCA PARA ESCUCHAR';
 
-            const activarAudio =
-              video.muted;
+}
 
+}
 
+}
+);
 
-            /* SILENCIAR LOS OTROS */
 
-            videoCards.forEach(
-              function (otherCard) {
+/* ACTIVAR / DESACTIVAR */
 
+video.muted =
+!activarSonido;
 
-                const otherVideo =
-                  otherCard.querySelector(
-                    "video"
-                  );
 
+if (activarSonido) {
 
-                const otherHint =
-                  otherCard.querySelector(
-                    ".sound-hint"
-                  );
 
+card.classList.add(
+"audio-active"
+);
 
-                if (
-                  otherVideo &&
-                  otherVideo !== video
-                ) {
 
+if (hint) {
 
-                  otherVideo.muted =
-                    true;
+hint.innerHTML =
+'<i class="fa-solid fa-volume-high"></i> SONIDO ACTIVADO';
 
+}
 
-                  otherCard
-                    .classList
-                    .remove(
-                      "audio-active"
-                    );
 
+}
 
-                  if (otherHint) {
+else {
 
-                    otherHint.innerHTML =
-                      '<i class="fa-solid fa-volume-xmark"></i> TOCA PARA ESCUCHAR';
 
-                  }
+card.classList.remove(
+"audio-active"
+);
 
 
-                }
+if (hint) {
 
+hint.innerHTML =
+'<i class="fa-solid fa-volume-xmark"></i> TOCA PARA ESCUCHAR';
 
-              }
-            );
+}
 
+}
 
 
-            /* ACTIVAR / DESACTIVAR */
+/* ASEGURAR REPRODUCCIÓN */
 
-            video.muted =
-              !activarAudio;
+if (video.paused) {
 
+video.play().catch(
+function () {}
+);
 
+}
 
-            if (activarAudio) {
+}
+);
 
+});
 
-              card.classList
-                .add(
-                  "audio-active"
-                );
 
 
-              if (hint) {
+/* ==================================================
+CUANDO SE CAMBIA DE PESTAÑA
+================================================== */
 
-                hint.innerHTML =
-                  '<i class="fa-solid fa-volume-high"></i> SONIDO ACTIVADO';
+document.addEventListener(
+"visibilitychange",
+function () {
 
-              }
 
+if (document.hidden) {
 
-            } else {
 
+videoCards.forEach(
+function (card) {
 
-              card.classList
-                .remove(
-                  "audio-active"
-                );
 
+const video =
+card.querySelector(
+"video"
+);
 
-              if (hint) {
 
-                hint.innerHTML =
-                  '<i class="fa-solid fa-volume-xmark"></i> TOCA PARA ESCUCHAR';
+const hint =
+card.querySelector(
+".sound-hint"
+);
 
-              }
 
+if (video) {
 
-            }
+video.muted = true;
 
+}
 
 
-            /* SI ESTÁ DETENIDO, REANUDAR */
+card.classList.remove(
+"audio-active"
+);
 
-            if (video.paused) {
 
-              video.play()
-                .catch(
-                  function () {}
-                );
+if (hint) {
 
-            }
+hint.innerHTML =
+'<i class="fa-solid fa-volume-xmark"></i> TOCA PARA ESCUCHAR';
 
+}
 
-          }
-        );
+}
+);
 
+}
 
-      }
-    );
+}
+);
 
 
-
-    /* ==================================================
-       CUANDO EL USUARIO SALE DE LA PÁGINA
-    ================================================== */
-
-    document.addEventListener(
-      "visibilitychange",
-      function () {
-
-
-        if (document.hidden) {
-
-
-          videoCards.forEach(
-            function (card) {
-
-
-              const video =
-                card.querySelector(
-                  "video"
-                );
-
-
-              const hint =
-                card.querySelector(
-                  ".sound-hint"
-                );
-
-
-              if (video) {
-
-                video.muted =
-                  true;
-
-              }
-
-
-              card.classList
-                .remove(
-                  "audio-active"
-                );
-
-
-              if (hint) {
-
-                hint.innerHTML =
-                  '<i class="fa-solid fa-volume-xmark"></i> TOCA PARA ESCUCHAR';
-
-              }
-
-
-            }
-          );
-
-
-        }
-
-
-      }
-    );
-
-
-  }
+}
 );
