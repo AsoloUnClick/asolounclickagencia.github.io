@@ -1,332 +1,579 @@
-document.addEventListener(
-"DOMContentLoaded",
-function () {
+/* ==========================================================
+   A SOLO UNCLICK
+   SCRIPT.JS — VERSIÓN COMPLETA
+========================================================== */
 
+document.addEventListener("DOMContentLoaded", function () {
 
-/* ==================================================
-BANNERS
-================================================== */
 
-const hero =
-document.querySelector(".hero");
+  /* ========================================================
+     HERO
+     CAMBIO AUTOMÁTICO ENTRE BANNER 1 Y BANNER 2
+  ======================================================== */
 
+  const hero = document.querySelector(".hero");
 
-if (hero) {
+  if (hero) {
 
-setInterval(
-function () {
+    let bannerInterval = setInterval(function () {
 
-hero.classList.toggle("alt");
+      hero.classList.toggle("alt");
 
-},
-6500
-);
+    }, 6500);
 
-}
 
+    /* Evitar que el intervalo quede ejecutándose
+       innecesariamente si la página cambia */
 
+    document.addEventListener("visibilitychange", function () {
 
-/* ==================================================
-INTERFAZ ENJAMBRE
-================================================== */
+      if (document.hidden) {
 
-const interfaceCards =
-document.querySelectorAll(
-".interface-card"
-);
+        clearInterval(bannerInterval);
 
+      } else {
 
-if ("IntersectionObserver" in window) {
+        bannerInterval = setInterval(function () {
 
-const interfaceObserver =
-new IntersectionObserver(
+          hero.classList.toggle("alt");
 
-function (entries) {
+        }, 6500);
 
-entries.forEach(
-function (entry) {
+      }
 
-if (entry.isIntersecting) {
+    });
 
-entry.target
-.classList
-.add("visible");
+  }
 
-interfaceObserver
-.unobserve(
-entry.target
-);
 
-}
+  /* ========================================================
+     INTERFAZ
+     EFECTO ENJAMBRE / CARDUMEN
+     
+     Las 5 imágenes:
+     
+     pantallazointerfaz1.jpeg
+     pantallazointerfaz2.jpeg
+     pantallazointerfaz3.jpeg
+     pantallazointerfaz4.jpeg
+     pantallazointerfaz5.jpeg
+     
+     aparecen progresivamente al hacer scroll.
+  ======================================================== */
 
-}
-);
+  const interfaceCards =
+    document.querySelectorAll(".interface-card");
 
-},
 
-{
-threshold:0.12,
-rootMargin:"0px 0px -5% 0px"
-}
+  if (
+    "IntersectionObserver" in window
+  ) {
 
-);
+    const interfaceObserver =
+      new IntersectionObserver(
 
+        function (entries) {
 
-interfaceCards.forEach(
-function (card) {
+          entries.forEach(function (entry) {
 
-interfaceObserver.observe(card);
+            if (
+              entry.isIntersecting
+            ) {
 
-}
-);
+              entry.target
+                .classList
+                .add("visible");
 
-}
 
-else {
+              interfaceObserver
+                .unobserve(
+                  entry.target
+                );
 
-interfaceCards.forEach(
-function (card) {
+            }
 
-card.classList.add("visible");
+          });
 
-}
-);
+        },
 
-}
+        {
+          threshold: 0.10,
 
+          rootMargin:
+            "0px 0px -8% 0px"
+        }
 
+      );
 
-/* ==================================================
-VIDEOS
 
-Todos:
-- autoplay
-- muted
-- loop
-- playsinline
+    interfaceCards.forEach(function (card) {
 
-Al tocar:
-- activa sonido
-- los demás quedan silenciados
-- ninguno se detiene
-================================================== */
+      interfaceObserver.observe(card);
 
-const videoCards =
-document.querySelectorAll(
-".video-card"
-);
+    });
 
+  }
 
-videoCards.forEach(
-function (card) {
+  else {
 
+    interfaceCards.forEach(function (card) {
 
-const video =
-card.querySelector("video");
+      card.classList.add("visible");
 
+    });
 
-const hint =
-card.querySelector(".sound-hint");
+  }
 
 
-if (!video) {
-return;
-}
+  /* ========================================================
+     TESTIMONIOS
+     
+     ARCHIVOS UTILIZADOS:
+     
+     testimonio fernando chile.mp4
+     testimonio gini transporta quiliana 3.mp4
+     testimonio mudanzas los mendez.mp4
+     testimonio pablo pinzón colombia.mp4
+     
+     Comportamiento:
+     
+     - autoplay
+     - muted
+     - loop
+     - playsinline
+     - tocar = activar sonido
+     - tocar otro = silenciar el anterior
+     - ningún video se detiene por escuchar otro
+  ======================================================== */
 
+  const videoCards =
+    document.querySelectorAll(".video-card");
 
-video.muted = true;
 
-video.loop = true;
+  videoCards.forEach(function (card) {
 
-video.playsInline = true;
+    const video =
+      card.querySelector("video");
 
+    const hint =
+      card.querySelector(".sound-hint");
 
-/* AUTOPLAY */
 
-const playPromise =
-video.play();
+    if (!video) {
+      return;
+    }
 
 
-if (playPromise !== undefined) {
+    /* ------------------------------------------------------
+       CONFIGURACIÓN INICIAL
+    ------------------------------------------------------ */
 
-playPromise.catch(
-function () {}
-);
+    video.muted = true;
 
-}
+    video.defaultMuted = true;
 
+    video.loop = true;
 
+    video.playsInline = true;
 
-/* TOCAR VIDEO */
+    video.setAttribute(
+      "playsinline",
+      ""
+    );
 
-card.addEventListener(
-"click",
-function () {
+    video.setAttribute(
+      "webkit-playsinline",
+      ""
+    );
 
+    video.setAttribute(
+      "loop",
+      ""
+    );
 
-const activarSonido =
-video.muted;
+    video.setAttribute(
+      "muted",
+      ""
+    );
 
 
-/* SILENCIAR LOS OTROS */
+    /* ------------------------------------------------------
+       INTENTAR AUTOPLAY
+    ------------------------------------------------------ */
 
-videoCards.forEach(
-function (otherCard) {
+    const initialPlay =
+      video.play();
 
 
-const otherVideo =
-otherCard.querySelector(
-"video"
-);
+    if (
+      initialPlay !== undefined
+    ) {
 
+      initialPlay.catch(function () {
 
-const otherHint =
-otherCard.querySelector(
-".sound-hint"
-);
+        /*
 
+        Algunos navegadores,
+        especialmente móviles,
+        pueden bloquear autoplay.
 
-if (
-otherVideo &&
-otherVideo !== video
-) {
+        No hacemos nada aquí.
+        El usuario podrá tocar el video.
 
+        */
 
-otherVideo.muted = true;
+      });
 
+    }
 
-otherCard.classList.remove(
-"audio-active"
-);
 
+    /* ------------------------------------------------------
+       ASEGURAR LOOP
+    ------------------------------------------------------ */
 
-if (otherHint) {
+    video.addEventListener(
+      "ended",
+      function () {
 
-otherHint.innerHTML =
-'<i class="fa-solid fa-volume-xmark"></i> TOCA PARA ESCUCHAR';
+        if (video.loop) {
 
-}
+          video.currentTime = 0;
 
-}
+          video.play().catch(
+            function () {}
+          );
 
-}
-);
+        }
 
+      }
+    );
 
-/* ACTIVAR / DESACTIVAR */
 
-video.muted =
-!activarSonido;
+    /* ------------------------------------------------------
+       TOCAR EL VIDEO
+    ------------------------------------------------------ */
 
+    card.addEventListener(
+      "click",
+      function () {
 
-if (activarSonido) {
 
+        /*
+          Determinamos si estamos pasando
+          de silencio a sonido.
+        */
 
-card.classList.add(
-"audio-active"
-);
+        const activateSound =
+          video.muted;
 
 
-if (hint) {
+        /* --------------------------------------------------
+           SILENCIAR TODOS LOS DEMÁS
+        -------------------------------------------------- */
 
-hint.innerHTML =
-'<i class="fa-solid fa-volume-high"></i> SONIDO ACTIVADO';
+        videoCards.forEach(
+          function (otherCard) {
 
-}
+            const otherVideo =
+              otherCard.querySelector(
+                "video"
+              );
 
+            const otherHint =
+              otherCard.querySelector(
+                ".sound-hint"
+              );
 
-}
 
-else {
+            if (
+              otherVideo &&
+              otherVideo !== video
+            ) {
 
+              /*
+                Importante:
+                NO pausamos el otro video.
+                Solo lo silenciamos.
+              */
 
-card.classList.remove(
-"audio-active"
-);
+              otherVideo.muted = true;
 
 
-if (hint) {
+              otherCard
+                .classList
+                .remove(
+                  "audio-active"
+                );
 
-hint.innerHTML =
-'<i class="fa-solid fa-volume-xmark"></i> TOCA PARA ESCUCHAR';
 
-}
+              if (otherHint) {
 
-}
+                otherHint.innerHTML =
+                  '<i class="fa-solid fa-volume-xmark"></i> TOCA PARA ESCUCHAR';
 
+              }
 
-/* ASEGURAR REPRODUCCIÓN */
+            }
 
-if (video.paused) {
+          }
+        );
 
-video.play().catch(
-function () {}
-);
 
-}
+        /* --------------------------------------------------
+           ACTIVAR / DESACTIVAR SONIDO
+        -------------------------------------------------- */
 
-}
-);
+        video.muted =
+          !activateSound;
+
+
+        if (activateSound) {
+
+          card
+            .classList
+            .add(
+              "audio-active"
+            );
+
+
+          if (hint) {
+
+            hint.innerHTML =
+              '<i class="fa-solid fa-volume-high"></i> SONIDO ACTIVADO';
+
+          }
+
+        }
+
+        else {
+
+          card
+            .classList
+            .remove(
+              "audio-active"
+            );
+
+
+          if (hint) {
+
+            hint.innerHTML =
+              '<i class="fa-solid fa-volume-xmark"></i> TOCA PARA ESCUCHAR';
+
+          }
+
+        }
+
+
+        /* --------------------------------------------------
+           SI ESTABA DETENIDO, REPRODUCIR
+        -------------------------------------------------- */
+
+        if (
+          video.paused
+        ) {
+
+          video.play().catch(
+            function () {}
+          );
+
+        }
+
+      }
+    );
+
+
+    /* ------------------------------------------------------
+       SI EL VIDEO SE PAUSA POR EL NAVEGADOR
+       INTENTAMOS REANUDARLO
+    ------------------------------------------------------ */
+
+    video.addEventListener(
+      "pause",
+      function () {
+
+        /*
+          No forzamos inmediatamente la reproducción
+          mientras la pestaña está oculta.
+        */
+
+        if (
+          !document.hidden &&
+          video.readyState >= 2
+        ) {
+
+          /*
+            Esperamos un pequeño intervalo para
+            evitar conflictos con controles del navegador.
+          */
+
+          setTimeout(function () {
+
+            if (
+              !document.hidden &&
+              video.paused
+            ) {
+
+              video.play().catch(
+                function () {}
+              );
+
+            }
+
+          }, 300);
+
+        }
+
+      }
+    );
+
+  });
+
+
+  /* ========================================================
+     AL VOLVER A LA PÁGINA
+     
+     Reanudamos los videos.
+     Todos permanecen silenciados al volver.
+  ======================================================== */
+
+  document.addEventListener(
+    "visibilitychange",
+    function () {
+
+
+      if (
+        document.hidden
+      ) {
+
+        /*
+          Al salir de la página:
+          silenciar todos.
+        */
+
+        videoCards.forEach(
+          function (card) {
+
+            const video =
+              card.querySelector(
+                "video"
+              );
+
+            const hint =
+              card.querySelector(
+                ".sound-hint"
+              );
+
+
+            if (video) {
+
+              video.muted = true;
+
+            }
+
+
+            card
+              .classList
+              .remove(
+                "audio-active"
+              );
+
+
+            if (hint) {
+
+              hint.innerHTML =
+                '<i class="fa-solid fa-volume-xmark"></i> TOCA PARA ESCUCHAR';
+
+            }
+
+          }
+        );
+
+      }
+
+
+      else {
+
+        /*
+          Al regresar:
+          intentamos continuar todos los videos.
+        */
+
+        videoCards.forEach(
+          function (card) {
+
+            const video =
+              card.querySelector(
+                "video"
+              );
+
+
+            if (video) {
+
+              video.muted = true;
+
+
+              video.play().catch(
+                function () {}
+              );
+
+            }
+
+          }
+        );
+
+      }
+
+    }
+  );
+
+
+  /* ========================================================
+     ENLACES DEL MENÚ
+     
+     Cierra cualquier comportamiento extraño al navegar
+     dentro de la página.
+  ======================================================== */
+
+  const menuLinks =
+    document.querySelectorAll(
+      '.navbar nav a[href^="#"]'
+    );
+
+
+  menuLinks.forEach(
+    function (link) {
+
+      link.addEventListener(
+        "click",
+        function () {
+
+          const targetId =
+            link.getAttribute(
+              "href"
+            );
+
+          const target =
+            document.querySelector(
+              targetId
+            );
+
+
+          if (target) {
+
+            target.scrollIntoView({
+              behavior:
+                "smooth",
+              block:
+                "start"
+            });
+
+          }
+
+        }
+      );
+
+    }
+  );
+
 
 });
-
-
-
-/* ==================================================
-CUANDO SE CAMBIA DE PESTAÑA
-================================================== */
-
-document.addEventListener(
-"visibilitychange",
-function () {
-
-
-if (document.hidden) {
-
-
-videoCards.forEach(
-function (card) {
-
-
-const video =
-card.querySelector(
-"video"
-);
-
-
-const hint =
-card.querySelector(
-".sound-hint"
-);
-
-
-if (video) {
-
-video.muted = true;
-
-}
-
-
-card.classList.remove(
-"audio-active"
-);
-
-
-if (hint) {
-
-hint.innerHTML =
-'<i class="fa-solid fa-volume-xmark"></i> TOCA PARA ESCUCHAR';
-
-}
-
-}
-);
-
-}
-
-}
-);
-
-
-}
-);
