@@ -1,1282 +1,1570 @@
-<!DOCTYPE html>
-<html lang="es">
+* {
+box-sizing:border-box;
+}
 
-<head>
+html {
+scroll-behavior:smooth;
+}
 
-  <meta charset="UTF-8">
+body {
+margin:0;
+background:#05090d;
+color:#f5f8fa;
+font-family:Arial,Helvetica,sans-serif;
+overflow-x:hidden;
+}
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+a {
+color:inherit;
+text-decoration:none;
+}
 
-  <title>
-    A Solo UnClick | Clientes directo a tu WhatsApp
-  </title>
+img {
+display:block;
+max-width:100%;
+}
 
-  <meta
-    name="description"
-    content="Llevamos clientes directo a tu WhatsApp mediante campañas publicitarias en Meta Ads y Google Ads. 5 días gratis de nuestra gestión."
-  >
 
-  <!-- ICONOS -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-  >
+/* ======================================================
+NAVBAR
+====================================================== */
 
-  <!-- CSS -->
-  <link
-    rel="stylesheet"
-    href="style.css"
-  >
+.navbar {
+position:fixed;
+top:0;
+left:0;
+z-index:1000;
 
-</head>
+width:100%;
+height:72px;
 
+display:flex;
+align-items:center;
+justify-content:space-between;
 
-<body>
+padding:0 4%;
 
+background:rgba(5,9,13,.82);
 
-<!-- ======================================================
-     BARRA SUPERIOR
-====================================================== -->
+backdrop-filter:blur(18px);
+-webkit-backdrop-filter:blur(18px);
 
-<header class="navbar">
+border-bottom:1px solid rgba(255,255,255,.10);
+}
 
 
-  <a
-    href="#inicio"
-    class="logo"
-    aria-label="A Solo UnClick"
-  >
+.logo {
+width:48px;
+height:48px;
 
-    <img
-      src="Un solo logotipo de UnClick.jpeg"
-      alt="A Solo UnClick"
-    >
+display:flex;
+align-items:center;
+justify-content:center;
 
-  </a>
+overflow:hidden;
 
+border-radius:12px;
 
-  <nav>
+background:rgba(255,255,255,.04);
 
-    <a href="#como-funciona">
-      Cómo funciona
-    </a>
+border:1px solid rgba(255,255,255,.08);
+}
 
-    <a href="#sistema">
-      Sistema
-    </a>
 
-    <a href="#testimonios">
-      Testimonios
-    </a>
+.logo img {
+width:100%;
+height:100%;
 
-    <a href="#planes">
-      Planes
-    </a>
+object-fit:contain;
+padding:3px;
+}
 
-  </nav>
 
+.navbar nav {
+display:flex;
+gap:25px;
+}
 
-  <a
-    class="whatsapp-top"
-    href="https://wa.me/56976169158?text=Hola%2C%20quiero%20probar%20los%205%20d%C3%ADas%20gratis%20de%20A%20Solo%20UnClick."
-    target="_blank"
-    rel="noopener"
-  >
 
-    <i class="fa-brands fa-whatsapp"></i>
+.navbar nav a {
+color:#c8d1d6;
+font-size:13px;
+transition:.25s;
+}
 
-    <span>
-      WhatsApp
-    </span>
 
-  </a>
+.navbar nav a:hover {
+color:white;
+}
 
 
-</header>
+.whatsapp-top {
+min-height:42px;
 
+display:inline-flex;
+align-items:center;
+justify-content:center;
 
+gap:8px;
 
-<main id="inicio">
+padding:9px 15px;
 
+border-radius:30px;
 
+color:#effff7;
 
-<!-- ======================================================
-     HERO
-====================================================== -->
+background:rgba(37,211,102,.12);
 
-<section class="hero">
+border:1px solid rgba(37,211,102,.50);
 
+font-size:12px;
+font-weight:800;
 
-  <div
-    class="hero-background banner-one"
-  ></div>
+transition:.25s;
+}
 
 
-  <div
-    class="hero-background banner-two"
-  ></div>
+.whatsapp-top i {
+color:#25d366;
+font-size:19px;
+}
 
 
-  <div
-    class="hero-overlay"
-  ></div>
+.whatsapp-top:hover {
+background:rgba(37,211,102,.22);
+}
 
 
-  <div class="hero-content">
+/* ======================================================
+HERO
+====================================================== */
 
+.hero {
+position:relative;
 
-    <div class="eyebrow">
+min-height:100vh;
 
-      PUBLICIDAD ORIENTADA A CLIENTES
+display:flex;
+align-items:center;
 
-    </div>
+padding:120px 7% 80px;
 
+overflow:hidden;
 
+isolation:isolate;
+}
 
-    <h1>
 
-      Llevamos clientes
+.hero-background {
+position:absolute;
 
-      <span>
-        directo a tu WhatsApp.
-      </span>
+inset:-10px;
 
-    </h1>
+z-index:-3;
 
+background-size:cover;
+background-position:center;
 
+filter:blur(4px) brightness(.48) saturate(.82);
 
-    <p class="hero-description">
+transition:
+opacity 1.4s ease,
+transform 8s ease;
+}
 
-      Configuramos campañas publicitarias en
 
-      <strong>
-        Meta Ads y Google Ads
-      </strong>
+.banner-one {
+background-image:url("banner1.jpeg");
+}
 
-      para llevar personas interesadas
-      directamente a la conversación de tu negocio.
 
-    </p>
+.banner-two {
+background-image:url("banner2.jpeg");
+opacity:0;
+transform:scale(1.12);
+}
 
 
+.hero-background.banner-one {
+opacity:1;
+transform:scale(1.08);
+}
 
-    <div class="buttons">
 
+.hero.alt .banner-one {
+opacity:0;
+}
 
-      <a
-        class="button whatsapp-button"
-        href="https://wa.me/56976169158?text=Hola%2C%20quiero%20probar%20los%205%20d%C3%ADas%20gratis%20de%20A%20Solo%20UnClick."
-        target="_blank"
-        rel="noopener"
-      >
 
-        <i class="fa-brands fa-whatsapp"></i>
+.hero.alt .banner-two {
+opacity:1;
+transform:scale(1.08);
+}
 
-        QUIERO MIS 5 DÍAS GRATIS
 
-      </a>
+.hero-overlay {
+position:absolute;
+inset:0;
 
+z-index:-2;
 
+background:
+linear-gradient(
+90deg,
+rgba(3,7,10,.97) 0%,
+rgba(3,7,10,.84) 42%,
+rgba(3,7,10,.52) 70%,
+rgba(3,7,10,.38) 100%
+),
+linear-gradient(
+0deg,
+rgba(3,7,10,.50),
+transparent 45%
+);
+}
 
-      <a
-        class="button secondary-button"
-        href="#como-funciona"
-      >
 
-        Ver cómo funciona ↓
+.hero-content {
+max-width:900px;
 
-      </a>
+position:relative;
+z-index:2;
+}
 
 
-    </div>
+.eyebrow {
+color:#d4dce1;
 
+font-size:11px;
+font-weight:900;
 
+letter-spacing:.20em;
+}
 
-    <div class="hero-info">
 
+.hero h1 {
+margin:20px 0;
 
-      <span>
-        5 días gratis de nuestra gestión
-      </span>
+font-size:clamp(48px,7vw,95px);
 
+line-height:.95;
 
-      <span>
-        No necesitas seguidores. Necesitas clientes.
-      </span>
+letter-spacing:-5px;
+}
 
 
-    </div>
+.hero h1 span {
+display:block;
+color:#19d17f;
+}
 
 
-  </div>
+.hero-description {
+max-width:700px;
 
+color:#edf2f4;
 
+font-size:18px;
+font-weight:600;
 
-  <div class="scroll-indicator">
+line-height:1.65;
 
-    DESLIZA ↓
+text-shadow:0 2px 12px rgba(0,0,0,.85);
+}
 
-  </div>
 
+.hero-description strong {
+color:white;
+font-weight:900;
+}
 
-</section>
 
+/* ======================================================
+BOTONES
+====================================================== */
 
+.buttons {
+display:flex;
+flex-wrap:wrap;
+gap:12px;
+margin-top:30px;
+}
 
-<!-- ======================================================
-     CINTA
-====================================================== -->
 
-<section class="ticker">
+.button {
+min-height:52px;
 
+display:inline-flex;
+align-items:center;
+justify-content:center;
 
-  <div>
+gap:10px;
 
-    CLIENTES → WHATSAPP
-    <b>•</b>
+padding:0 22px;
 
-    META ADS + GOOGLE ADS
-    <b>•</b>
+border-radius:50px;
 
-    5 DÍAS GRATIS
-    <b>•</b>
+font-size:12px;
+font-weight:900;
 
-    NO NECESITAS SEGUIDORES
-    <b>•</b>
+transition:
+transform .25s,
+box-shadow .25s,
+background .25s;
+}
 
-    CLIENTES → WHATSAPP
-    <b>•</b>
 
-    META ADS + GOOGLE ADS
-    <b>•</b>
+.button:hover {
+transform:translateY(-3px);
+}
 
-    5 DÍAS GRATIS
-    <b>•</b>
 
-    NO NECESITAS SEGUIDORES
-    <b>•</b>
+.whatsapp-button {
+color:#031109;
 
-  </div>
+background:#25d366;
 
+box-shadow:
+0 15px 40px rgba(37,211,102,.25);
+}
 
-</section>
 
+.whatsapp-button i {
+font-size:20px;
+}
 
 
-<!-- ======================================================
-     CÓMO FUNCIONA
-====================================================== -->
+.whatsapp-button:hover {
+box-shadow:
+0 18px 45px rgba(37,211,102,.40);
+}
 
-<section
-  id="como-funciona"
-  class="section"
->
 
+.secondary-button {
+color:white;
 
-  <div class="section-title">
+background:rgba(255,255,255,.08);
 
+border:1px solid rgba(255,255,255,.25);
 
-    <small>
-      EN MENOS DE 3 SEGUNDOS
-    </small>
+backdrop-filter:blur(10px);
+}
 
 
-    <h2>
+.hero-info {
+display:flex;
 
-      Así llevamos clientes
+gap:20px;
 
-      <span>
-        hasta tu WhatsApp.
-      </span>
+margin-top:22px;
 
-    </h2>
+color:#edf2f4;
 
+font-size:12px;
+font-weight:700;
 
-    <p>
-      El sistema es simple.
-    </p>
+text-shadow:0 2px 12px rgba(0,0,0,.90);
+}
 
 
-  </div>
+.hero-info span+span {
+padding-left:20px;
 
+border-left:1px solid rgba(255,255,255,.35);
+}
 
 
-  <div class="steps">
+.scroll-indicator {
+position:absolute;
 
+bottom:25px;
+left:7%;
 
-    <!-- PASO 1 -->
+color:#c0c9ce;
 
-    <div class="step">
+font-size:10px;
+font-weight:700;
 
+letter-spacing:.25em;
+}
 
-      <strong>
-        PASO 1
-      </strong>
 
+/* ======================================================
+TICKER
+====================================================== */
 
-      <div class="step-icon">
-        AD
-      </div>
+.ticker {
+overflow:hidden;
 
+background:#071017;
 
-      <h3>
-        Publicidad
-      </h3>
+border-top:1px solid rgba(255,255,255,.1);
+border-bottom:1px solid rgba(255,255,255,.1);
+}
 
 
-      <p>
-        Configuramos campañas publicitarias
-        para tu empresa en Meta Ads y Google Ads.
-      </p>
+.ticker div {
+width:max-content;
 
+padding:17px 0;
 
-    </div>
+font-size:11px;
+font-weight:900;
 
+letter-spacing:.15em;
 
+animation:ticker 26s linear infinite;
+}
 
-    <!-- PASO 2 -->
 
-    <div class="step">
+.ticker b {
+color:#19d17f;
+margin:0 13px;
+}
 
 
-      <strong>
-        PASO 2
-      </strong>
+@keyframes ticker {
 
+from {
+transform:translateX(0);
+}
 
-      <div class="step-icon">
-        ◎
-      </div>
+to {
+transform:translateX(-50%);
+}
 
+}
 
-      <h3>
-        Personas interesadas
-      </h3>
 
+/* ======================================================
+SECCIONES
+====================================================== */
 
-      <p>
-        La publicidad llega a personas interesadas
-        en tu producto o servicio y ellos te contactan
-        directamente.
-      </p>
+.section {
+max-width:1180px;
 
+margin:auto;
 
-    </div>
+padding:120px 28px;
+}
 
 
+.section-title {
+max-width:780px;
+margin-bottom:60px;
+}
 
-    <!-- PASO 3 -->
 
-    <div class="step">
+.section-title small,
+.world-section small,
+.final-section small,
+.final-cta small {
+color:#aebbc3;
 
+font-size:10px;
+font-weight:900;
 
-      <strong>
-        PASO 3
-      </strong>
+letter-spacing:.22em;
+}
 
 
-      <div class="step-icon whatsapp-step-icon">
+.section-title h2 {
+margin:12px 0 18px;
 
-        <i class="fa-brands fa-whatsapp"></i>
+font-size:clamp(40px,5.5vw,72px);
 
-      </div>
+line-height:.98;
 
+letter-spacing:-4px;
+}
 
-      <h3>
-        Tu WhatsApp
-      </h3>
 
+.section-title h2 span {
+color:#19d17f;
+}
 
-      <p>
-        Las personas interesadas llegan directamente
-        a tu WhatsApp para cotizar tu producto o servicio.
-      </p>
 
+.section-title p {
+color:#aab7bf;
+line-height:1.7;
+}
 
-    </div>
 
+/* ======================================================
+PASOS
+====================================================== */
 
+.steps {
+display:grid;
 
-    <!-- PASO 4 -->
+grid-template-columns:repeat(4,1fr);
 
-    <div class="step highlight">
+gap:15px;
+}
 
 
-      <strong>
-        PASO 4
-      </strong>
+.step {
+min-height:300px;
 
+padding:28px;
 
-      <div class="step-icon">
-        ✓
-      </div>
+border-radius:28px;
 
+background:
+linear-gradient(
+145deg,
+rgba(255,255,255,.07),
+rgba(255,255,255,.015)
+);
 
-      <h3>
-        Nuevos clientes
-      </h3>
+border:1px solid rgba(255,255,255,.10);
 
+transition:.3s;
+}
 
-      <p>
-        Tú recibes las conversaciones y conviertes
-        esas oportunidades en ventas.
-      </p>
 
+.step:hover {
+transform:translateY(-6px);
 
-    </div>
+border-color:rgba(25,209,127,.35);
+}
 
 
-  </div>
+.step.highlight {
+border-color:rgba(25,209,127,.40);
 
+background:
+linear-gradient(
+145deg,
+rgba(25,209,127,.13),
+rgba(255,255,255,.02)
+);
+}
 
 
-  <!-- ==================================================
-       SIN FRONTERAS
-  =================================================== -->
+.step>strong {
+color:#71808a;
+font-size:11px;
+}
 
-  <div class="world-section">
 
+.step-icon {
+margin:40px 0 20px;
 
-    <div class="world-content">
+color:#19d17f;
 
+font-size:30px;
+font-weight:900;
+}
 
-      <small>
-        SIN FRONTERAS
-      </small>
 
+.whatsapp-step-icon i {
+color:#25d366;
+font-size:32px;
+}
 
-      <h3>
 
-        Desde cualquier lugar
+.step h3 {
+margin:0 0 10px;
+font-size:20px;
+}
 
-        <span>
-          del mundo.
-        </span>
 
-      </h3>
+.step p {
+margin:0;
 
+color:#aab5bc;
 
-      <p>
+font-size:13px;
 
-        Podemos llevar personas interesadas
-        directamente al WhatsApp de tu negocio,
-        estés donde estés.
+line-height:1.65;
+}
 
-      </p>
 
+/* ======================================================
+MUNDO
+====================================================== */
 
-      <a
-        href="https://wa.me/56976169158?text=Hola%2C%20quiero%20saber%20c%C3%B3mo%20pueden%20llevar%20clientes%20a%20mi%20WhatsApp."
-        target="_blank"
-        rel="noopener"
-      >
+.world-section {
+position:relative;
 
-        <i class="fa-brands fa-whatsapp"></i>
+min-height:410px;
 
-        Quiero hablar con ustedes →
+margin-top:65px;
 
-      </a>
+padding:60px;
 
+overflow:hidden;
 
-    </div>
+border-radius:30px;
 
+background:
+radial-gradient(
+circle at 75% 50%,
+rgba(72,168,255,.20),
+transparent 30%
+),
+#071017;
 
-  </div>
+border:1px solid rgba(255,255,255,.10);
+}
 
 
-</section>
+.world-section::before {
+content:"";
 
+position:absolute;
+inset:0;
 
+opacity:.30;
 
-<!-- ======================================================
-     SISTEMA / PANTALLAZOS
-====================================================== -->
+background-image:
+linear-gradient(
+rgba(72,168,255,.20) 1px,
+transparent 1px
+),
+linear-gradient(
+90deg,
+rgba(72,168,255,.20) 1px,
+transparent 1px
+);
 
-<section
-  id="sistema"
-  class="section system-section"
->
+background-size:42px 42px;
 
+transform:
+perspective(500px)
+rotateX(60deg)
+scale(1.5);
 
-  <div class="section-title">
+transform-origin:center bottom;
+}
 
 
-    <small>
-      EL SISTEMA POR DENTRO
-    </small>
+.world-content {
+position:relative;
 
+max-width:620px;
 
-    <h2>
+z-index:2;
+}
 
-      Publicidad que termina
 
-      <span>
-        en una conversación.
-      </span>
+.world-content h3 {
+margin:18px 0;
 
-    </h2>
+font-size:clamp(38px,5vw,63px);
 
+line-height:1;
 
-    <p>
+letter-spacing:-4px;
+}
 
-      Así se ve el administrador de campañas
-      mientras trabajamos para llevar clientes
-      hacia tu WhatsApp.
 
-    </p>
+.world-content h3 span {
+color:#19d17f;
+}
 
 
-  </div>
+.world-content p {
+color:#aab7bf;
+line-height:1.7;
+}
 
 
+.world-content a {
+display:inline-flex;
 
-  <div class="interface">
+align-items:center;
 
+gap:8px;
 
-    <!-- PANTALLAZO 1 -->
+margin-top:15px;
 
-    <div class="interface-card card-1">
+color:#25d366;
 
-      <span>
-        01
-      </span>
+font-weight:900;
+}
 
-      <img
-        src="pantallazointerfaz1.jpeg"
-        alt="Administrador de anuncios 1"
-      >
 
-    </div>
+/* ======================================================
+SISTEMA ENJAMBRE
+====================================================== */
 
+.system-section {
+padding-bottom:100px;
+}
 
 
-    <!-- PANTALLAZO 2 -->
+.interface {
+max-width:1050px;
 
-    <div class="interface-card card-2">
+margin:30px auto 40px;
 
-      <span>
-        02
-      </span>
+display:flex;
+flex-direction:column;
+align-items:center;
 
-      <img
-        src="pantallazointerfaz2.jpeg"
-        alt="Administrador de anuncios 2"
-      >
+padding:30px 0 80px;
+}
 
-    </div>
 
+.interface-card {
+--x:0px;
+--r:0deg;
 
+position:relative;
 
-    <!-- PANTALLAZO 3 -->
+width:82%;
 
-    <div class="interface-card card-3">
+margin-top:-5%;
 
-      <span>
-        03
-      </span>
+opacity:0;
 
-      <img
-        src="pantallazointerfaz3.jpeg"
-        alt="Administrador de anuncios 3"
-      >
+z-index:1;
 
-    </div>
+transform:
+translate(var(--x),100px)
+rotate(var(--r))
+scale(.90);
 
+transition:
+opacity .9s ease,
+transform 1.15s cubic-bezier(.2,.8,.2,1);
+}
 
 
-    <!-- PANTALLAZO 4 -->
+.interface-card:first-child {
+margin-top:0;
+}
 
-    <div class="interface-card card-4">
 
-      <span>
-        04
-      </span>
+.interface-card.visible {
+opacity:1;
 
-      <img
-        src="pantallazointerfaz4.jpeg"
-        alt="Administrador de anuncios 4"
-      >
+transform:
+translate(var(--x),0)
+rotate(var(--r))
+scale(1);
+}
 
-    </div>
 
+.interface-card.card-1 {
+--x:-6%;
+--r:-2.5deg;
+z-index:1;
+}
 
 
-    <!-- PANTALLAZO 5 -->
+.interface-card.card-2 {
+--x:7%;
+--r:2.2deg;
+z-index:2;
+}
 
-    <div class="interface-card card-5">
 
-      <span>
-        05
-      </span>
+.interface-card.card-3 {
+--x:-3%;
+--r:-1.3deg;
+z-index:3;
+}
 
-      <img
-        src="pantallazointerfaz5.jpeg"
-        alt="Administrador de anuncios 5"
-      >
 
-    </div>
+.interface-card.card-4 {
+--x:6%;
+--r:1.8deg;
+z-index:4;
+}
 
 
-  </div>
+.interface-card.card-5 {
+--x:0%;
+--r:-.8deg;
+z-index:5;
+}
 
 
-</section>
+.interface-card img {
+width:100%;
 
+border-radius:22px;
 
+border:1px solid rgba(255,255,255,.12);
 
-<!-- ======================================================
-     TESTIMONIOS
-====================================================== -->
+box-shadow:
+0 35px 90px rgba(0,0,0,.72),
+0 0 30px rgba(25,209,127,.035);
+}
 
-<section
-  id="testimonios"
-  class="section testimonials"
->
 
+.interface-card span {
+position:absolute;
 
-  <div class="testimonials-inner">
+top:16px;
+left:16px;
 
+z-index:3;
 
-    <div class="section-title">
+padding:7px 11px;
 
+border-radius:30px;
 
-      <small>
-        EXPERIENCIAS REALES
-      </small>
+color:white;
 
+background:rgba(5,9,13,.90);
 
-      <h2>
-        Experiencias reales.
-      </h2>
+border:1px solid rgba(255,255,255,.10);
 
+font-size:10px;
+font-weight:900;
+}
 
-      <p>
-        Estos son los testimonios de nuestros clientes.
-      </p>
 
+/* ======================================================
+TESTIMONIOS
+====================================================== */
 
-    </div>
+.testimonials {
+max-width:none;
 
+padding-left:0;
+padding-right:0;
 
+background:#071017;
 
-    <div class="videos">
+border-top:1px solid rgba(255,255,255,.06);
+border-bottom:1px solid rgba(255,255,255,.06);
+}
 
 
+.testimonials-inner {
+max-width:1180px;
 
-      <!-- ================================================
-           VIDEO 1
-      ================================================= -->
+margin:auto;
 
-      <div class="video-card">
+padding:0 28px;
+}
 
 
-        <div class="video-wrapper">
+.videos {
+display:grid;
 
+grid-template-columns:repeat(2,1fr);
 
-          <video
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="metadata"
-          >
+gap:22px;
+}
 
-            <source
-              src="testimonio fernando chile.mp4"
-              type="video/mp4"
-            >
 
-          </video>
+.video-card {
+overflow:hidden;
 
+border-radius:24px;
 
-          <div class="sound-hint">
+background:#03070a;
 
-            <i class="fa-solid fa-volume-xmark"></i>
+border:1px solid rgba(255,255,255,.10);
 
-            TOCA PARA ESCUCHAR
+box-shadow:
+0 25px 60px rgba(0,0,0,.30);
+}
 
-          </div>
 
+.video-wrapper {
+position:relative;
+overflow:hidden;
+cursor:pointer;
+}
 
-        </div>
 
+.video-card video {
+display:block;
 
-        <h3>
-          Fernando · Chile
-        </h3>
+width:100%;
 
+aspect-ratio:16/10;
 
-      </div>
+object-fit:cover;
 
+background:black;
+}
 
 
-      <!-- ================================================
-           VIDEO 2
-      ================================================= -->
+.video-card h3 {
+margin:0;
 
-      <div class="video-card">
+padding:16px 18px 18px;
 
+font-size:13px;
+}
 
-        <div class="video-wrapper">
 
+.sound-hint {
+position:absolute;
 
-          <video
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="metadata"
-          >
+left:14px;
+bottom:14px;
 
-            <source
-              src="testimonio gino transportes quiliana 3.mp4"
-              type="video/mp4"
-            >
+display:flex;
+align-items:center;
 
-          </video>
+gap:7px;
 
+padding:9px 12px;
 
-          <div class="sound-hint">
+border-radius:30px;
 
-            <i class="fa-solid fa-volume-xmark"></i>
+color:white;
 
-            TOCA PARA ESCUCHAR
+background:rgba(3,7,10,.82);
 
-          </div>
+backdrop-filter:blur(12px);
 
+border:1px solid rgba(255,255,255,.13);
 
-        </div>
+font-size:9px;
+font-weight:900;
 
+letter-spacing:.06em;
 
-        <h3>
-          Gino · Transportes Quiliana
-        </h3>
+pointer-events:none;
 
+transition:.25s;
+}
 
-      </div>
 
+.video-card.audio-active .sound-hint {
+color:#031109;
 
+background:#25d366;
 
-      <!-- ================================================
-           VIDEO 3
-      ================================================= -->
+border-color:transparent;
+}
 
-      <div class="video-card">
 
+/* ======================================================
+PLANES
+====================================================== */
 
-        <div class="video-wrapper">
+.plans-intro {
+max-width:720px;
 
+font-size:16px!important;
+}
 
-          <video
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="metadata"
-          >
 
-            <source
-              src="testimonio gino transporte quiliana 2.mp4"
-              type="video/mp4"
-            >
+.plans-intro strong {
+color:white;
+}
 
-          </video>
 
+.plans {
+display:grid;
 
-          <div class="sound-hint">
+grid-template-columns:repeat(3,1fr);
 
-            <i class="fa-solid fa-volume-xmark"></i>
+gap:20px;
+}
 
-            TOCA PARA ESCUCHAR
 
-          </div>
+.plan {
+overflow:hidden;
 
+border-radius:25px;
 
-        </div>
+border:1px solid rgba(255,255,255,.10);
 
+transition:.30s;
+}
 
-        <h3>
-          Gino · Transportes Quiliana
-        </h3>
 
+.plan:hover {
+transform:translateY(-8px);
 
-      </div>
+border-color:rgba(25,209,127,.50);
 
+box-shadow:
+0 25px 70px rgba(0,0,0,.40);
+}
 
 
-      <!-- ================================================
-           VIDEO 4
-      ================================================= -->
+.plan img {
+width:100%;
+}
 
-      <div class="video-card">
 
+/* ======================================================
+CTA
+====================================================== */
 
-        <div class="video-wrapper">
+.final-cta {
+margin-top:60px;
 
+padding:40px;
 
-          <video
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="metadata"
-          >
+display:flex;
 
-            <source
-              src="testimonio gino transporte quiliana.mp4"
-              type="video/mp4"
-            >
+align-items:center;
+justify-content:space-between;
 
-          </video>
+gap:30px;
 
+border-radius:28px;
 
-          <div class="sound-hint">
+background:
+linear-gradient(
+100deg,
+rgba(25,209,127,.10),
+rgba(72,168,255,.05)
+);
 
-            <i class="fa-solid fa-volume-xmark"></i>
+border:1px solid rgba(25,209,127,.30);
+}
 
-            TOCA PARA ESCUCHAR
 
-          </div>
+.final-cta h3 {
+margin:7px 0;
+font-size:32px;
+}
 
 
-        </div>
+.final-cta p {
+margin:0;
 
+color:#aab7bf;
 
-        <h3>
-          Gino · Transportes Quiliana
-        </h3>
+line-height:1.6;
+}
 
 
-      </div>
+/* ======================================================
+FINAL
+====================================================== */
 
+.final-section {
+min-height:78vh;
 
+display:flex;
+align-items:center;
+justify-content:center;
 
-      <!-- ================================================
-           VIDEO 5
-      ================================================= -->
+padding:100px 20px;
 
-      <div class="video-card">
+text-align:center;
 
+background:
+radial-gradient(
+circle,
+rgba(25,209,127,.13),
+transparent 40%
+);
+}
 
-        <div class="video-wrapper">
 
+.final-section h2 {
+margin:15px 0;
 
-          <video
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="metadata"
-          >
+font-size:clamp(48px,8vw,100px);
 
-            <source
-              src="testimonio mudanzas los mendez.mp4"
-              type="video/mp4"
-            >
+line-height:.94;
 
-          </video>
+letter-spacing:-6px;
+}
 
 
-          <div class="sound-hint">
+.final-section h2 span {
+color:#19d17f;
+}
 
-            <i class="fa-solid fa-volume-xmark"></i>
 
-            TOCA PARA ESCUCHAR
+.final-section p {
+color:#aab7bf;
+line-height:1.7;
+}
 
-          </div>
 
+.big {
+margin-top:20px;
+}
 
-        </div>
 
+/* ======================================================
+FOOTER
+====================================================== */
 
-        <h3>
-          Mudanzas Los Méndez
-        </h3>
+footer {
+padding:48px 5%;
 
+display:grid;
 
-      </div>
+grid-template-columns:2fr auto 1fr;
 
+align-items:center;
 
+gap:35px;
 
-      <!-- ================================================
-           VIDEO 6
-      ================================================= -->
+color:#93a1aa;
 
-      <div class="video-card">
+background:#030609;
 
+border-top:1px solid rgba(255,255,255,.10);
+}
 
-        <div class="video-wrapper">
 
+.footer-brand {
+display:flex;
 
-          <video
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="metadata"
-          >
+align-items:center;
 
-            <source
-              src="testimonio pablo pinzon colombia.mp4"
-              type="video/mp4"
-            >
+gap:16px;
+}
 
-          </video>
 
+.footer-logo {
+width:55px;
+height:55px;
 
-          <div class="sound-hint">
+flex-shrink:0;
 
-            <i class="fa-solid fa-volume-xmark"></i>
+display:flex;
+align-items:center;
+justify-content:center;
 
-            TOCA PARA ESCUCHAR
+overflow:hidden;
 
-          </div>
+border-radius:14px;
 
+border:1px solid rgba(255,255,255,.09);
 
-        </div>
+background:rgba(255,255,255,.04);
+}
 
 
-        <h3>
-          Pablo Pinzón · Colombia
-        </h3>
+.footer-logo img {
+width:100%;
+height:100%;
 
+padding:3px;
 
-      </div>
+object-fit:contain;
+}
 
 
-    </div>
+.footer-brand p {
+margin:0;
 
+max-width:280px;
 
-  </div>
+color:#b2bdc4;
 
+font-size:13px;
 
-</section>
+line-height:1.5;
+}
 
 
+.social {
+display:flex;
 
-<!-- ======================================================
-     PLANES
-====================================================== -->
+align-items:center;
+justify-content:center;
 
-<section
-  id="planes"
-  class="section"
->
+gap:11px;
+}
 
 
-  <div class="section-title">
+.social-button {
+width:46px;
+height:46px;
 
+display:flex;
 
-    <small>
-      PLANES MENSUALES
-    </small>
+align-items:center;
+justify-content:center;
 
+border-radius:50%;
 
-    <h2>
+color:white;
 
-      Cómo podemos trabajar
+font-size:20px;
 
-      <span>
-        con tu negocio.
-      </span>
+background:rgba(255,255,255,.07);
 
-    </h2>
+border:1px solid rgba(255,255,255,.12);
 
+box-shadow:
+0 12px 28px rgba(0,0,0,.30);
 
-    <p class="plans-intro">
+transition:.25s;
+}
 
-      Luego de que accedas a los
 
-      <strong>
-        5 días gratuitos de nuestra gestión
-      </strong>,
+.social-button:hover {
+transform:translateY(-4px);
+}
 
-      puedes optar por uno de los
 
-      <strong>
-        planes mensuales de pago único.
-      </strong>
+.social-button.facebook:hover {
+background:#1877f2;
+}
 
-    </p>
 
+.social-button.instagram:hover {
+background:
+radial-gradient(
+circle at 30% 110%,
+#fdf497 0%,
+#fdf497 5%,
+#fd5949 45%,
+#d6249f 60%,
+#285aeb 90%
+);
+}
 
-  </div>
 
+.social-button.whatsapp:hover {
+color:#031109;
+background:#25d366;
+}
 
 
-  <div class="plans">
+.copyright {
+text-align:right;
+color:#71808a;
+}
 
 
-    <div class="plan">
+/* ======================================================
+WHATSAPP FLOTANTE
+====================================================== */
 
-      <img
-        src="planmensual1.jpeg"
-        alt="Plan mensual 1"
-      >
+.floating-whatsapp {
+position:fixed;
 
-    </div>
+right:18px;
+bottom:18px;
 
+z-index:1500;
 
+width:58px;
+height:58px;
 
-    <div class="plan featured">
+display:flex;
 
-      <img
-        src="planmensual2.jpeg"
-        alt="Plan mensual 2"
-      >
+align-items:center;
+justify-content:center;
 
-    </div>
+border-radius:50%;
 
+color:white;
 
+background:#25d366;
 
-    <div class="plan">
+border:2px solid rgba(255,255,255,.90);
 
-      <img
-        src="planmensual3.jpeg"
-        alt="Plan mensual 3"
-      >
+font-size:31px;
 
-    </div>
+box-shadow:
+0 15px 40px rgba(37,211,102,.38),
+0 8px 25px rgba(0,0,0,.45);
 
+transition:.25s;
+}
 
-  </div>
 
+.floating-whatsapp:hover {
+transform:
+translateY(-4px)
+scale(1.05);
+}
 
 
-  <!-- CTA -->
+/* ======================================================
+TABLET
+====================================================== */
 
-  <div class="final-cta">
+@media(max-width:900px) {
 
+.navbar nav {
+display:none;
+}
 
-    <div>
+.steps {
+grid-template-columns:repeat(2,1fr);
+}
 
+.plans {
+grid-template-columns:1fr;
+}
 
-      <small>
-        PRUÉBALO
-      </small>
+.plan {
+max-width:600px;
+margin:auto;
+}
 
+footer {
+grid-template-columns:1fr auto;
+}
 
-      <h3>
-        Empieza con 5 días gratis.
-      </h3>
+.copyright {
+grid-column:1/-1;
+text-align:left;
+}
 
+}
 
-      <p>
 
-        Hablemos de tu negocio y de cómo llevar
-        clientes directo a tu WhatsApp.
+/* ======================================================
+MÓVIL
+====================================================== */
 
-      </p>
+@media(max-width:650px) {
 
+.navbar {
+height:66px;
+padding:0 14px;
+}
 
-    </div>
+.logo {
+width:43px;
+height:43px;
+border-radius:10px;
+}
 
+.whatsapp-top {
+min-height:38px;
+padding:8px 12px;
+font-size:11px;
+}
 
+.whatsapp-top i {
+font-size:18px;
+}
 
-    <a
-      class="button whatsapp-button"
-      href="https://wa.me/56976169158?text=Hola%2C%20quiero%20probar%20los%205%20d%C3%ADas%20gratis%20de%20A%20Solo%20UnClick."
-      target="_blank"
-      rel="noopener"
-    >
 
-      <i class="fa-brands fa-whatsapp"></i>
+.hero {
+min-height:100svh;
+padding:105px 20px 75px;
+}
 
-      QUIERO MIS 5 DÍAS GRATIS
+.hero-background {
+inset:-12px;
 
-    </a>
+filter:
+blur(4px)
+brightness(.40)
+saturate(.78);
+}
 
+.hero-overlay {
+background:
+linear-gradient(
+180deg,
+rgba(3,7,10,.76) 0%,
+rgba(3,7,10,.84) 47%,
+rgba(3,7,10,.92) 100%
+);
+}
 
-  </div>
+.eyebrow {
+font-size:9px;
+letter-spacing:.16em;
+}
 
+.hero h1 {
+font-size:clamp(43px,13vw,67px);
+letter-spacing:-3px;
+}
 
-</section>
+.hero-description {
+color:#f0f4f5;
+font-size:15px;
+font-weight:700;
+line-height:1.65;
+}
 
+.button {
+width:100%;
+min-height:52px;
+padding:0 18px;
+}
 
+.hero-info {
+display:block;
+font-size:11px;
+font-weight:800;
+}
 
-<!-- ======================================================
-     CIERRE FINAL
-====================================================== -->
+.hero-info span {
+display:block;
+margin-top:9px;
+}
 
-<section class="final-section">
+.hero-info span+span {
+padding:0;
+border:0;
+}
 
+.scroll-indicator {
+left:20px;
+}
 
-  <div>
 
+.section {
+padding:88px 20px;
+}
 
-    <small>
-      A SOLO UNCLICK
-    </small>
+.section-title {
+margin-bottom:42px;
+}
 
+.section-title h2 {
+font-size:clamp(38px,11vw,55px);
+letter-spacing:-3px;
+}
 
-    <h2>
 
-      No necesitas seguidores.
+.steps {
+grid-template-columns:1fr;
+}
 
-      <span>
-        Necesitas clientes.
-      </span>
+.step {
+min-height:auto;
+}
 
-    </h2>
 
+.world-section {
+min-height:390px;
+margin-top:45px;
+padding:38px 26px;
+}
 
-    <p>
+.world-content h3 {
+letter-spacing:-3px;
+}
 
-      Meta Ads + Google Ads →
 
-      personas interesadas →
+.system-section {
+padding-bottom:50px;
+}
 
-      tu WhatsApp.
+.interface {
+padding:10px 0 55px;
+}
 
-    </p>
+.interface-card {
+width:96%;
+margin-top:-3%;
+}
 
+.interface-card.card-1 {
+--x:-2%;
+--r:-1.8deg;
+}
 
+.interface-card.card-2 {
+--x:3%;
+--r:1.5deg;
+}
 
-    <a
-      class="button whatsapp-button big"
-      href="https://wa.me/56976169158?text=Hola%2C%20quiero%20probar%20los%205%20d%C3%ADas%20gratis%20de%20A%20Solo%20UnClick."
-      target="_blank"
-      rel="noopener"
-    >
+.interface-card.card-3 {
+--x:-2%;
+--r:-1deg;
+}
 
-      <i class="fa-brands fa-whatsapp"></i>
+.interface-card.card-4 {
+--x:2%;
+--r:1.3deg;
+}
 
-      QUIERO MIS 5 DÍAS GRATIS
+.interface-card.card-5 {
+--x:0%;
+--r:-.5deg;
+}
 
-    </a>
+.interface-card img {
+border-radius:16px;
 
+box-shadow:
+0 24px 55px rgba(0,0,0,.60);
+}
 
-  </div>
 
+.testimonials-inner {
+padding:0 20px;
+}
 
-</section>
+.videos {
+grid-template-columns:1fr;
+}
 
 
-</main>
+.final-cta {
+flex-direction:column;
+align-items:flex-start;
+padding:28px 22px;
+}
 
+.final-cta h3 {
+font-size:28px;
+}
 
 
-<!-- ======================================================
-     FOOTER
-====================================================== -->
+.final-section {
+min-height:70vh;
+padding:90px 20px;
+}
 
-<footer>
+.final-section h2 {
+letter-spacing:-4px;
+}
 
 
-  <div class="footer-brand">
+footer {
+grid-template-columns:1fr;
 
+padding:42px 20px 100px;
 
-    <a
-      href="#inicio"
-      class="footer-logo"
-    >
+text-align:left;
+}
 
-      <img
-        src="Un solo logotipo de UnClick.jpeg"
-        alt="A Solo UnClick"
-      >
+.footer-brand {
+align-items:center;
+}
 
-    </a>
+.social {
+justify-content:flex-start;
+}
 
+.social-button {
+width:50px;
+height:50px;
+font-size:22px;
+}
 
-    <p>
-      Llevamos clientes directo a tu WhatsApp.
-    </p>
+.copyright {
+text-align:left;
+}
 
 
-  </div>
+.floating-whatsapp {
+width:58px;
+height:58px;
 
+right:16px;
+bottom:16px;
 
+font-size:31px;
+}
 
-  <div class="social">
+}
 
 
-    <!-- FACEBOOK -->
+@media(prefers-reduced-motion:reduce) {
 
-    <a
-      class="social-button facebook"
-      href="https://www.facebook.com/people/A-Solo-Un-Click/61591429061157/"
-      target="_blank"
-      rel="noopener"
-      aria-label="Facebook de A Solo UnClick"
-    >
+* {
+scroll-behavior:auto!important;
+animation-duration:.01ms!important;
+animation-iteration-count:1!important;
+transition-duration:.01ms!important;
+}
 
-      <i class="fa-brands fa-facebook-f"></i>
-
-    </a>
-
-
-
-    <!-- INSTAGRAM -->
-
-    <a
-      class="social-button instagram"
-      href="https://www.instagram.com/asolounclickagencia"
-      target="_blank"
-      rel="noopener"
-      aria-label="Instagram de A Solo UnClick"
-    >
-
-      <i class="fa-brands fa-instagram"></i>
-
-    </a>
-
-
-
-    <!-- WHATSAPP -->
-
-    <a
-      class="social-button whatsapp"
-      href="https://wa.me/56976169158?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20A%20Solo%20UnClick."
-      target="_blank"
-      rel="noopener"
-      aria-label="WhatsApp de A Solo UnClick"
-    >
-
-      <i class="fa-brands fa-whatsapp"></i>
-
-    </a>
-
-
-  </div>
-
-
-
-  <small class="copyright">
-    © 2026 A Solo UnClick
-  </small>
-
-
-</footer>
-
-
-
-<!-- ======================================================
-     WHATSAPP FLOTANTE
-====================================================== -->
-
-<a
-  class="floating-whatsapp"
-  href="https://wa.me/56976169158?text=Hola%2C%20quiero%20probar%20los%205%20d%C3%ADas%20gratis%20de%20A%20Solo%20UnClick."
-  target="_blank"
-  rel="noopener"
-  aria-label="Hablar por WhatsApp"
->
-
-  <i class="fa-brands fa-whatsapp"></i>
-
-</a>
-
-
-
-<!-- JAVASCRIPT -->
-
-<script src="script.js"></script>
-
-
-</body>
-
-</html>
+}
