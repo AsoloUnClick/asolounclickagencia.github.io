@@ -1,0 +1,104 @@
+document.addEventListener("DOMContentLoaded", function () {
+
+
+  /* ==========================================
+     CAMBIO AUTOMÁTICO DE BANNERS
+  ========================================== */
+
+  const hero = document.querySelector(".hero");
+
+  if (hero) {
+
+    setInterval(function () {
+
+      hero.classList.toggle("alt");
+
+    }, 6500);
+
+  }
+
+
+
+  /* ==========================================
+     PANTALLAZOS APARECEN AL HACER SCROLL
+  ========================================== */
+
+  const interfaceCards =
+    document.querySelectorAll(".interface-card");
+
+
+  const interfaceObserver =
+    new IntersectionObserver(
+
+      function (entries) {
+
+        entries.forEach(function (entry) {
+
+          if (entry.isIntersecting) {
+
+            entry.target.classList.add("visible");
+
+          }
+
+        });
+
+      },
+
+      {
+        threshold: 0.15
+      }
+
+    );
+
+
+  interfaceCards.forEach(function (card) {
+
+    interfaceObserver.observe(card);
+
+  });
+
+
+
+  /* ==========================================
+     VIDEOS
+
+     Todos comienzan sin sonido.
+     Cuando el usuario reproduce uno:
+     - se activa su audio
+     - los demás se pausan
+     ========================================== */
+
+  const videos =
+    document.querySelectorAll("video");
+
+
+  videos.forEach(function (video) {
+
+    video.muted = true;
+
+
+    video.addEventListener(
+      "play",
+      function () {
+
+        videos.forEach(function (otherVideo) {
+
+          if (otherVideo !== video) {
+
+            otherVideo.pause();
+
+            otherVideo.muted = true;
+
+          }
+
+        });
+
+
+        video.muted = false;
+
+      }
+    );
+
+  });
+
+});
