@@ -1,104 +1,369 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener(
+  "DOMContentLoaded",
+  function () {
 
 
-  /* ==========================================
-     CAMBIO AUTOMÁTICO DE BANNERS
-  ========================================== */
+    /* ==================================================
+       CAMBIO AUTOMÁTICO DE BANNERS DEL HERO
+    ================================================== */
 
-  const hero = document.querySelector(".hero");
-
-  if (hero) {
-
-    setInterval(function () {
-
-      hero.classList.toggle("alt");
-
-    }, 6500);
-
-  }
+    const hero =
+      document.querySelector(".hero");
 
 
+    if (hero) {
 
-  /* ==========================================
-     PANTALLAZOS APARECEN AL HACER SCROLL
-  ========================================== */
+      setInterval(
+        function () {
 
-  const interfaceCards =
-    document.querySelectorAll(".interface-card");
+          hero.classList.toggle("alt");
+
+        },
+        6500
+      );
+
+    }
 
 
-  const interfaceObserver =
-    new IntersectionObserver(
 
-      function (entries) {
+    /* ==================================================
+       INTERFAZ ENJAMBRE
 
-        entries.forEach(function (entry) {
+       Cada pantalla entra progresivamente
+       mientras el usuario baja.
+    ================================================== */
 
-          if (entry.isIntersecting) {
+    const interfaceCards =
+      document.querySelectorAll(
+        ".interface-card"
+      );
 
-            entry.target.classList.add("visible");
 
+    if (
+      "IntersectionObserver"
+      in window
+    ) {
+
+      const interfaceObserver =
+        new IntersectionObserver(
+
+          function (entries) {
+
+            entries.forEach(
+              function (entry) {
+
+                if (
+                  entry.isIntersecting
+                ) {
+
+                  entry.target
+                    .classList
+                    .add("visible");
+
+
+                  interfaceObserver
+                    .unobserve(
+                      entry.target
+                    );
+
+                }
+
+              }
+            );
+
+          },
+
+          {
+            threshold: 0.16,
+
+            rootMargin:
+              "0px 0px -8% 0px"
           }
 
-        });
+        );
 
-      },
 
-      {
-        threshold: 0.15
+      interfaceCards.forEach(
+        function (card) {
+
+          interfaceObserver
+            .observe(card);
+
+        }
+      );
+
+    }
+
+    else {
+
+      interfaceCards.forEach(
+        function (card) {
+
+          card.classList
+            .add("visible");
+
+        }
+      );
+
+    }
+
+
+
+    /* ==================================================
+       VIDEOS DE TESTIMONIOS
+
+       - Autoplay
+       - Loop
+       - Todos comienzan silenciados
+       - Todos continúan reproduciéndose
+       - Al tocar uno se activa su sonido
+       - Los demás siguen reproduciéndose
+         pero se silencian
+       - Si se toca nuevamente el mismo,
+         vuelve a silenciarse
+    ================================================== */
+
+    const videoCards =
+      document.querySelectorAll(
+        ".video-card"
+      );
+
+
+    videoCards.forEach(
+      function (card) {
+
+        const video =
+          card.querySelector("video");
+
+        const hint =
+          card.querySelector(
+            ".sound-hint"
+          );
+
+
+        if (!video) {
+          return;
+        }
+
+
+        /* configuración inicial */
+
+        video.muted = true;
+
+        video.loop = true;
+
+        video.playsInline = true;
+
+
+        /* intentar reproducir */
+
+        const playPromise =
+          video.play();
+
+
+        if (
+          playPromise !== undefined
+        ) {
+
+          playPromise.catch(
+            function () {
+
+              /*
+                Algunos navegadores pueden
+                bloquear autoplay.
+
+                Cuando el usuario interactúe
+                se iniciará normalmente.
+              */
+
+            }
+          );
+
+        }
+
+
+        /* tocar video */
+
+        card.addEventListener(
+          "click",
+          function () {
+
+
+            const willActivateSound =
+              video.muted;
+
+
+            /*
+              Silenciar todos los demás,
+              pero NO detenerlos.
+            */
+
+            videoCards.forEach(
+              function (otherCard) {
+
+                const otherVideo =
+                  otherCard
+                    .querySelector(
+                      "video"
+                    );
+
+                const otherHint =
+                  otherCard
+                    .querySelector(
+                      ".sound-hint"
+                    );
+
+
+                if (
+                  otherVideo &&
+                  otherVideo !== video
+                ) {
+
+                  otherVideo.muted = true;
+
+
+                  otherCard
+                    .classList
+                    .remove(
+                      "audio-active"
+                    );
+
+
+                  if (otherHint) {
+
+                    otherHint.innerHTML =
+                      '<i class="fa-solid fa-volume-xmark"></i> TOCA PARA ESCUCHAR';
+
+                  }
+
+                }
+
+              }
+            );
+
+
+            /*
+              activar o desactivar
+              el seleccionado
+            */
+
+            video.muted =
+              !willActivateSound;
+
+
+            if (willActivateSound) {
+
+              card.classList
+                .add(
+                  "audio-active"
+                );
+
+
+              if (hint) {
+
+                hint.innerHTML =
+                  '<i class="fa-solid fa-volume-high"></i> SONIDO ACTIVADO';
+
+              }
+
+            }
+
+            else {
+
+              card.classList
+                .remove(
+                  "audio-active"
+                );
+
+
+              if (hint) {
+
+                hint.innerHTML =
+                  '<i class="fa-solid fa-volume-xmark"></i> TOCA PARA ESCUCHAR';
+
+              }
+
+            }
+
+
+            /*
+              Si por alguna razón
+              estaba detenido, reproducir.
+            */
+
+            if (video.paused) {
+
+              video.play()
+                .catch(
+                  function () {}
+                );
+
+            }
+
+          }
+        );
+
       }
-
     );
 
 
-  interfaceCards.forEach(function (card) {
 
-    interfaceObserver.observe(card);
+    /* ==================================================
+       SI LA PÁGINA PIERDE EL FOCO
 
-  });
+       Silenciamos todos los videos.
+    ================================================== */
 
-
-
-  /* ==========================================
-     VIDEOS
-
-     Todos comienzan sin sonido.
-     Cuando el usuario reproduce uno:
-     - se activa su audio
-     - los demás se pausan
-     ========================================== */
-
-  const videos =
-    document.querySelectorAll("video");
-
-
-  videos.forEach(function (video) {
-
-    video.muted = true;
-
-
-    video.addEventListener(
-      "play",
+    document.addEventListener(
+      "visibilitychange",
       function () {
 
-        videos.forEach(function (otherVideo) {
+        if (
+          document.hidden
+        ) {
 
-          if (otherVideo !== video) {
+          videoCards.forEach(
+            function (card) {
 
-            otherVideo.pause();
+              const video =
+                card.querySelector(
+                  "video"
+                );
 
-            otherVideo.muted = true;
+              const hint =
+                card.querySelector(
+                  ".sound-hint"
+                );
 
-          }
 
-        });
+              if (video) {
+
+                video.muted = true;
+
+              }
 
 
-        video.muted = false;
+              card.classList
+                .remove(
+                  "audio-active"
+                );
+
+
+              if (hint) {
+
+                hint.innerHTML =
+                  '<i class="fa-solid fa-volume-xmark"></i> TOCA PARA ESCUCHAR';
+
+              }
+
+            }
+          );
+
+        }
 
       }
     );
 
-  });
 
-});
+  }
+);
