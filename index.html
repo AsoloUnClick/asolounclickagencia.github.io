@@ -1,1967 +1,1716 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>A Solo UnClick | Clientes directo a tu WhatsApp</title>
 
-<meta
-name="description"
-content="Llevamos clientes directo a tu WhatsApp mediante Meta Ads y Google Ads. 5 días gratis de nuestra gestión."
->
-
+<meta name="description" content="Llevamos clientes directo a tu WhatsApp mediante Meta Ads y Google Ads. 5 días gratis de nuestra gestión.">
 
 <style>
 
-/* ======================================================
-   BASE
-====================================================== */
+/* =========================================================
+   RESET
+========================================================= */
 
 *{
-box-sizing:border-box;
+  box-sizing:border-box;
 }
 
 html{
-scroll-behavior:smooth;
+  scroll-behavior:smooth;
 }
 
 body{
-margin:0;
-background:#05090d;
-color:#f5f8fa;
-font-family:Arial,Helvetica,sans-serif;
-overflow-x:hidden;
+  margin:0;
+  background:#05090d;
+  color:#f5f8fa;
+  font-family:Arial,Helvetica,sans-serif;
+  overflow-x:hidden;
 }
 
 a{
-color:inherit;
-text-decoration:none;
+  color:inherit;
+  text-decoration:none;
 }
 
 img{
-display:block;
-max-width:100%;
+  display:block;
+  max-width:100%;
+}
+
+button{
+  font-family:inherit;
 }
 
 
-/* ======================================================
+/* =========================================================
+   ICONOS
+========================================================= */
+
+.icon{
+  width:1.15em;
+  height:1.15em;
+  display:inline-block;
+  flex:none;
+}
+
+.whatsapp-icon{
+  fill:currentColor;
+}
+
+
+/* =========================================================
    NAVBAR
-====================================================== */
+========================================================= */
 
 .navbar{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:72px;
+  z-index:1000;
 
-position:fixed;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 
-top:0;
-left:0;
+  padding:0 4%;
 
-z-index:1000;
+  background:rgba(5,9,13,.82);
 
-width:100%;
-height:72px;
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
 
-display:flex;
-
-align-items:center;
-
-justify-content:space-between;
-
-padding:0 4%;
-
-background:rgba(5,9,13,.84);
-
-backdrop-filter:blur(18px);
-
--webkit-backdrop-filter:blur(18px);
-
-border-bottom:1px solid rgba(255,255,255,.10);
-
+  border-bottom:1px solid rgba(255,255,255,.10);
 }
 
 
 /* LOGO */
 
 .logo{
+  width:52px;
+  height:52px;
 
-width:52px;
-height:52px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-display:flex;
+  overflow:hidden;
 
-align-items:center;
+  border-radius:12px;
 
-justify-content:center;
+  background:rgba(255,255,255,.05);
 
-overflow:hidden;
+  border:1px solid rgba(255,255,255,.10);
 
-border-radius:12px;
-
-background:rgba(255,255,255,.05);
-
-border:1px solid rgba(255,255,255,.10);
-
+  flex-shrink:0;
 }
 
-
 .logo img{
+  width:100%;
+  height:100%;
 
-width:100%;
-height:100%;
+  padding:3px;
 
-object-fit:contain;
-
-padding:2px;
-
+  object-fit:contain;
 }
 
 
 /* MENU */
 
 .navbar nav{
-
-display:flex;
-
-gap:28px;
-
+  display:flex;
+  align-items:center;
+  gap:28px;
 }
-
 
 .navbar nav a{
+  color:#c8d1d6;
+  font-size:13px;
+  font-weight:600;
 
-color:#d0d8dd;
-
-font-size:13px;
-
-font-weight:600;
-
-transition:.25s;
-
+  transition:.25s;
 }
-
 
 .navbar nav a:hover{
-
-color:#19d17f;
-
+  color:#ffffff;
 }
 
 
-/* WHATSAPP */
+/* WHATSAPP SUPERIOR */
 
 .whatsapp-top{
+  min-height:42px;
 
-display:inline-flex;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
 
-align-items:center;
+  padding:9px 16px;
 
-justify-content:center;
+  border-radius:30px;
 
-gap:8px;
+  color:#ffffff;
 
-min-height:42px;
+  background:rgba(37,211,102,.12);
 
-padding:9px 16px;
+  border:1px solid rgba(37,211,102,.50);
 
-border-radius:30px;
+  font-size:12px;
+  font-weight:800;
 
-color:white;
+  transition:.25s;
+}
 
-background:rgba(37,211,102,.12);
+.whatsapp-top:hover{
+  background:rgba(37,211,102,.23);
+  transform:translateY(-2px);
+}
 
-border:1px solid rgba(37,211,102,.45);
-
-font-size:12px;
-
-font-weight:900;
-
+.whatsapp-top .icon{
+  color:#25d366;
+  width:20px;
+  height:20px;
 }
 
 
-.whatsapp-top i{
-
-color:#25d366;
-
-font-size:19px;
-
-}
-
-
-/* ======================================================
+/* =========================================================
    HERO
-====================================================== */
+========================================================= */
 
 .hero{
+  position:relative;
 
-position:relative;
+  min-height:100vh;
 
-min-height:100vh;
+  display:flex;
+  align-items:center;
 
-display:flex;
+  padding:120px 7% 80px;
 
-align-items:center;
+  overflow:hidden;
 
-padding:120px 7% 80px;
-
-overflow:hidden;
-
-isolation:isolate;
-
+  isolation:isolate;
 }
 
+
+/* FONDOS */
 
 .hero-background{
+  position:absolute;
 
-position:absolute;
+  inset:-12px;
 
-inset:-12px;
+  z-index:-3;
 
-z-index:-3;
+  background-size:cover;
+  background-position:center;
 
-background-size:cover;
+  filter:
+    blur(4px)
+    brightness(.48)
+    saturate(.82);
 
-background-position:center;
-
-filter:blur(3px) brightness(.48) saturate(.85);
-
-transition:opacity 1.5s ease,transform 8s ease;
-
+  transition:
+    opacity 1.4s ease,
+    transform 8s ease;
 }
-
 
 .banner-one{
-
-background-image:url("./banner1.jpeg");
-
-opacity:1;
-
-transform:scale(1.08);
-
+  background-image:url("banner1.jpeg");
 }
-
 
 .banner-two{
-
-background-image:url("./banner2.jpeg");
-
-opacity:0;
-
-transform:scale(1.12);
-
+  background-image:url("banner2.jpeg");
 }
 
+.hero-background.banner-one{
+  opacity:1;
+  transform:scale(1.08);
+}
+
+.hero-background.banner-two{
+  opacity:0;
+  transform:scale(1.12);
+}
 
 .hero.alt .banner-one{
-
-opacity:0;
-
+  opacity:0;
 }
-
 
 .hero.alt .banner-two{
-
-opacity:1;
-
-transform:scale(1.08);
-
+  opacity:1;
+  transform:scale(1.08);
 }
 
+
+/* CAPA SOBRE EL BANNER */
 
 .hero-overlay{
+  position:absolute;
+  inset:0;
+  z-index:-2;
 
-position:absolute;
-
-inset:0;
-
-z-index:-2;
-
-background:
-
-linear-gradient(
-90deg,
-rgba(3,7,10,.97) 0%,
-rgba(3,7,10,.84) 42%,
-rgba(3,7,10,.50) 72%,
-rgba(3,7,10,.35) 100%
-),
-
-linear-gradient(
-0deg,
-rgba(3,7,10,.50),
-transparent 50%
-);
-
+  background:
+    linear-gradient(
+      90deg,
+      rgba(3,7,10,.97) 0%,
+      rgba(3,7,10,.84) 40%,
+      rgba(3,7,10,.58) 70%,
+      rgba(3,7,10,.40) 100%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(3,7,10,.50),
+      transparent 50%
+    );
 }
 
+
+/* CONTENIDO */
 
 .hero-content{
-
-max-width:900px;
-
-position:relative;
-
-z-index:2;
-
+  max-width:900px;
+  position:relative;
+  z-index:2;
 }
-
 
 .eyebrow{
+  color:#d6dfe3;
 
-color:#d4dce1;
+  font-size:11px;
+  font-weight:900;
 
-font-size:11px;
-
-font-weight:900;
-
-letter-spacing:.20em;
-
+  letter-spacing:.20em;
 }
 
+
+/* TITULO PRINCIPAL */
 
 .hero h1{
+  margin:20px 0;
 
-margin:20px 0;
+  font-size:clamp(48px,7vw,95px);
 
-font-size:clamp(48px,7vw,95px);
+  line-height:.95;
 
-line-height:.95;
-
-letter-spacing:-5px;
-
+  letter-spacing:-5px;
 }
-
 
 .hero h1 span{
-
-display:block;
-
-color:#19d17f;
-
+  display:block;
+  color:#19d17f;
 }
 
+
+/* DESCRIPCION */
 
 .hero-description{
+  max-width:700px;
 
-max-width:700px;
+  margin:0;
 
-color:#edf2f4;
+  color:#edf2f4;
 
-font-size:18px;
+  font-size:18px;
+  font-weight:600;
 
-font-weight:600;
+  line-height:1.65;
 
-line-height:1.65;
-
-text-shadow:0 2px 12px rgba(0,0,0,.90);
-
+  text-shadow:
+    0 2px 14px rgba(0,0,0,.90);
 }
-
 
 .hero-description strong{
-
-color:white;
-
-font-weight:900;
-
+  color:#ffffff;
+  font-weight:900;
 }
 
 
-/* ======================================================
+/* =========================================================
    BOTONES
-====================================================== */
+========================================================= */
 
 .buttons{
+  display:flex;
+  flex-wrap:wrap;
 
-display:flex;
+  gap:12px;
 
-flex-wrap:wrap;
-
-gap:12px;
-
-margin-top:30px;
-
+  margin-top:30px;
 }
-
 
 .button{
+  min-height:52px;
 
-min-height:52px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
 
-display:inline-flex;
+  gap:10px;
 
-align-items:center;
+  padding:0 23px;
 
-justify-content:center;
+  border-radius:50px;
 
-gap:10px;
+  font-size:12px;
+  font-weight:900;
 
-padding:0 23px;
-
-border-radius:50px;
-
-font-size:12px;
-
-font-weight:900;
-
-transition:.25s;
-
+  transition:
+    transform .25s,
+    box-shadow .25s,
+    background .25s;
 }
-
 
 .button:hover{
-
-transform:translateY(-3px);
-
+  transform:translateY(-3px);
 }
-
 
 .whatsapp-button{
+  color:#031109;
 
-color:#031109;
+  background:#25d366;
 
-background:#25d366;
-
-box-shadow:0 15px 40px rgba(37,211,102,.25);
-
+  box-shadow:
+    0 15px 40px rgba(37,211,102,.25);
 }
-
-
-.whatsapp-button i{
-
-font-size:20px;
-
-}
-
 
 .whatsapp-button:hover{
-
-box-shadow:0 18px 45px rgba(37,211,102,.40);
-
+  box-shadow:
+    0 18px 48px rgba(37,211,102,.42);
 }
 
+.whatsapp-button .icon{
+  width:21px;
+  height:21px;
+}
 
 .secondary-button{
+  color:#ffffff;
 
-color:white;
+  background:rgba(255,255,255,.08);
 
-background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.26);
 
-border:1px solid rgba(255,255,255,.25);
-
-backdrop-filter:blur(10px);
-
+  backdrop-filter:blur(10px);
 }
 
+
+/* INFO */
 
 .hero-info{
+  display:flex;
+  gap:20px;
 
-display:flex;
+  margin-top:22px;
 
-gap:20px;
+  color:#e7edef;
 
-margin-top:22px;
+  font-size:12px;
+  font-weight:800;
 
-color:#e3e8eb;
-
-font-size:12px;
-
-font-weight:700;
-
+  text-shadow:
+    0 2px 12px rgba(0,0,0,.90);
 }
-
 
 .hero-info span+span{
+  padding-left:20px;
 
-padding-left:20px;
-
-border-left:1px solid rgba(255,255,255,.35);
-
+  border-left:1px solid rgba(255,255,255,.35);
 }
 
+
+/* SCROLL */
 
 .scroll-indicator{
+  position:absolute;
 
-position:absolute;
+  left:7%;
+  bottom:25px;
 
-bottom:25px;
+  color:#c0c9ce;
 
-left:7%;
+  font-size:10px;
+  font-weight:700;
 
-color:#c0c9ce;
-
-font-size:10px;
-
-font-weight:700;
-
-letter-spacing:.25em;
-
+  letter-spacing:.25em;
 }
 
 
-/* ======================================================
+/* =========================================================
    TICKER
-====================================================== */
+========================================================= */
 
 .ticker{
+  overflow:hidden;
 
-overflow:hidden;
+  background:#071017;
 
-background:#071017;
-
-border-top:1px solid rgba(255,255,255,.1);
-
-border-bottom:1px solid rgba(255,255,255,.1);
-
+  border-top:1px solid rgba(255,255,255,.10);
+  border-bottom:1px solid rgba(255,255,255,.10);
 }
 
+.ticker-track{
+  width:max-content;
 
-.ticker div{
+  padding:17px 0;
 
-width:max-content;
+  font-size:11px;
+  font-weight:900;
 
-padding:17px 0;
+  letter-spacing:.15em;
 
-font-size:11px;
-
-font-weight:900;
-
-letter-spacing:.15em;
-
-animation:ticker 26s linear infinite;
-
+  animation:ticker 28s linear infinite;
 }
-
 
 .ticker b{
-
-color:#19d17f;
-
-margin:0 13px;
-
+  color:#19d17f;
+  margin:0 13px;
 }
-
 
 @keyframes ticker{
 
-from{
-transform:translateX(0);
+  from{
+    transform:translateX(0);
+  }
+
+  to{
+    transform:translateX(-50%);
+  }
+
 }
 
-to{
-transform:translateX(-50%);
-}
 
-}
-
-
-/* ======================================================
+/* =========================================================
    SECCIONES
-====================================================== */
+========================================================= */
 
 .section{
+  max-width:1180px;
 
-max-width:1180px;
+  margin:auto;
 
-margin:auto;
-
-padding:120px 28px;
-
+  padding:120px 28px;
 }
-
 
 .section-title{
+  max-width:780px;
 
-max-width:780px;
-
-margin-bottom:60px;
-
+  margin-bottom:60px;
 }
-
 
 .section-title small,
 .world-section small,
 .final-section small,
 .final-cta small{
+  color:#aebbc3;
 
-color:#aebbc3;
+  font-size:10px;
+  font-weight:900;
 
-font-size:10px;
-
-font-weight:900;
-
-letter-spacing:.22em;
-
+  letter-spacing:.22em;
 }
-
 
 .section-title h2{
+  margin:12px 0 18px;
 
-margin:12px 0 18px;
+  font-size:clamp(40px,5.5vw,72px);
 
-font-size:clamp(40px,5.5vw,72px);
+  line-height:.98;
 
-line-height:.98;
-
-letter-spacing:-4px;
-
+  letter-spacing:-4px;
 }
-
 
 .section-title h2 span{
-
-color:#19d17f;
-
+  color:#19d17f;
 }
-
 
 .section-title p{
+  margin:0;
 
-color:#aab7bf;
+  color:#aab7bf;
 
-line-height:1.7;
-
+  line-height:1.7;
 }
 
 
-/* ======================================================
+/* =========================================================
    PASOS
-====================================================== */
+========================================================= */
 
 .steps{
+  display:grid;
 
-display:grid;
+  grid-template-columns:repeat(4,1fr);
 
-grid-template-columns:repeat(4,1fr);
-
-gap:15px;
-
+  gap:15px;
 }
-
 
 .step{
+  min-height:300px;
 
-min-height:300px;
+  padding:28px;
 
-padding:28px;
+  border-radius:28px;
 
-border-radius:28px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.07),
+      rgba(255,255,255,.015)
+    );
 
-background:
+  border:1px solid rgba(255,255,255,.10);
 
-linear-gradient(
-145deg,
-rgba(255,255,255,.07),
-rgba(255,255,255,.015)
-);
-
-border:1px solid rgba(255,255,255,.10);
-
-transition:.3s;
-
+  transition:
+    transform .3s,
+    border-color .3s;
 }
-
 
 .step:hover{
+  transform:translateY(-5px);
 
-transform:translateY(-6px);
-
-border-color:rgba(25,209,127,.35);
-
+  border-color:
+    rgba(25,209,127,.35);
 }
-
 
 .step.highlight{
+  border-color:
+    rgba(25,209,127,.42);
 
-border-color:rgba(25,209,127,.40);
-
-background:
-
-linear-gradient(
-145deg,
-rgba(25,209,127,.13),
-rgba(255,255,255,.02)
-);
-
+  background:
+    linear-gradient(
+      145deg,
+      rgba(25,209,127,.13),
+      rgba(255,255,255,.02)
+    );
 }
 
+.step-number{
+  color:#71808a;
 
-.step>strong{
-
-color:#71808a;
-
-font-size:11px;
-
+  font-size:11px;
+  font-weight:900;
 }
-
 
 .step-icon{
+  margin:40px 0 20px;
 
-margin:40px 0 20px;
+  color:#19d17f;
 
-color:#19d17f;
-
-font-size:30px;
-
+  font-size:28px;
+  font-weight:900;
 }
 
-
-.step-icon.whatsapp{
-
-color:#25d366;
-
+.step-icon .icon{
+  width:32px;
+  height:32px;
 }
-
 
 .step h3{
+  margin:0 0 10px;
 
-margin:0 0 10px;
-
-font-size:20px;
-
+  font-size:20px;
 }
-
 
 .step p{
+  margin:0;
 
-margin:0;
+  color:#aab5bc;
 
-color:#aab5bc;
+  font-size:13px;
 
-font-size:13px;
-
-line-height:1.65;
-
+  line-height:1.65;
 }
 
 
-/* ======================================================
-   MUNDO
-====================================================== */
+/* =========================================================
+   SIN FRONTERAS
+========================================================= */
 
 .world-section{
+  position:relative;
 
-position:relative;
+  min-height:410px;
 
-min-height:410px;
+  margin-top:65px;
 
-margin-top:65px;
+  padding:60px;
 
-padding:60px;
+  overflow:hidden;
 
-overflow:hidden;
+  border-radius:30px;
 
-border-radius:30px;
+  background:
+    radial-gradient(
+      circle at 75% 50%,
+      rgba(72,168,255,.20),
+      transparent 30%
+    ),
+    #071017;
 
-background:
-
-radial-gradient(
-circle at 75% 50%,
-rgba(72,168,255,.20),
-transparent 30%
-),
-
-#071017;
-
-border:1px solid rgba(255,255,255,.10);
-
+  border:1px solid rgba(255,255,255,.10);
 }
 
+.world-section::before{
+  content:"";
 
-.world-section:before{
+  position:absolute;
+  inset:0;
 
-content:"";
+  opacity:.30;
 
-position:absolute;
+  background-image:
+    linear-gradient(
+      rgba(72,168,255,.20) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(72,168,255,.20) 1px,
+      transparent 1px
+    );
 
-inset:0;
+  background-size:42px 42px;
 
-opacity:.30;
+  transform:
+    perspective(500px)
+    rotateX(60deg)
+    scale(1.5);
 
-background-image:
-
-linear-gradient(
-rgba(72,168,255,.20) 1px,
-transparent 1px
-),
-
-linear-gradient(
-90deg,
-rgba(72,168,255,.20) 1px,
-transparent 1px
-);
-
-background-size:42px 42px;
-
-transform:
-perspective(500px)
-rotateX(60deg)
-scale(1.5);
-
-transform-origin:center bottom;
-
+  transform-origin:center bottom;
 }
-
 
 .world-content{
+  position:relative;
+  z-index:2;
 
-position:relative;
-
-max-width:620px;
-
-z-index:2;
-
+  max-width:620px;
 }
-
 
 .world-content h3{
+  margin:18px 0;
 
-margin:18px 0;
+  font-size:clamp(38px,5vw,63px);
 
-font-size:clamp(38px,5vw,63px);
+  line-height:1;
 
-line-height:1;
-
-letter-spacing:-4px;
-
+  letter-spacing:-4px;
 }
-
 
 .world-content h3 span{
-
-color:#19d17f;
-
+  color:#19d17f;
 }
-
 
 .world-content p{
+  color:#aab7bf;
 
-color:#aab7bf;
-
-line-height:1.7;
-
+  line-height:1.7;
 }
-
 
 .world-content a{
+  display:inline-flex;
+  align-items:center;
 
-display:inline-flex;
+  gap:8px;
 
-align-items:center;
+  margin-top:15px;
 
-gap:8px;
+  color:#25d366;
 
-margin-top:15px;
-
-color:#25d366;
-
-font-weight:900;
-
+  font-weight:900;
 }
 
 
-/* ======================================================
-   SISTEMA - ENJAMBRE
-====================================================== */
+/* =========================================================
+   SISTEMA / ENJAMBRE
+========================================================= */
 
 .system-section{
-
-padding-bottom:90px;
-
+  padding-top:100px;
+  padding-bottom:100px;
 }
-
 
 .interface{
+  max-width:1050px;
 
-max-width:1050px;
+  margin:30px auto 0;
 
-margin:30px auto 40px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 
-display:flex;
-
-flex-direction:column;
-
-align-items:center;
-
-padding:30px 0 80px;
-
+  padding:20px 0 60px;
 }
-
 
 .interface-card{
+  --x:0%;
+  --r:0deg;
 
---x:0px;
+  position:relative;
 
---r:0deg;
+  width:82%;
 
-position:relative;
+  margin-top:-5%;
 
-width:82%;
+  opacity:0;
 
-margin-top:-5%;
+  transform:
+    translate(var(--x),100px)
+    rotate(var(--r))
+    scale(.90);
 
-opacity:0;
-
-z-index:1;
-
-transform:
-
-translate(var(--x),100px)
-rotate(var(--r))
-scale(.90);
-
-transition:
-
-opacity .9s ease,
-
-transform 1.15s cubic-bezier(.2,.8,.2,1);
-
+  transition:
+    opacity .9s ease,
+    transform 1.15s cubic-bezier(.2,.8,.2,1);
 }
-
 
 .interface-card:first-child{
-
-margin-top:0;
-
+  margin-top:0;
 }
-
 
 .interface-card.visible{
+  opacity:1;
 
-opacity:1;
-
-transform:
-
-translate(var(--x),0)
-rotate(var(--r))
-scale(1);
-
+  transform:
+    translate(var(--x),0)
+    rotate(var(--r))
+    scale(1);
 }
 
-
-.card-1{
-
---x:-6%;
-
---r:-2.5deg;
-
-z-index:1;
-
+.interface-card.card-1{
+  --x:-6%;
+  --r:-2.5deg;
+  z-index:1;
 }
 
-
-.card-2{
-
---x:7%;
-
---r:2.2deg;
-
-z-index:2;
-
+.interface-card.card-2{
+  --x:7%;
+  --r:2.2deg;
+  z-index:2;
 }
 
-
-.card-3{
-
---x:-3%;
-
---r:-1.3deg;
-
-z-index:3;
-
+.interface-card.card-3{
+  --x:-3%;
+  --r:-1.3deg;
+  z-index:3;
 }
 
-
-.card-4{
-
---x:6%;
-
---r:1.8deg;
-
-z-index:4;
-
+.interface-card.card-4{
+  --x:6%;
+  --r:1.8deg;
+  z-index:4;
 }
 
-
-.card-5{
-
---x:0%;
-
---r:-.8deg;
-
-z-index:5;
-
+.interface-card.card-5{
+  --x:0%;
+  --r:-.8deg;
+  z-index:5;
 }
-
 
 .interface-card img{
+  width:100%;
 
-width:100%;
+  border-radius:22px;
 
-border-radius:22px;
+  border:1px solid rgba(255,255,255,.12);
 
-border:1px solid rgba(255,255,255,.12);
+  box-shadow:
+    0 35px 90px rgba(0,0,0,.72),
+    0 0 30px rgba(25,209,127,.035);
+}
 
-box-shadow:
+.interface-number{
+  position:absolute;
 
-0 35px 90px rgba(0,0,0,.72),
+  top:16px;
+  left:16px;
 
-0 0 30px rgba(25,209,127,.035);
+  z-index:5;
 
+  padding:7px 11px;
+
+  border-radius:30px;
+
+  color:#ffffff;
+
+  background:rgba(5,9,13,.90);
+
+  border:1px solid rgba(255,255,255,.10);
+
+  font-size:10px;
+  font-weight:900;
 }
 
 
-.interface-card span{
-
-position:absolute;
-
-top:16px;
-
-left:16px;
-
-z-index:3;
-
-padding:7px 11px;
-
-border-radius:30px;
-
-color:white;
-
-background:rgba(5,9,13,.90);
-
-border:1px solid rgba(255,255,255,.10);
-
-font-size:10px;
-
-font-weight:900;
-
-}
-
-
-/* ======================================================
+/* =========================================================
    TESTIMONIOS
-====================================================== */
+========================================================= */
 
 .testimonials{
+  max-width:none;
 
-max-width:none;
+  padding-left:0;
+  padding-right:0;
 
-padding-left:0;
+  background:#071017;
 
-padding-right:0;
-
-background:#071017;
-
-border-top:1px solid rgba(255,255,255,.06);
-
-border-bottom:1px solid rgba(255,255,255,.06);
-
+  border-top:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(255,255,255,.06);
 }
-
 
 .testimonials-inner{
+  max-width:1180px;
 
-max-width:1180px;
+  margin:auto;
 
-margin:auto;
-
-padding:0 28px;
-
+  padding:0 28px;
 }
 
+.testimonials .section-title{
+  max-width:700px;
+}
+
+.testimonials .section-title h2{
+  font-size:clamp(38px,5vw,64px);
+}
+
+.testimonials .section-title p{
+  color:#aab7bf;
+}
 
 .videos{
+  display:grid;
 
-display:grid;
+  grid-template-columns:repeat(2,1fr);
 
-grid-template-columns:repeat(2,1fr);
-
-gap:22px;
-
+  gap:22px;
 }
-
 
 .video-card{
+  overflow:hidden;
 
-overflow:hidden;
+  border-radius:24px;
 
-border-radius:24px;
+  background:#03070a;
 
-background:#03070a;
+  border:1px solid rgba(255,255,255,.10);
 
-border:1px solid rgba(255,255,255,.10);
-
-box-shadow:0 25px 60px rgba(0,0,0,.30);
-
+  box-shadow:
+    0 25px 60px rgba(0,0,0,.30);
 }
-
 
 .video-wrapper{
+  position:relative;
 
-position:relative;
+  overflow:hidden;
 
-overflow:hidden;
+  cursor:pointer;
 
-cursor:pointer;
-
+  background:#000;
 }
-
 
 .video-card video{
+  display:block;
 
-display:block;
+  width:100%;
 
-width:100%;
+  aspect-ratio:16/10;
 
-aspect-ratio:16/10;
+  object-fit:cover;
 
-object-fit:cover;
-
-background:#000;
-
+  background:#000;
 }
-
 
 .video-card h3{
+  margin:0;
 
-margin:0;
+  padding:16px 18px 18px;
 
-padding:16px 18px 18px;
-
-font-size:13px;
-
+  font-size:13px;
 }
-
 
 .sound-hint{
+  position:absolute;
 
-position:absolute;
+  left:14px;
+  bottom:14px;
 
-left:14px;
+  display:flex;
+  align-items:center;
 
-bottom:14px;
+  gap:7px;
 
-display:flex;
+  padding:9px 12px;
 
-align-items:center;
+  border-radius:30px;
 
-gap:7px;
+  color:#ffffff;
 
-padding:9px 12px;
+  background:rgba(3,7,10,.82);
 
-border-radius:30px;
+  backdrop-filter:blur(12px);
 
-color:white;
+  border:1px solid rgba(255,255,255,.13);
 
-background:rgba(3,7,10,.82);
+  font-size:9px;
+  font-weight:900;
 
-backdrop-filter:blur(12px);
+  letter-spacing:.06em;
 
-border:1px solid rgba(255,255,255,.13);
+  pointer-events:none;
 
-font-size:9px;
+  transition:.25s;
+}
 
-font-weight:900;
+.audio-active .sound-hint{
+  color:#031109;
 
-letter-spacing:.06em;
+  background:#25d366;
 
-pointer-events:none;
-
+  border-color:transparent;
 }
 
 
-.video-card.audio-active .sound-hint{
-
-color:#031109;
-
-background:#25d366;
-
-border-color:transparent;
-
-}
-
-
-/* ======================================================
+/* =========================================================
    PLANES
-====================================================== */
+========================================================= */
 
 .plans-intro{
+  max-width:720px;
 
-max-width:720px;
-
-font-size:16px;
-
+  font-size:16px !important;
 }
-
 
 .plans-intro strong{
-
-color:white;
-
+  color:#ffffff;
 }
-
 
 .plans{
+  display:grid;
 
-display:grid;
+  grid-template-columns:repeat(3,1fr);
 
-grid-template-columns:repeat(3,1fr);
-
-gap:20px;
-
+  gap:20px;
 }
-
 
 .plan{
+  overflow:hidden;
 
-overflow:hidden;
+  border-radius:25px;
 
-border-radius:25px;
+  border:1px solid rgba(255,255,255,.10);
 
-border:1px solid rgba(255,255,255,.10);
-
-transition:.3s;
-
+  transition:
+    transform .3s,
+    border-color .3s,
+    box-shadow .3s;
 }
-
 
 .plan:hover{
+  transform:translateY(-8px);
 
-transform:translateY(-8px);
+  border-color:
+    rgba(25,209,127,.50);
 
-border-color:rgba(25,209,127,.50);
-
-box-shadow:0 25px 70px rgba(0,0,0,.40);
-
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.40);
 }
-
 
 .plan img{
-
-width:100%;
-
+  width:100%;
 }
 
 
-/* ======================================================
+/* =========================================================
    CTA
-====================================================== */
+========================================================= */
 
 .final-cta{
+  margin-top:60px;
 
-margin-top:60px;
+  padding:40px;
 
-padding:40px;
+  display:flex;
 
-display:flex;
+  align-items:center;
 
-align-items:center;
+  justify-content:space-between;
 
-justify-content:space-between;
+  gap:30px;
 
-gap:30px;
+  border-radius:28px;
 
-border-radius:28px;
+  background:
+    linear-gradient(
+      100deg,
+      rgba(25,209,127,.10),
+      rgba(72,168,255,.05)
+    );
 
-background:
-
-linear-gradient(
-100deg,
-rgba(25,209,127,.10),
-rgba(72,168,255,.05)
-);
-
-border:1px solid rgba(25,209,127,.30);
-
+  border:1px solid rgba(25,209,127,.30);
 }
-
 
 .final-cta h3{
+  margin:7px 0;
 
-margin:7px 0;
-
-font-size:32px;
-
+  font-size:32px;
 }
-
 
 .final-cta p{
+  margin:0;
 
-margin:0;
+  color:#aab7bf;
 
-color:#aab7bf;
-
-line-height:1.6;
-
+  line-height:1.6;
 }
 
 
-/* ======================================================
-   FINAL
-====================================================== */
+/* =========================================================
+   CIERRE
+========================================================= */
 
 .final-section{
+  min-height:78vh;
 
-min-height:78vh;
+  display:flex;
 
-display:flex;
+  align-items:center;
 
-align-items:center;
+  justify-content:center;
 
-justify-content:center;
+  padding:100px 20px;
 
-padding:100px 20px;
+  text-align:center;
 
-text-align:center;
-
-background:
-
-radial-gradient(
-circle,
-rgba(25,209,127,.13),
-transparent 40%
-);
-
+  background:
+    radial-gradient(
+      circle,
+      rgba(25,209,127,.13),
+      transparent 40%
+    );
 }
-
 
 .final-section h2{
+  margin:15px 0;
 
-margin:15px 0;
+  font-size:clamp(48px,8vw,100px);
 
-font-size:clamp(48px,8vw,100px);
+  line-height:.94;
 
-line-height:.94;
-
-letter-spacing:-6px;
-
+  letter-spacing:-6px;
 }
-
 
 .final-section h2 span{
-
-color:#19d17f;
-
+  color:#19d17f;
 }
-
 
 .final-section p{
+  color:#aab7bf;
 
-color:#aab7bf;
-
-line-height:1.7;
-
+  line-height:1.7;
 }
-
 
 .big{
-
-margin-top:20px;
-
+  margin-top:20px;
 }
 
 
-/* ======================================================
+/* =========================================================
    FOOTER
-====================================================== */
+========================================================= */
 
 footer{
+  padding:48px 5%;
 
-padding:48px 5%;
+  display:grid;
 
-display:grid;
+  grid-template-columns:2fr auto 1fr;
 
-grid-template-columns:2fr auto 1fr;
+  align-items:center;
 
-align-items:center;
+  gap:35px;
 
-gap:35px;
+  color:#93a1aa;
 
-color:#93a1aa;
+  background:#030609;
 
-background:#030609;
-
-border-top:1px solid rgba(255,255,255,.10);
-
+  border-top:1px solid rgba(255,255,255,.10);
 }
-
 
 .footer-brand{
+  display:flex;
 
-display:flex;
+  align-items:center;
 
-align-items:center;
-
-gap:16px;
-
+  gap:16px;
 }
-
 
 .footer-logo{
+  width:58px;
+  height:58px;
 
-width:60px;
+  flex-shrink:0;
 
-height:60px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-flex-shrink:0;
+  overflow:hidden;
 
-display:flex;
+  border-radius:14px;
 
-align-items:center;
+  background:rgba(255,255,255,.04);
 
-justify-content:center;
-
-overflow:hidden;
-
-border-radius:14px;
-
-border:1px solid rgba(255,255,255,.09);
-
-background:rgba(255,255,255,.04);
-
+  border:1px solid rgba(255,255,255,.09);
 }
-
 
 .footer-logo img{
+  width:100%;
+  height:100%;
 
-width:100%;
+  padding:3px;
 
-height:100%;
-
-padding:2px;
-
-object-fit:contain;
-
+  object-fit:contain;
 }
-
 
 .footer-brand p{
+  margin:0;
 
-margin:0;
+  max-width:280px;
 
-max-width:280px;
+  color:#b2bdc4;
 
-color:#b2bdc4;
+  font-size:13px;
 
-font-size:13px;
-
-line-height:1.5;
-
+  line-height:1.5;
 }
 
+
+/* REDES */
 
 .social{
+  display:flex;
 
-display:flex;
+  align-items:center;
+  justify-content:center;
 
-align-items:center;
-
-justify-content:center;
-
-gap:11px;
-
+  gap:11px;
 }
-
 
 .social-button{
+  width:48px;
+  height:48px;
 
-width:46px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-height:46px;
+  border-radius:50%;
 
-display:flex;
+  color:#ffffff;
 
-align-items:center;
+  background:rgba(255,255,255,.07);
 
-justify-content:center;
+  border:1px solid rgba(255,255,255,.12);
 
-border-radius:50%;
+  box-shadow:
+    0 12px 28px rgba(0,0,0,.30);
 
-color:white;
-
-font-size:20px;
-
-background:rgba(255,255,255,.07);
-
-border:1px solid rgba(255,255,255,.12);
-
-transition:.25s;
-
+  transition:
+    transform .25s,
+    background .25s;
 }
-
 
 .social-button:hover{
-
-transform:translateY(-4px);
-
+  transform:translateY(-4px);
 }
 
-
-.facebook:hover{
-
-background:#1877f2;
-
+.social-button .icon{
+  width:21px;
+  height:21px;
 }
 
-
-.instagram:hover{
-
-background:#d6249f;
-
+.social-button.facebook:hover{
+  background:#1877f2;
 }
 
-
-.whatsapp:hover{
-
-background:#25d366;
-
+.social-button.instagram:hover{
+  background:
+    radial-gradient(
+      circle at 30% 110%,
+      #fdf497 0%,
+      #fdf497 5%,
+      #fd5949 45%,
+      #d6249f 60%,
+      #285aeb 90%
+    );
 }
 
+.social-button.whatsapp:hover{
+  color:#031109;
+  background:#25d366;
+}
 
 .copyright{
+  text-align:right;
 
-text-align:right;
-
-color:#71808a;
-
+  color:#71808a;
 }
 
 
-/* ======================================================
+/* =========================================================
    WHATSAPP FLOTANTE
-====================================================== */
+========================================================= */
 
 .floating-whatsapp{
+  position:fixed;
 
-position:fixed;
+  right:18px;
+  bottom:18px;
 
-right:18px;
+  z-index:1500;
 
-bottom:18px;
+  width:60px;
+  height:60px;
 
-z-index:1500;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-width:58px;
+  border-radius:50%;
 
-height:58px;
+  color:#ffffff;
 
-display:flex;
+  background:#25d366;
 
-align-items:center;
+  border:2px solid rgba(255,255,255,.90);
 
-justify-content:center;
+  box-shadow:
+    0 15px 40px rgba(37,211,102,.38),
+    0 8px 25px rgba(0,0,0,.45);
 
-border-radius:50%;
-
-color:white;
-
-background:#25d366;
-
-border:2px solid rgba(255,255,255,.90);
-
-font-size:31px;
-
-box-shadow:
-
-0 15px 40px rgba(37,211,102,.38),
-
-0 8px 25px rgba(0,0,0,.45);
-
-transition:.25s;
-
+  transition:
+    transform .25s,
+    box-shadow .25s;
 }
-
 
 .floating-whatsapp:hover{
+  transform:
+    translateY(-4px)
+    scale(1.05);
 
-transform:translateY(-4px) scale(1.05);
+  box-shadow:
+    0 18px 48px rgba(37,211,102,.50);
+}
 
+.floating-whatsapp .icon{
+  width:34px;
+  height:34px;
 }
 
 
-/* ======================================================
-   MÓVIL
-====================================================== */
+/* =========================================================
+   TABLET
+========================================================= */
 
 @media(max-width:900px){
 
-.navbar nav{
+  .navbar nav{
+    display:none;
+  }
 
-display:none;
+  .steps{
+    grid-template-columns:repeat(2,1fr);
+  }
 
+  .plans{
+    grid-template-columns:1fr;
+  }
+
+  .plan{
+    max-width:600px;
+    margin:auto;
+  }
+
+  footer{
+    grid-template-columns:1fr auto;
+  }
+
+  .copyright{
+    grid-column:1/-1;
+    text-align:left;
+  }
 }
 
-.steps{
 
-grid-template-columns:repeat(2,1fr);
-
-}
-
-.plans{
-
-grid-template-columns:1fr;
-
-}
-
-.plan{
-
-max-width:600px;
-
-margin:auto;
-
-}
-
-footer{
-
-grid-template-columns:1fr auto;
-
-}
-
-.copyright{
-
-grid-column:1/-1;
-
-text-align:left;
-
-}
-
-}
-
+/* =========================================================
+   MÓVIL
+========================================================= */
 
 @media(max-width:650px){
 
-.navbar{
+  .navbar{
+    height:66px;
+    padding:0 14px;
+  }
 
-height:66px;
+  .logo{
+    width:43px;
+    height:43px;
+    border-radius:10px;
+  }
 
-padding:0 14px;
+  .navbar nav{
+    display:none;
+  }
+
+  .whatsapp-top{
+    min-height:38px;
+    padding:8px 12px;
+    font-size:11px;
+  }
+
+  .whatsapp-top .icon{
+    width:18px;
+    height:18px;
+  }
+
+
+  /* HERO */
+
+  .hero{
+    min-height:100svh;
+
+    padding:
+      105px 20px 75px;
+  }
+
+  .hero-background{
+    inset:-14px;
+
+    filter:
+      blur(4px)
+      brightness(.42)
+      saturate(.78);
+  }
+
+  .hero-overlay{
+    background:
+      linear-gradient(
+        180deg,
+        rgba(3,7,10,.77) 0%,
+        rgba(3,7,10,.83) 48%,
+        rgba(3,7,10,.92) 100%
+      );
+  }
+
+  .eyebrow{
+    font-size:9px;
+    letter-spacing:.16em;
+  }
+
+  .hero h1{
+    font-size:clamp(43px,13vw,67px);
+    letter-spacing:-3px;
+  }
+
+  .hero-description{
+    color:#f0f4f5;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    line-height:1.65;
+  }
+
+  .buttons{
+    width:100%;
+  }
+
+  .button{
+    width:100%;
+    min-height:52px;
+    padding:0 18px;
+  }
+
+  .hero-info{
+    display:block;
+
+    color:#edf2f4;
+
+    font-size:11px;
+
+    font-weight:800;
+  }
+
+  .hero-info span{
+    display:block;
+    margin-top:9px;
+  }
+
+  .hero-info span+span{
+    padding:0;
+    border:0;
+  }
+
+  .scroll-indicator{
+    left:20px;
+  }
+
+
+  /* SECCIONES */
+
+  .section{
+    padding:88px 20px;
+  }
+
+  .section-title{
+    margin-bottom:42px;
+  }
+
+  .section-title h2{
+    font-size:clamp(38px,11vw,55px);
+    letter-spacing:-3px;
+  }
+
+
+  /* PASOS */
+
+  .steps{
+    grid-template-columns:1fr;
+  }
+
+  .step{
+    min-height:auto;
+  }
+
+
+  /* MUNDO */
+
+  .world-section{
+    min-height:390px;
+
+    margin-top:45px;
+
+    padding:38px 26px;
+  }
+
+  .world-content h3{
+    letter-spacing:-3px;
+  }
+
+
+  /* ENJAMBRE */
+
+  .system-section{
+    padding-bottom:50px;
+  }
+
+  .interface{
+    padding:
+      10px 0 55px;
+  }
+
+  .interface-card{
+    width:96%;
+    margin-top:-3%;
+  }
+
+  .interface-card.card-1{
+    --x:-2%;
+    --r:-1.8deg;
+  }
+
+  .interface-card.card-2{
+    --x:3%;
+    --r:1.5deg;
+  }
+
+  .interface-card.card-3{
+    --x:-2%;
+    --r:-1deg;
+  }
+
+  .interface-card.card-4{
+    --x:2%;
+    --r:1.3deg;
+  }
+
+  .interface-card.card-5{
+    --x:0%;
+    --r:-.5deg;
+  }
+
+  .interface-card img{
+    border-radius:16px;
+
+    box-shadow:
+      0 24px 55px rgba(0,0,0,.60);
+  }
+
+
+  /* TESTIMONIOS */
+
+  .testimonials-inner{
+    padding:0 20px;
+  }
+
+  .videos{
+    grid-template-columns:1fr;
+  }
+
+  .video-card video{
+    aspect-ratio:16/10;
+  }
+
+
+  /* CTA */
+
+  .final-cta{
+    flex-direction:column;
+    align-items:flex-start;
+
+    padding:28px 22px;
+  }
+
+  .final-cta h3{
+    font-size:28px;
+  }
+
+
+  /* FINAL */
+
+  .final-section{
+    min-height:70vh;
+    padding:90px 20px;
+  }
+
+  .final-section h2{
+    letter-spacing:-4px;
+  }
+
+
+  /* FOOTER */
+
+  footer{
+    grid-template-columns:1fr;
+
+    padding:
+      42px 20px 100px;
+
+    text-align:left;
+  }
+
+  .footer-brand{
+    align-items:center;
+  }
+
+  .social{
+    justify-content:flex-start;
+  }
+
+  .social-button{
+    width:50px;
+    height:50px;
+  }
+
+  .copyright{
+    text-align:left;
+  }
+
+
+  /* FLOTANTE */
+
+  .floating-whatsapp{
+    width:58px;
+    height:58px;
+
+    right:16px;
+    bottom:16px;
+  }
 
 }
 
-.logo{
 
-width:43px;
-
-height:43px;
-
-}
-
-.whatsapp-top{
-
-min-height:38px;
-
-padding:8px 12px;
-
-font-size:11px;
-
-}
-
-.hero{
-
-min-height:100svh;
-
-padding:105px 20px 75px;
-
-}
-
-.hero-background{
-
-filter:blur(4px) brightness(.40) saturate(.78);
-
-}
-
-.hero-overlay{
-
-background:
-
-linear-gradient(
-180deg,
-rgba(3,7,10,.76) 0%,
-rgba(3,7,10,.84) 47%,
-rgba(3,7,10,.92) 100%
-);
-
-}
-
-.eyebrow{
-
-font-size:9px;
-
-}
-
-.hero h1{
-
-font-size:clamp(43px,13vw,67px);
-
-letter-spacing:-3px;
-
-}
-
-.hero-description{
-
-font-size:15px;
-
-}
-
-.button{
-
-width:100%;
-
-}
-
-.hero-info{
-
-display:block;
-
-font-size:11px;
-
-}
-
-.hero-info span{
-
-display:block;
-
-margin-top:9px;
-
-}
-
-.hero-info span+span{
-
-padding:0;
-
-border:0;
-
-}
-
-.section{
-
-padding:88px 20px;
-
-}
-
-.section-title{
-
-margin-bottom:42px;
-
-}
-
-.section-title h2{
-
-font-size:clamp(38px,11vw,55px);
-
-letter-spacing:-3px;
-
-}
-
-.steps{
-
-grid-template-columns:1fr;
-
-}
-
-.step{
-
-min-height:auto;
-
-}
-
-.world-section{
-
-min-height:390px;
-
-margin-top:45px;
-
-padding:38px 26px;
-
-}
-
-.interface{
-
-padding:10px 0 55px;
-
-}
-
-.interface-card{
-
-width:96%;
-
-margin-top:-3%;
-
-}
-
-.card-1{
-
---x:-2%;
-
---r:-1.8deg;
-
-}
-
-.card-2{
-
---x:3%;
-
---r:1.5deg;
-
-}
-
-.card-3{
-
---x:-2%;
-
---r:-1deg;
-
-}
-
-.card-4{
-
---x:2%;
-
---r:1.3deg;
-
-}
-
-.card-5{
-
---x:0%;
-
---r:-.5deg;
-
-}
-
-.interface-card img{
-
-border-radius:16px;
-
-}
-
-.testimonials-inner{
-
-padding:0 20px;
-
-}
-
-.videos{
-
-grid-template-columns:1fr;
-
-}
-
-.final-cta{
-
-flex-direction:column;
-
-align-items:flex-start;
-
-padding:28px 22px;
-
-}
-
-.final-section{
-
-min-height:70vh;
-
-padding:90px 20px;
-
-}
-
-.final-section h2{
-
-letter-spacing:-4px;
-
-}
-
-footer{
-
-grid-template-columns:1fr;
-
-padding:42px 20px 100px;
-
-}
-
-.social{
-
-justify-content:flex-start;
-
-}
-
-.copyright{
-
-text-align:left;
-
-}
+/* =========================================================
+   REDUCIR ANIMACIONES
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+  *{
+    scroll-behavior:auto !important;
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+  }
 
 }
 
 </style>
-
-
-<!-- ======================================================
-   ICONOS
-====================================================== -->
-
-<link
-rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
->
-
-
 </head>
 
 
 <body>
 
 
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
 <header class="navbar">
 
-<a
-href="#inicio"
-class="logo"
->
+  <a href="#inicio" class="logo" aria-label="A Solo UnClick">
 
-<img
-src="./Un solo logotipo de UnClick.jpeg"
-alt="A Solo UnClick"
->
+    <img
+      src="Un solo logotipo de UnClick.jpeg"
+      alt="A Solo UnClick"
+    >
 
-</a>
+  </a>
 
 
-<nav>
+  <nav>
 
-<a href="#como-funciona">
-Cómo funciona
-</a>
+    <a href="#como-funciona">
+      Cómo funciona
+    </a>
 
-<a href="#sistema">
-Sistema
-</a>
+    <a href="#sistema">
+      Sistema
+    </a>
 
-<a href="#testimonios">
-Testimonios
-</a>
+    <a href="#testimonios">
+      Testimonios
+    </a>
 
-<a href="#planes">
-Planes
-</a>
+    <a href="#planes">
+      Planes
+    </a>
 
-</nav>
+  </nav>
 
 
-<a
-class="whatsapp-top"
-href="https://wa.me/56976169158?text=Hola%2C%20quiero%20probar%20los%205%20d%C3%ADas%20gratis%20de%20A%20Solo%20UnClick."
-target="_blank"
-rel="noopener"
->
+  <a
+    class="whatsapp-top"
+    href="https://wa.me/56976169158?text=Hola%2C%20quiero%20probar%20los%205%20d%C3%ADas%20gratis%20de%20A%20Solo%20UnClick."
+    target="_blank"
+    rel="noopener"
+  >
 
-<i class="fa-brands fa-whatsapp"></i>
+    <svg class="icon whatsapp-icon" viewBox="0 0 448 512" aria-hidden="true">
+      <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+    </svg>
 
-<span>WhatsApp</span>
+    <span>WhatsApp</span>
 
-</a>
+  </a>
 
 </header>
 
@@ -1970,806 +1719,772 @@ rel="noopener"
 <main id="inicio">
 
 
-<!-- ======================================================
-   HERO
-====================================================== -->
+<!-- =====================================================
+     HERO
+===================================================== -->
 
 <section class="hero">
 
-<div class="hero-background banner-one"></div>
+  <div class="hero-background banner-one"></div>
+  <div class="hero-background banner-two"></div>
 
-<div class="hero-background banner-two"></div>
-
-<div class="hero-overlay"></div>
-
-
-<div class="hero-content">
-
-<div class="eyebrow">
-PUBLICIDAD ORIENTADA A CLIENTES
-</div>
+  <div class="hero-overlay"></div>
 
 
-<h1>
+  <div class="hero-content">
 
-Llevamos clientes
-
-<span>
-directo a tu WhatsApp.
-</span>
-
-</h1>
+    <div class="eyebrow">
+      PUBLICIDAD ORIENTADA A CLIENTES
+    </div>
 
 
-<p class="hero-description">
+    <h1>
 
-Configuramos campañas publicitarias en
+      Llevamos clientes
 
-<strong>
-Meta Ads y Google Ads
-</strong>
+      <span>
+        directo a tu WhatsApp.
+      </span>
 
-para llevar personas interesadas
-directamente a la conversación de tu negocio.
-
-</p>
+    </h1>
 
 
-<div class="buttons">
+    <p class="hero-description">
 
-<a
-class="button whatsapp-button"
-href="https://wa.me/56976169158?text=Hola%2C%20quiero%20probar%20los%205%20d%C3%ADas%20gratis%20de%20A%20Solo%20UnClick."
-target="_blank"
-rel="noopener"
->
+      Configuramos campañas publicitarias en
 
-<i class="fa-brands fa-whatsapp"></i>
+      <strong>
+        Meta Ads y Google Ads
+      </strong>
 
-QUIERO MIS 5 DÍAS GRATIS
+      para llevar personas interesadas
+      directamente a la conversación de tu negocio.
 
-</a>
+    </p>
 
 
-<a
-class="button secondary-button"
-href="#como-funciona"
->
+    <div class="buttons">
 
-Ver cómo funciona ↓
+      <a
+        class="button whatsapp-button"
+        href="https://wa.me/56976169158?text=Hola%2C%20quiero%20probar%20los%205%20d%C3%ADas%20gratis%20de%20A%20Solo%20UnClick."
+        target="_blank"
+        rel="noopener"
+      >
 
-</a>
+        <svg class="icon whatsapp-icon" viewBox="0 0 448 512" aria-hidden="true">
+          <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+        </svg>
 
-</div>
+        QUIERO MIS 5 DÍAS GRATIS
 
-
-<div class="hero-info">
-
-<span>
-5 días gratis de nuestra gestión
-</span>
-
-<span>
-No necesitas seguidores. Necesitas clientes.
-</span>
-
-</div>
-
-</div>
+      </a>
 
 
-<div class="scroll-indicator">
-DESLIZA ↓
-</div>
+      <a
+        class="button secondary-button"
+        href="#como-funciona"
+      >
+
+        Ver cómo funciona ↓
+
+      </a>
+
+    </div>
+
+
+    <div class="hero-info">
+
+      <span>
+        5 días gratis de nuestra gestión
+      </span>
+
+      <span>
+        No necesitas seguidores. Necesitas clientes.
+      </span>
+
+    </div>
+
+  </div>
+
+
+  <div class="scroll-indicator">
+    DESLIZA ↓
+  </div>
 
 </section>
 
 
 
-<!-- ======================================================
-   TICKER
-====================================================== -->
+<!-- =====================================================
+     CINTA
+===================================================== -->
 
 <section class="ticker">
 
-<div>
+  <div class="ticker-track">
 
-CLIENTES → WHATSAPP
-<b>•</b>
+    CLIENTES → WHATSAPP
+    <b>•</b>
 
-META ADS + GOOGLE ADS
-<b>•</b>
+    META ADS + GOOGLE ADS
+    <b>•</b>
 
-5 DÍAS GRATIS
-<b>•</b>
+    5 DÍAS GRATIS
+    <b>•</b>
 
-NO NECESITAS SEGUIDORES
-<b>•</b>
+    NO NECESITAS SEGUIDORES
+    <b>•</b>
 
-CLIENTES → WHATSAPP
-<b>•</b>
+    CLIENTES → WHATSAPP
+    <b>•</b>
 
-META ADS + GOOGLE ADS
-<b>•</b>
+    META ADS + GOOGLE ADS
+    <b>•</b>
 
-5 DÍAS GRATIS
-<b>•</b>
+    5 DÍAS GRATIS
+    <b>•</b>
 
-NO NECESITAS SEGUIDORES
-<b>•</b>
+    NO NECESITAS SEGUIDORES
+    <b>•</b>
 
-</div>
+  </div>
 
 </section>
 
 
 
-<!-- ======================================================
-   PASOS
-====================================================== -->
+<!-- =====================================================
+     COMO FUNCIONA
+===================================================== -->
 
 <section
-id="como-funciona"
-class="section"
+  id="como-funciona"
+  class="section"
 >
 
-<div class="section-title">
+  <div class="section-title">
 
-<small>
-EN MENOS DE 3 SEGUNDOS
-</small>
+    <small>
+      EN MENOS DE 3 SEGUNDOS
+    </small>
 
+    <h2>
 
-<h2>
+      Así llevamos clientes
 
-Así llevamos clientes
+      <span>
+        hasta tu WhatsApp.
+      </span>
 
-<span>
-hasta tu WhatsApp.
-</span>
+    </h2>
 
-</h2>
+    <p>
+      El sistema es simple.
+    </p>
 
+  </div>
 
-<p>
-El sistema es simple.
-</p>
 
-</div>
+  <div class="steps">
 
 
-<div class="steps">
+    <!-- PASO 1 -->
 
+    <div class="step">
 
-<div class="step">
+      <div class="step-number">
+        PASO 1
+      </div>
 
-<strong>
-PASO 1
-</strong>
+      <div class="step-icon">
+        AD
+      </div>
 
+      <h3>
+        Publicidad
+      </h3>
 
-<div class="step-icon">
-<i class="fa-solid fa-bullhorn"></i>
-</div>
+      <p>
+        Configuramos campañas publicitarias
+        para tu empresa en Meta Ads y Google Ads.
+      </p>
 
+    </div>
 
-<h3>
-Publicidad
-</h3>
 
+    <!-- PASO 2 -->
 
-<p>
-Configuramos campañas publicitarias
-para tu empresa en Meta Ads y Google Ads.
-</p>
+    <div class="step">
 
-</div>
+      <div class="step-number">
+        PASO 2
+      </div>
 
+      <div class="step-icon">
+        ◎
+      </div>
 
+      <h3>
+        Personas interesadas
+      </h3>
 
-<div class="step">
+      <p>
+        La publicidad llega a personas interesadas
+        en tu producto o servicio y ellos te contactan
+        directamente.
+      </p>
 
-<strong>
-PASO 2
-</strong>
+    </div>
 
 
-<div class="step-icon">
-<i class="fa-solid fa-user-check"></i>
-</div>
+    <!-- PASO 3 -->
 
+    <div class="step">
 
-<h3>
-Personas interesadas
-</h3>
+      <div class="step-number">
+        PASO 3
+      </div>
 
+      <div class="step-icon">
 
-<p>
-La publicidad llega a personas interesadas
-en tu producto o servicio.
-</p>
+        <svg class="icon whatsapp-icon" viewBox="0 0 448 512" aria-hidden="true">
+          <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+        </svg>
 
-</div>
+      </div>
 
+      <h3>
+        Tu WhatsApp
+      </h3>
 
+      <p>
+        Las personas interesadas llegan directamente
+        a tu WhatsApp para cotizar tu producto o servicio.
+      </p>
 
-<div class="step">
+    </div>
 
-<strong>
-PASO 3
-</strong>
 
+    <!-- PASO 4 -->
 
-<div class="step-icon whatsapp">
-<i class="fa-brands fa-whatsapp"></i>
-</div>
+    <div class="step highlight">
 
+      <div class="step-number">
+        PASO 4
+      </div>
 
-<h3>
-Tu WhatsApp
-</h3>
+      <div class="step-icon">
+        ✓
+      </div>
 
+      <h3>
+        Nuevos clientes
+      </h3>
 
-<p>
-Las personas interesadas llegan directamente
-a tu WhatsApp para cotizar.
-</p>
+      <p>
+        Tú recibes las conversaciones y conviertes
+        esas oportunidades en ventas.
+      </p>
 
-</div>
+    </div>
 
+  </div>
 
 
-<div class="step highlight">
 
-<strong>
-PASO 4
-</strong>
+  <!-- =================================================
+       SIN FRONTERAS
+  ================================================== -->
 
+  <div class="world-section">
 
-<div class="step-icon">
-<i class="fa-solid fa-user-plus"></i>
-</div>
+    <div class="world-content">
 
+      <small>
+        SIN FRONTERAS
+      </small>
 
-<h3>
-Nuevos clientes
-</h3>
+      <h3>
 
+        Desde cualquier lugar
 
-<p>
-Tú recibes las conversaciones y conviertes
-esas oportunidades en ventas.
-</p>
+        <span>
+          del mundo.
+        </span>
 
-</div>
+      </h3>
 
-</div>
+      <p>
+        Podemos llevar personas interesadas
+        directamente al WhatsApp de tu negocio,
+        estés donde estés.
+      </p>
 
+      <a
+        href="https://wa.me/56976169158?text=Hola%2C%20quiero%20saber%20c%C3%B3mo%20pueden%20llevar%20clientes%20a%20mi%20WhatsApp."
+        target="_blank"
+        rel="noopener"
+      >
 
+        <svg class="icon whatsapp-icon" viewBox="0 0 448 512" aria-hidden="true">
+          <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+        </svg>
 
-<div class="world-section">
+        Quiero hablar con ustedes →
 
-<div class="world-content">
+      </a>
 
-<small>
-SIN FRONTERAS
-</small>
+    </div>
 
-
-<h3>
-
-Desde cualquier lugar
-
-<span>
-del mundo.
-</span>
-
-</h3>
-
-
-<p>
-
-Podemos llevar personas interesadas
-directamente al WhatsApp de tu negocio,
-estés donde estés.
-
-</p>
-
-
-<a
-href="https://wa.me/56976169158?text=Hola%2C%20quiero%20saber%20c%C3%B3mo%20pueden%20llevar%20clientes%20a%20mi%20WhatsApp."
-target="_blank"
-rel="noopener"
->
-
-<i class="fa-brands fa-whatsapp"></i>
-
-Quiero hablar con ustedes →
-
-</a>
-
-</div>
-
-</div>
+  </div>
 
 </section>
 
 
 
-<!-- ======================================================
-   SISTEMA
-====================================================== -->
+<!-- =====================================================
+     SISTEMA
+===================================================== -->
 
 <section
-id="sistema"
-class="section system-section"
+  id="sistema"
+  class="section system-section"
 >
 
-<div class="section-title">
+  <div class="section-title">
 
-<small>
-EL SISTEMA POR DENTRO
-</small>
+    <small>
+      EL SISTEMA POR DENTRO
+    </small>
 
+    <h2>
 
-<h2>
+      Publicidad que termina
 
-Publicidad que termina
+      <span>
+        en una conversación.
+      </span>
 
-<span>
-en una conversación.
-</span>
+    </h2>
 
-</h2>
+    <p>
+      Así se ve el administrador de campañas
+      mientras trabajamos para llevar clientes
+      hacia tu WhatsApp.
+    </p>
 
-
-<p>
-
-Así se ve el administrador de campañas
-mientras trabajamos para llevar clientes
-hacia tu WhatsApp.
-
-</p>
-
-</div>
+  </div>
 
 
-<div class="interface">
+  <div class="interface">
 
 
-<div class="interface-card card-1">
+    <div class="interface-card card-1">
 
-<span>01</span>
+      <div class="interface-number">
+        01
+      </div>
 
-<img
-src="./pantallazointerfaz1.jpeg"
-alt="Pantallazo interfaz 1"
->
+      <img
+        src="pantallazointerfaz1.jpeg"
+        alt="Pantallazo interfaz 1"
+      >
 
-</div>
-
-
-<div class="interface-card card-2">
-
-<span>02</span>
-
-<img
-src="./pantallazointerfaz2.jpeg"
-alt="Pantallazo interfaz 2"
->
-
-</div>
+    </div>
 
 
-<div class="interface-card card-3">
+    <div class="interface-card card-2">
 
-<span>03</span>
+      <div class="interface-number">
+        02
+      </div>
 
-<img
-src="./pantallazointerfaz3.jpeg"
-alt="Pantallazo interfaz 3"
->
+      <img
+        src="pantallazointerfaz2.jpeg"
+        alt="Pantallazo interfaz 2"
+      >
 
-</div>
-
-
-<div class="interface-card card-4">
-
-<span>04</span>
-
-<img
-src="./pantallazointerfaz4.jpeg"
-alt="Pantallazo interfaz 4"
->
-
-</div>
+    </div>
 
 
-<div class="interface-card card-5">
+    <div class="interface-card card-3">
 
-<span>05</span>
+      <div class="interface-number">
+        03
+      </div>
 
-<img
-src="./pantallazointerfaz5.jpeg"
-alt="Pantallazo interfaz 5"
->
+      <img
+        src="pantallazointerfaz3.jpeg"
+        alt="Pantallazo interfaz 3"
+      >
 
-</div>
+    </div>
 
 
-</div>
+    <div class="interface-card card-4">
+
+      <div class="interface-number">
+        04
+      </div>
+
+      <img
+        src="pantallazointerfaz4.jpeg"
+        alt="Pantallazo interfaz 4"
+      >
+
+    </div>
+
+
+    <div class="interface-card card-5">
+
+      <div class="interface-number">
+        05
+      </div>
+
+      <img
+        src="pantallazointerfaz5.jpeg"
+        alt="Pantallazo interfaz 5"
+      >
+
+    </div>
+
+  </div>
 
 </section>
 
 
 
-<!-- ======================================================
-   EXPERIENCIAS REALES
-====================================================== -->
+<!-- =====================================================
+     TESTIMONIOS
+===================================================== -->
 
 <section
-id="testimonios"
-class="section testimonials"
+  id="testimonios"
+  class="section testimonials"
 >
 
-<div class="testimonials-inner">
+  <div class="testimonials-inner">
 
 
-<div class="section-title">
+    <div class="section-title">
 
-<small>
-EXPERIENCIAS REALES
-</small>
+      <small>
+        EXPERIENCIAS REALES
+      </small>
 
+      <h2>
+        Estos son los testimonios
+        <span>de nuestros clientes.</span>
+      </h2>
 
-<h2>
-Experiencias reales.
-</h2>
+    </div>
 
 
-<p>
-Estos son los testimonios de nuestros clientes.
-</p>
+    <div class="videos">
 
-</div>
 
+      <!-- FERNANDO -->
 
-<div class="videos">
+      <div class="video-card">
 
+        <div class="video-wrapper">
 
-<div class="video-card">
+          <video
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+          >
 
-<div class="video-wrapper">
+            <source
+              src="testimonio fernando chile.mp4"
+              type="video/mp4"
+            >
 
-<video
-autoplay
-muted
-loop
-playsinline
-preload="auto"
->
+          </video>
 
-<source
-src="./testimonio fernando chile.mp4"
-type="video/mp4"
->
+          <div class="sound-hint">
+            🔇 TOCA PARA ESCUCHAR
+          </div>
 
-</video>
+        </div>
 
+        <h3>
+          Fernando · Chile
+        </h3>
 
-<div class="sound-hint">
+      </div>
 
-<i class="fa-solid fa-volume-xmark"></i>
 
-TOCA PARA ESCUCHAR
+      <!-- GINO -->
 
-</div>
+      <div class="video-card">
 
-</div>
+        <div class="video-wrapper">
 
+          <video
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+          >
 
-<h3>
-Fernando · Chile
-</h3>
+            <source
+              src="testimonio gini transporta guliana 3.mp4"
+              type="video/mp4"
+            >
 
-</div>
+          </video>
 
+          <div class="sound-hint">
+            🔇 TOCA PARA ESCUCHAR
+          </div>
 
+        </div>
 
-<div class="video-card">
+        <h3>
+          Gino · Transportes Quiliana
+        </h3>
 
-<div class="video-wrapper">
+      </div>
 
-<video
-autoplay
-muted
-loop
-playsinline
-preload="auto"
->
 
-<source
-src="./testimonio gini transporta quiliana 3.mp4"
-type="video/mp4"
->
+      <!-- MUDANZAS -->
 
-</video>
+      <div class="video-card">
 
+        <div class="video-wrapper">
 
-<div class="sound-hint">
+          <video
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+          >
 
-<i class="fa-solid fa-volume-xmark"></i>
+            <source
+              src="testimonio mudanzas los mendez.mp4"
+              type="video/mp4"
+            >
 
-TOCA PARA ESCUCHAR
+          </video>
 
-</div>
+          <div class="sound-hint">
+            🔇 TOCA PARA ESCUCHAR
+          </div>
 
-</div>
+        </div>
 
+        <h3>
+          Mudanzas Los Méndez
+        </h3>
 
-<h3>
-Gino · Transportes Quiliana
-</h3>
+      </div>
 
-</div>
 
+      <!-- PABLO -->
 
+      <div class="video-card">
 
-<div class="video-card">
+        <div class="video-wrapper">
 
-<div class="video-wrapper">
+          <video
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+          >
 
-<video
-autoplay
-muted
-loop
-playsinline
-preload="auto"
->
+            <source
+              src="testimonio pablo pinzón colombia.mp4"
+              type="video/mp4"
+            >
 
-<source
-src="./testimonio mudanzas los mendez.mp4"
-type="video/mp4"
->
+          </video>
 
-</video>
+          <div class="sound-hint">
+            🔇 TOCA PARA ESCUCHAR
+          </div>
 
+        </div>
 
-<div class="sound-hint">
+        <h3>
+          Pablo Pinzón · Colombia
+        </h3>
 
-<i class="fa-solid fa-volume-xmark"></i>
+      </div>
 
-TOCA PARA ESCUCHAR
 
-</div>
+    </div>
 
-</div>
-
-
-<h3>
-Mudanzas Los Méndez
-</h3>
-
-</div>
-
-
-
-<div class="video-card">
-
-<div class="video-wrapper">
-
-<video
-autoplay
-muted
-loop
-playsinline
-preload="auto"
->
-
-<source
-src="./testimonio pablo pinzón colombia.mp4"
-type="video/mp4"
->
-
-</video>
-
-
-<div class="sound-hint">
-
-<i class="fa-solid fa-volume-xmark"></i>
-
-TOCA PARA ESCUCHAR
-
-</div>
-
-</div>
-
-
-<h3>
-Pablo Pinzón · Colombia
-</h3>
-
-</div>
-
-
-</div>
-
-</div>
+  </div>
 
 </section>
 
 
 
-<!-- ======================================================
-   PLANES
-====================================================== -->
+<!-- =====================================================
+     PLANES
+===================================================== -->
 
 <section
-id="planes"
-class="section"
+  id="planes"
+  class="section"
 >
 
-<div class="section-title">
+  <div class="section-title">
 
-<small>
-PLANES MENSUALES
-</small>
+    <small>
+      PLANES MENSUALES
+    </small>
 
+    <h2>
 
-<h2>
+      Cómo podemos trabajar
 
-Cómo podemos trabajar
+      <span>
+        con tu negocio.
+      </span>
 
-<span>
-con tu negocio.
-</span>
+    </h2>
 
-</h2>
+    <p class="plans-intro">
 
+      Luego de que accedas a los
+      <strong>5 días gratuitos de nuestra gestión</strong>,
+      puedes optar por uno de los
+      <strong>planes mensuales de pago único.</strong>
 
-<p class="plans-intro">
+    </p>
 
-Luego de que accedas a los
-
-<strong>
-5 días gratuitos de nuestra gestión
-</strong>,
-
-puedes optar por uno de los
-
-<strong>
-planes mensuales de pago único.
-</strong>
-
-</p>
-
-</div>
+  </div>
 
 
-<div class="plans">
+  <div class="plans">
+
+    <div class="plan">
+
+      <img
+        src="planmensual1.jpeg"
+        alt="Plan mensual 1"
+      >
+
+    </div>
 
 
-<div class="plan">
+    <div class="plan featured">
 
-<img
-src="./planmensual1.jpeg"
-alt="Plan mensual 1"
->
+      <img
+        src="planmensual2.jpeg"
+        alt="Plan mensual 2"
+      >
 
-</div>
-
-
-<div class="plan">
-
-<img
-src="./planmensual2.jpeg"
-alt="Plan mensual 2"
->
-
-</div>
+    </div>
 
 
-<div class="plan">
+    <div class="plan">
 
-<img
-src="./planmensual3.jpeg"
-alt="Plan mensual 3"
->
+      <img
+        src="planmensual3.jpeg"
+        alt="Plan mensual 3"
+      >
 
-</div>
+    </div>
 
-
-</div>
-
-
-<div class="final-cta">
-
-<div>
-
-<small>
-PRUÉBALO
-</small>
+  </div>
 
 
-<h3>
-Empieza con 5 días gratis.
-</h3>
+  <div class="final-cta">
+
+    <div>
+
+      <small>
+        PRUÉBALO
+      </small>
+
+      <h3>
+        Empieza con 5 días gratis.
+      </h3>
+
+      <p>
+        Hablemos de tu negocio y de cómo llevar
+        clientes directo a tu WhatsApp.
+      </p>
+
+    </div>
 
 
-<p>
-Hablemos de tu negocio y de cómo llevar
-clientes directo a tu WhatsApp.
-</p>
+    <a
+      class="button whatsapp-button"
+      href="https://wa.me/56976169158?text=Hola%2C%20quiero%20probar%20los%205%20d%C3%ADas%20gratis%20de%20A%20Solo%20UnClick."
+      target="_blank"
+      rel="noopener"
+    >
 
-</div>
+      <svg class="icon whatsapp-icon" viewBox="0 0 448 512" aria-hidden="true">
+        <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+      </svg>
 
+      QUIERO MIS 5 DÍAS GRATIS
 
-<a
-class="button whatsapp-button"
-href="https://wa.me/56976169158?text=Hola%2C%20quiero%20probar%20los%205%20d%C3%ADas%20gratis%20de%20A%20Solo%20UnClick."
-target="_blank"
-rel="noopener"
->
+    </a>
 
-<i class="fa-brands fa-whatsapp"></i>
-
-QUIERO MIS 5 DÍAS GRATIS
-
-</a>
-
-</div>
+  </div>
 
 </section>
 
 
 
-<!-- ======================================================
-   CIERRE
-====================================================== -->
+<!-- =====================================================
+     CIERRE
+===================================================== -->
 
 <section class="final-section">
 
-<div>
+  <div>
 
-<small>
-A SOLO UNCLICK
-</small>
+    <small>
+      A SOLO UNCLICK
+    </small>
 
+    <h2>
 
-<h2>
+      No necesitas seguidores.
 
-No necesitas seguidores.
+      <span>
+        Necesitas clientes.
+      </span>
 
-<span>
-Necesitas clientes.
-</span>
+    </h2>
 
-</h2>
-
-
-<p>
-
-Meta Ads + Google Ads →
-personas interesadas →
-tu WhatsApp.
-
-</p>
+    <p>
+      Meta Ads + Google Ads →
+      personas interesadas →
+      tu WhatsApp.
+    </p>
 
 
-<a
-class="button whatsapp-button big"
-href="https://wa.me/56976169158?text=Hola%2C%20quiero%20probar%20los%205%20d%C3%ADas%20gratis%20de%20A%20Solo%20UnClick."
-target="_blank"
-rel="noopener"
->
+    <a
+      class="button whatsapp-button big"
+      href="https://wa.me/56976169158?text=Hola%2C%20quiero%20probar%20los%205%20d%C3%ADas%20gratis%20de%20A%20Solo%20UnClick."
+      target="_blank"
+      rel="noopener"
+    >
 
-<i class="fa-brands fa-whatsapp"></i>
+      <svg class="icon whatsapp-icon" viewBox="0 0 448 512" aria-hidden="true">
+        <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+      </svg>
 
-QUIERO MIS 5 DÍAS GRATIS
+      QUIERO MIS 5 DÍAS GRATIS
 
-</a>
+    </a>
 
-</div>
+  </div>
 
 </section>
 
@@ -2778,308 +2493,381 @@ QUIERO MIS 5 DÍAS GRATIS
 
 
 
-<!-- ======================================================
-   FOOTER
-====================================================== -->
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer>
 
 
-<div class="footer-brand">
+  <div class="footer-brand">
 
-<a
-href="#inicio"
-class="footer-logo"
->
+    <a
+      href="#inicio"
+      class="footer-logo"
+    >
 
-<img
-src="./Un solo logotipo de UnClick.jpeg"
-alt="A Solo UnClick"
->
+      <img
+        src="Un solo logotipo de UnClick.jpeg"
+        alt="A Solo UnClick"
+      >
 
-</a>
+    </a>
 
+    <p>
+      Llevamos clientes directo a tu WhatsApp.
+    </p>
 
-<p>
-Llevamos clientes directo a tu WhatsApp.
-</p>
-
-</div>
-
-
-<div class="social">
+  </div>
 
 
-<a
-class="social-button facebook"
-href="https://www.facebook.com/people/A-Solo-Un-Click/61591429061157/"
-target="_blank"
-rel="noopener"
->
-
-<i class="fa-brands fa-facebook-f"></i>
-
-</a>
+  <div class="social">
 
 
-<a
-class="social-button instagram"
-href="https://www.instagram.com/asolounclickagencia"
-target="_blank"
-rel="noopener"
->
+    <!-- FACEBOOK -->
 
-<i class="fa-brands fa-instagram"></i>
+    <a
+      class="social-button facebook"
+      href="https://www.facebook.com/people/A-Solo-Un-Click/61591429061157/"
+      target="_blank"
+      rel="noopener"
+      aria-label="Facebook"
+    >
 
-</a>
+      <svg class="icon" viewBox="0 0 320 512" aria-hidden="true" fill="currentColor">
+        <path d="M279.14 288l14.22-92.66h-88.91V127.2c0-25.35 12.42-50.06 52.24-50.06H297V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/>
+      </svg>
 
-
-<a
-class="social-button whatsapp"
-href="https://wa.me/56976169158?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20A%20Solo%20UnClick."
-target="_blank"
-rel="noopener"
->
-
-<i class="fa-brands fa-whatsapp"></i>
-
-</a>
+    </a>
 
 
-</div>
+    <!-- INSTAGRAM -->
+
+    <a
+      class="social-button instagram"
+      href="https://www.instagram.com/asolounclickagencia"
+      target="_blank"
+      rel="noopener"
+      aria-label="Instagram"
+    >
+
+      <svg class="icon" viewBox="0 0 448 512" aria-hidden="true" fill="currentColor">
+        <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12.1 26.8-26.8 26.8-14.9 0-26.8-12.1-26.8-26.8s12.1-26.8 26.8-26.8 26.8 12 26.8 26.8zM398.8 80C362.6 42.7 314.7 24 259.8 24H188.2C133.3 24 85.4 42.7 49.2 80 12.9 117.3-4.8 165.2-4.8 220.1v71.8c0 54.9 17.7 102.8 54 140.1 36.2 37.3 84.1 56 139 56h71.6c54.9 0 102.8-18.7 139-56 36.3-37.3 54-85.2 54-140.1v-71.8c0-54.9-17.7-102.8-54-140.1zM398.4 322c-1.5 29.6-8.3 54.9-30.4 76.9-22.1 22.1-47.4 28.9-77 30.4-24.1 1.3-96.5 1.3-120.6 0-29.6-1.5-54.9-8.3-76.9-30.4-22.1-22-28.9-47.3-30.4-76.9-1.3-24.1-1.3-96.5 0-120.6 1.5-29.6 8.3-54.9 30.4-76.9 22-22.1 47.3-28.9 76.9-30.4 24.1-1.3 96.5-1.3 120.6 0 29.6 1.5 54.9 8.3 77 30.4 22.1 22 28.9 47.3 30.4 76.9 1.3 24.1 1.3 96.4 0 120.6z"/>
+      </svg>
+
+    </a>
 
 
-<small class="copyright">
-© 2026 A Solo UnClick
-</small>
+    <!-- WHATSAPP -->
 
+    <a
+      class="social-button whatsapp"
+      href="https://wa.me/56976169158?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20A%20Solo%20UnClick."
+      target="_blank"
+      rel="noopener"
+      aria-label="WhatsApp"
+    >
+
+      <svg class="icon whatsapp-icon" viewBox="0 0 448 512" aria-hidden="true">
+        <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+      </svg>
+
+    </a>
+
+  </div>
+
+
+  <small class="copyright">
+    © 2026 A Solo UnClick
+  </small>
 
 </footer>
 
 
 
+<!-- =====================================================
+     BOTÓN WHATSAPP FLOTANTE
+===================================================== -->
+
 <a
-class="floating-whatsapp"
-href="https://wa.me/56976169158?text=Hola%2C%20quiero%20probar%20los%205%20d%C3%ADas%20gratis%20de%20A%20Solo%20UnClick."
-target="_blank"
-rel="noopener"
+  class="floating-whatsapp"
+  href="https://wa.me/56976169158?text=Hola%2C%20quiero%20probar%20los%205%20d%C3%ADas%20gratis%20de%20A%20Solo%20UnClick."
+  target="_blank"
+  rel="noopener"
+  aria-label="Hablar por WhatsApp"
 >
 
-<i class="fa-brands fa-whatsapp"></i>
+  <svg class="icon whatsapp-icon" viewBox="0 0 448 512" aria-hidden="true">
+    <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+  </svg>
 
 </a>
 
 
 
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
 <script>
 
-/* ======================================================
-   BANNERS
-====================================================== */
+document.addEventListener("DOMContentLoaded",function(){
 
-const hero=document.querySelector(".hero");
 
-if(hero){
+  /* =====================================================
+     HERO: CAMBIO DE BANNER
+  ===================================================== */
 
-setInterval(function(){
+  const hero=document.querySelector(".hero");
 
-hero.classList.toggle("alt");
+  if(hero){
 
-},6500);
+    setInterval(function(){
 
-}
+      hero.classList.toggle("alt");
 
+    },6500);
 
-/* ======================================================
-   INTERFAZ ENJAMBRE
-====================================================== */
+  }
 
-const cards=document.querySelectorAll(".interface-card");
 
-if("IntersectionObserver" in window){
 
-const observer=new IntersectionObserver(
+  /* =====================================================
+     PANTALLAZOS: EFECTO ENJAMBRE
+  ===================================================== */
 
-function(entries){
+  const cards=document.querySelectorAll(".interface-card");
 
-entries.forEach(function(entry){
+  if("IntersectionObserver" in window){
 
-if(entry.isIntersecting){
+    const observer=new IntersectionObserver(
 
-entry.target.classList.add("visible");
+      function(entries){
 
-observer.unobserve(entry.target);
+        entries.forEach(function(entry){
 
-}
+          if(entry.isIntersecting){
 
-});
+            entry.target.classList.add("visible");
 
-},
+            observer.unobserve(entry.target);
 
-{
-threshold:.10
-}
+          }
 
-);
+        });
 
+      },
 
-cards.forEach(function(card){
+      {
+        threshold:.14,
+        rootMargin:"0px 0px -8% 0px"
+      }
 
-observer.observe(card);
+    );
 
-});
 
-}else{
+    cards.forEach(function(card){
 
-cards.forEach(function(card){
+      observer.observe(card);
 
-card.classList.add("visible");
+    });
 
-});
+  }else{
 
-}
+    cards.forEach(function(card){
 
+      card.classList.add("visible");
 
-/* ======================================================
-   VIDEOS
-====================================================== */
+    });
 
-const videoCards=document.querySelectorAll(".video-card");
+  }
 
 
-videoCards.forEach(function(card){
 
-const video=card.querySelector("video");
+  /* =====================================================
+     VIDEOS
 
-const hint=card.querySelector(".sound-hint");
+     - Todos intentan reproducirse automáticamente.
+     - Todos están en loop.
+     - Todos comienzan sin sonido.
+     - Al tocar uno se activa su sonido.
+     - Los demás permanecen reproduciéndose,
+       pero silenciados.
+  ===================================================== */
 
-if(!video)return;
+  const videoCards=
+    document.querySelectorAll(".video-card");
 
 
-video.muted=true;
+  videoCards.forEach(function(card){
 
-video.loop=true;
+    const video=
+      card.querySelector("video");
 
-video.playsInline=true;
+    const hint=
+      card.querySelector(".sound-hint");
 
 
-video.play().catch(function(){});
+    if(!video){
+      return;
+    }
 
 
-card.addEventListener("click",function(){
+    video.muted=true;
+    video.loop=true;
+    video.playsInline=true;
 
-const activar=video.muted;
 
+    /* AUTOPLAY */
 
-/* silenciar los demás */
+    const promise=video.play();
 
-videoCards.forEach(function(otherCard){
+    if(promise!==undefined){
 
-const otherVideo=otherCard.querySelector("video");
+      promise.catch(function(){
 
-const otherHint=otherCard.querySelector(".sound-hint");
+        /* Algunos navegadores bloquean autoplay.
+           El usuario podrá tocar el video. */
 
+      });
 
-if(otherVideo && otherVideo!==video){
+    }
 
-otherVideo.muted=true;
 
-otherCard.classList.remove("audio-active");
+    /* CLICK / TOQUE */
 
+    card.addEventListener("click",function(){
 
-if(otherHint){
+      const activar=
+        video.muted;
 
-otherHint.innerHTML=
-'<i class="fa-solid fa-volume-xmark"></i> TOCA PARA ESCUCHAR';
 
-}
+      /* Silenciar todos los demás */
 
-}
+      videoCards.forEach(function(otherCard){
 
-});
+        const otherVideo=
+          otherCard.querySelector("video");
 
+        const otherHint=
+          otherCard.querySelector(".sound-hint");
 
-/* activar / desactivar */
 
-video.muted=!activar;
+        if(
+          otherVideo &&
+          otherVideo!==video
+        ){
 
+          otherVideo.muted=true;
 
-if(activar){
+          otherCard.classList.remove("audio-active");
 
-card.classList.add("audio-active");
+          if(otherHint){
 
-if(hint){
+            otherHint.textContent=
+              "🔇 TOCA PARA ESCUCHAR";
 
-hint.innerHTML=
-'<i class="fa-solid fa-volume-high"></i> SONIDO ACTIVADO';
+          }
 
-}
+        }
 
-}else{
+      });
 
-card.classList.remove("audio-active");
 
-if(hint){
+      /* Cambiar estado del seleccionado */
 
-hint.innerHTML=
-'<i class="fa-solid fa-volume-xmark"></i> TOCA PARA ESCUCHAR';
+      if(activar){
 
-}
+        video.muted=false;
 
-}
+        card.classList.add("audio-active");
 
+        if(hint){
 
-if(video.paused){
+          hint.textContent=
+            "🔊 SONIDO ACTIVADO";
 
-video.play().catch(function(){});
+        }
 
-}
+      }else{
 
-});
+        video.muted=true;
 
-});
+        card.classList.remove("audio-active");
 
+        if(hint){
 
-/* ======================================================
-   AL SALIR DE LA PÁGINA
-====================================================== */
+          hint.textContent=
+            "🔇 TOCA PARA ESCUCHAR";
 
-document.addEventListener("visibilitychange",function(){
+        }
 
-if(document.hidden){
+      }
 
-videoCards.forEach(function(card){
 
-const video=card.querySelector("video");
+      /* Si estuviera detenido, reiniciarlo */
 
-const hint=card.querySelector(".sound-hint");
+      if(video.paused){
 
+        video.play().catch(function(){});
 
-if(video){
+      }
 
-video.muted=true;
+    });
 
-}
+  });
 
 
-card.classList.remove("audio-active");
 
+  /* =====================================================
+     AL SALIR DE LA PÁGINA
 
-if(hint){
+     Por seguridad, silenciar videos.
+  ===================================================== */
 
-hint.innerHTML=
-'<i class="fa-solid fa-volume-xmark"></i> TOCA PARA ESCUCHAR';
+  document.addEventListener(
+    "visibilitychange",
+    function(){
 
-}
+      if(document.hidden){
 
-});
+        videoCards.forEach(function(card){
 
-}
+          const video=
+            card.querySelector("video");
+
+          const hint=
+            card.querySelector(".sound-hint");
+
+
+          if(video){
+
+            video.muted=true;
+
+          }
+
+
+          card.classList.remove("audio-active");
+
+
+          if(hint){
+
+            hint.textContent=
+              "🔇 TOCA PARA ESCUCHAR";
+
+          }
+
+        });
+
+      }
+
+    }
+  );
+
 
 });
 
 </script>
-
 
 </body>
 </html>
