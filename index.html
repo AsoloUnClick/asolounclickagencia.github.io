@@ -1,451 +1,1007 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A Solo UnClick — Llevamos clientes directo a tu WhatsApp. 5 días gratis de nuestra gestión.">
+<title>A Solo UnClick | Clientes directo a tu WhatsApp</title>
 
-  <title>A Solo UnClick | Más clientes directo a tu WhatsApp</title>
+<style>
+:root{
+  --green:#19d17f;
+  --green-dark:#0ca960;
+  --black:#050607;
+  --dark:#0b0f11;
+  --dark2:#111719;
+  --gray:#9aa6a8;
+  --white:#f5f7f7;
+  --line:rgba(255,255,255,.09);
+  --shadow:0 20px 60px rgba(0,0,0,.35);
+}
 
-  <meta name="description"
-        content="A Solo UnClick: campañas de Meta Ads, Google Ads y generación de clientes potenciales directo a WhatsApp.">
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-  <style>
-    :root{
-      --bg:#050505;
-      --card:#101010;
-      --green:#25d366;
-      --green2:#19b957;
-      --text:#f5f5f5;
-      --muted:#a7a7a7;
-      --line:#222;
-      --max:1180px;
-    }
+html{
+  scroll-behavior:smooth;
+}
 
-    *{
-      box-sizing:border-box;
-    }
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--black);
+  color:var(--white);
+  overflow-x:hidden;
+}
 
-    html{
-      scroll-behavior:smooth;
-    }
+body.video-open{
+  overflow:hidden;
+}
 
-    body{
-      margin:0;
-      background:var(--bg);
-      color:var(--text);
-      font-family:Arial,Helvetica,sans-serif;
-      line-height:1.55;
-    }
+a{
+  color:inherit;
+  text-decoration:none;
+}
 
-    a{
-      color:inherit;
-      text-decoration:none;
-    }
+img{
+  max-width:100%;
+  display:block;
+}
 
-    .wrap{
-      width:min(var(--max),92%);
-      margin:auto;
-    }
+/* =========================
+   NAVBAR
+========================= */
 
-    /* =========================
-       HEADER
-    ========================= */
+.navbar{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:74px;
+  z-index:1000;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 5%;
+  background:rgba(5,6,7,.82);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
 
-    header{
-      position:sticky;
-      top:0;
-      z-index:50;
-      background:rgba(5,5,5,.94);
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid var(--line);
-    }
+.brand{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  font-weight:900;
+  letter-spacing:1.5px;
+  font-size:16px;
+  color:white;
+  white-space:nowrap;
+}
 
-    .nav{
-      min-height:76px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
-    }
+.brand-mark{
+  width:12px;
+  height:12px;
+  background:var(--green);
+  border-radius:50%;
+  box-shadow:0 0 18px rgba(25,209,127,.8);
+}
 
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      font-weight:800;
-    }
+.brand span{
+  color:var(--green);
+}
 
-    .brand img{
-      width:54px;
-      height:54px;
-      object-fit:contain;
-      border-radius:50%;
-    }
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:28px;
+  font-size:14px;
+  font-weight:700;
+}
 
-    nav{
-      display:flex;
-      gap:24px;
-      align-items:center;
-    }
+.nav-links a{
+  transition:.25s;
+}
 
-    nav a{
-      font-size:14px;
-      color:#ddd;
-    }
+.nav-links a:hover{
+  color:var(--green);
+}
 
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      padding:13px 20px;
-      border-radius:999px;
-      background:var(--green);
-      color:#061108;
-      font-weight:800;
-      border:0;
-    }
+.nav-cta{
+  background:var(--green);
+  color:#03110a !important;
+  padding:11px 18px;
+  border-radius:8px;
+  font-weight:900;
+}
 
-    .btn:hover{
-      background:var(--green2);
-    }
+.nav-cta:hover{
+  background:#32e994;
+  transform:translateY(-1px);
+}
 
-    /* =========================
-       HERO
-    ========================= */
+@media(max-width:760px){
+  .navbar{
+    height:64px;
+    padding:0 18px;
+  }
 
-    .hero{
-      padding:95px 0 80px;
-      text-align:center;
-    }
+  .brand{
+    font-size:13px;
+    letter-spacing:1px;
+  }
 
-    .eyebrow{
-      color:var(--green);
-      font-weight:800;
-      letter-spacing:2px;
-      text-transform:uppercase;
-    }
+  .nav-links a:not(.nav-cta){
+    display:none;
+  }
 
-    h1{
-      font-size:clamp(42px,7vw,82px);
-      line-height:.98;
-      margin:18px auto;
-      max-width:1000px;
-    }
+  .nav-cta{
+    font-size:11px;
+    padding:9px 12px;
+  }
+}
 
-    .hero p{
-      max-width:760px;
-      margin:0 auto 30px;
-      color:#c8c8c8;
-      font-size:19px;
-    }
+/* =========================
+   HERO
+========================= */
 
-    .hero-actions{
-      display:flex;
-      justify-content:center;
-      gap:12px;
-      flex-wrap:wrap;
-    }
+.hero{
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  padding:110px 7% 70px;
+}
 
-    /* =========================
-       SECCIONES
-    ========================= */
+.hero-bg{
+  position:absolute;
+  inset:0;
+  z-index:0;
+}
 
-    section{
-      padding:75px 0;
-      border-top:1px solid var(--line);
-    }
+.hero-bg::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.88) 0%,rgba(0,0,0,.66) 43%,rgba(0,0,0,.25) 100%),
+    linear-gradient(0deg,rgba(0,0,0,.7),transparent 45%);
+  z-index:2;
+}
 
-    .section-head{
-      max-width:760px;
-      margin-bottom:38px;
-    }
+.hero-banner{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0;
+  transition:opacity 1.3s ease;
+}
 
-    .section-head h2{
-      font-size:clamp(30px,4vw,48px);
-      margin:8px 0;
-    }
+.hero-banner.active{
+  opacity:1;
+}
 
-    .section-head p{
-      color:var(--muted);
-    }
+.hero-content{
+  position:relative;
+  z-index:5;
+  max-width:760px;
+}
 
-    /* =========================
-       TARJETAS
-    ========================= */
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 13px;
+  border:1px solid rgba(25,209,127,.35);
+  background:rgba(25,209,127,.08);
+  border-radius:100px;
+  color:var(--green);
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  margin-bottom:22px;
+}
 
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:18px;
-    }
+.eyebrow::before{
+  content:"";
+  width:7px;
+  height:7px;
+  background:var(--green);
+  border-radius:50%;
+  box-shadow:0 0 12px var(--green);
+}
 
-    .card{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:20px;
-      padding:28px;
-    }
+.hero h1{
+  font-size:clamp(42px,6vw,82px);
+  line-height:.98;
+  letter-spacing:-3px;
+  font-weight:950;
+  margin-bottom:24px;
+}
 
-    .card h3{
-      margin-top:0;
-    }
+.hero h1 strong{
+  color:var(--green);
+}
 
-    .card p{
-      color:var(--muted);
-    }
+.hero p{
+  font-size:clamp(18px,2vw,23px);
+  line-height:1.55;
+  color:#d4dcdd;
+  max-width:670px;
+  margin-bottom:30px;
+}
 
-    .number{
-      color:var(--green);
-      font-size:13px;
-      font-weight:900;
-      letter-spacing:2px;
-    }
+.hero-actions{
+  display:flex;
+  gap:13px;
+  flex-wrap:wrap;
+}
 
-    /* =========================
-       PROCESO
-    ========================= */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  min-height:52px;
+  padding:0 22px;
+  border-radius:9px;
+  font-size:14px;
+  font-weight:900;
+  transition:.25s ease;
+  cursor:pointer;
+}
 
-    .process{
-      display:grid;
-      grid-template-columns:repeat(5,1fr);
-      gap:10px;
-    }
+.btn-primary{
+  background:var(--green);
+  color:#03110a;
+  box-shadow:0 10px 35px rgba(25,209,127,.22);
+}
 
-    .step{
-      padding:22px;
-      border:1px solid var(--line);
-      border-radius:16px;
-      background:#0b0b0b;
-    }
+.btn-primary:hover{
+  transform:translateY(-3px);
+  background:#31e995;
+  box-shadow:0 15px 45px rgba(25,209,127,.3);
+}
 
-    .step strong{
-      display:block;
-      margin-top:8px;
-    }
+.btn-secondary{
+  border:1px solid rgba(255,255,255,.18);
+  background:rgba(255,255,255,.05);
+  color:white;
+}
 
-    /* =========================
-       TESTIMONIOS
-    ========================= */
+.btn-secondary:hover{
+  background:rgba(255,255,255,.1);
+  transform:translateY(-2px);
+}
 
-    .media-grid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:18px;
-    }
+.whatsapp-icon{
+  width:19px;
+  height:19px;
+  flex:none;
+}
 
-    .media{
-      background:#0d0d0d;
-      border:1px solid var(--line);
-      border-radius:18px;
-      overflow:hidden;
-    }
+.hero-note{
+  margin-top:17px;
+  font-size:12px;
+  color:#aab4b6;
+}
 
-    .media video{
-      display:block;
-      width:100%;
-      aspect-ratio:16/9;
-      background:#000;
-    }
+@media(max-width:760px){
+  .hero{
+    min-height:760px;
+    padding:105px 20px 60px;
+  }
 
-    .media .caption{
-      padding:14px 16px;
-      color:#ddd;
-      font-weight:700;
-    }
+  .hero h1{
+    letter-spacing:-2px;
+  }
 
-    /* =========================
-       CTA
-    ========================= */
+  .hero p{
+    font-size:17px;
+  }
 
-    .cta{
-      padding:65px 30px;
-      text-align:center;
-      border-radius:28px;
-      background:linear-gradient(135deg,#0e0e0e,#151515);
-      border:1px solid #2a2a2a;
-    }
+  .hero-actions{
+    flex-direction:column;
+    align-items:stretch;
+  }
 
-    .cta h2{
-      font-size:clamp(32px,5vw,56px);
-      margin:0 0 12px;
-    }
+  .btn{
+    width:100%;
+  }
+}
 
-    .cta p{
-      color:#c5c5c5;
-    }
+/* =========================
+   TICKER
+========================= */
 
-    /* =========================
-       FOOTER
-    ========================= */
+.ticker{
+  overflow:hidden;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  background:#080b0c;
+  padding:14px 0;
+}
 
-    footer{
-      padding:45px 0;
-      color:#888;
-      border-top:1px solid var(--line);
-    }
+.ticker-track{
+  display:flex;
+  width:max-content;
+  animation:ticker 24s linear infinite;
+}
 
-    .footer-row{
-      display:flex;
-      justify-content:space-between;
-      gap:20px;
-      flex-wrap:wrap;
-    }
+.ticker-item{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  padding:0 35px;
+  color:#c7d0d1;
+  font-size:12px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+}
 
-    .socials{
-      display:flex;
-      gap:18px;
-    }
+.ticker-item::before{
+  content:"◆";
+  color:var(--green);
+  font-size:8px;
+}
 
-    /* =========================
-       WHATSAPP FLOTANTE
-    ========================= */
+@keyframes ticker{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
 
-    .wa{
-      position:fixed;
-      right:20px;
-      bottom:20px;
-      z-index:100;
-      width:58px;
-      height:58px;
-      border-radius:50%;
-      display:grid;
-      place-items:center;
-      background:var(--green);
-      color:#061108;
-      font-weight:900;
-      box-shadow:0 8px 30px rgba(0,0,0,.45);
-    }
+/* =========================
+   GENERAL
+========================= */
 
-    /* =========================
-       RESPONSIVE
-    ========================= */
+.section{
+  padding:110px 7%;
+}
 
-    @media(max-width:850px){
+.section-dark{
+  background:var(--dark);
+}
 
-      nav{
-        display:none;
-      }
+.section-title{
+  max-width:780px;
+  margin-bottom:55px;
+}
 
-      .grid,
-      .media-grid{
-        grid-template-columns:1fr 1fr;
-      }
+.section-label{
+  color:var(--green);
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-bottom:14px;
+}
 
-      .process{
-        grid-template-columns:1fr 1fr;
-      }
-    }
+.section-title h2{
+  font-size:clamp(34px,4.5vw,60px);
+  line-height:1.05;
+  letter-spacing:-2px;
+  margin-bottom:18px;
+}
 
-    @media(max-width:560px){
+.section-title p{
+  color:var(--gray);
+  font-size:17px;
+  line-height:1.7;
+}
 
-      .grid,
-      .media-grid,
-      .process{
-        grid-template-columns:1fr;
-      }
+/* =========================
+   FLOW
+========================= */
 
-      .hero{
-        padding-top:65px;
-      }
+.flow-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
 
-      .brand span{
-        font-size:14px;
-      }
-    }
-  </style>
+.flow-card{
+  position:relative;
+  min-height:235px;
+  padding:28px;
+  background:linear-gradient(145deg,#101618,#090c0d);
+  border:1px solid var(--line);
+  border-radius:16px;
+  overflow:hidden;
+  transition:.3s ease;
+}
+
+.flow-card:hover{
+  transform:translateY(-7px);
+  border-color:rgba(25,209,127,.35);
+}
+
+.flow-number{
+  font-size:12px;
+  font-weight:900;
+  color:var(--green);
+  margin-bottom:35px;
+}
+
+.flow-card h3{
+  font-size:22px;
+  margin-bottom:11px;
+}
+
+.flow-card p{
+  color:var(--gray);
+  line-height:1.6;
+  font-size:14px;
+}
+
+.flow-arrow{
+  position:absolute;
+  right:20px;
+  top:27px;
+  color:#364042;
+  font-size:24px;
+}
+
+@media(max-width:900px){
+  .flow-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:580px){
+  .section{
+    padding:75px 20px;
+  }
+
+  .flow-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+/* =========================
+   INTERNATIONAL
+========================= */
+
+.international{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 85% 40%,rgba(25,209,127,.12),transparent 30%),
+    #080b0c;
+}
+
+.international-inner{
+  max-width:1000px;
+}
+
+.international h2{
+  font-size:clamp(36px,5vw,64px);
+  line-height:1.04;
+  letter-spacing:-2px;
+  margin-bottom:25px;
+}
+
+.international h2 strong{
+  color:var(--green);
+}
+
+.international p{
+  max-width:760px;
+  color:#bbc5c7;
+  font-size:18px;
+  line-height:1.7;
+}
+
+/* =========================
+   INTERFACE
+========================= */
+
+.interface-section{
+  background:#050708;
+}
+
+.interface-stack{
+  max-width:1050px;
+  margin:auto;
+  display:grid;
+  gap:30px;
+}
+
+.interface-card{
+  position:relative;
+  opacity:0;
+  transform:translateY(60px) scale(.97);
+  transition:opacity .8s ease,transform .8s ease;
+  border-radius:20px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.09);
+  box-shadow:var(--shadow);
+  background:#0c1011;
+}
+
+.interface-card.visible{
+  opacity:1;
+  transform:translateY(0) scale(1);
+}
+
+.interface-card img{
+  width:100%;
+  height:auto;
+}
+
+/* =========================
+   TESTIMONIALS
+========================= */
+
+.testimonials{
+  background:var(--dark);
+}
+
+.video-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:22px;
+}
+
+.video-card{
+  background:#080b0c;
+  border:1px solid var(--line);
+  border-radius:16px;
+  overflow:hidden;
+}
+
+.video-wrapper{
+  position:relative;
+  background:#000;
+  cursor:pointer;
+  overflow:hidden;
+}
+
+.video-wrapper video{
+  width:100%;
+  display:block;
+  aspect-ratio:16/9;
+  object-fit:cover;
+  background:#000;
+}
+
+.video-info{
+  padding:18px 20px 21px;
+}
+
+.video-info h3{
+  font-size:17px;
+  margin-bottom:6px;
+}
+
+.video-info p{
+  color:var(--gray);
+  font-size:13px;
+}
+
+.video-hint{
+  display:inline-block;
+  margin-top:11px;
+  color:var(--green);
+  font-size:11px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+/* =========================
+   VIDEO OVERLAY
+========================= */
+
+.video-overlay{
+  position:fixed;
+  inset:0;
+  z-index:5000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,.94);
+  padding:40px;
+  opacity:0;
+  transition:opacity .25s ease;
+}
+
+.video-overlay.active{
+  display:flex;
+  opacity:1;
+}
+
+.video-overlay-inner{
+  position:relative;
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.video-overlay video{
+  display:block;
+  width:auto;
+  height:auto;
+  max-width:calc(100vw - 80px);
+  max-height:calc(100vh - 80px);
+  object-fit:contain;
+  background:#000;
+  border-radius:10px;
+  box-shadow:0 20px 80px rgba(0,0,0,.7);
+  cursor:pointer;
+}
+
+.video-close{
+  position:absolute;
+  top:0;
+  right:0;
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.25);
+  background:rgba(0,0,0,.65);
+  color:white;
+  font-size:27px;
+  line-height:1;
+  cursor:pointer;
+  z-index:10;
+  transition:.2s;
+}
+
+.video-close:hover{
+  background:var(--green);
+  color:#03110a;
+}
+
+.video-overlay-hint{
+  position:absolute;
+  bottom:5px;
+  left:50%;
+  transform:translateX(-50%);
+  color:rgba(255,255,255,.65);
+  font-size:11px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  pointer-events:none;
+}
+
+@media(max-width:760px){
+
+  .video-grid{
+    grid-template-columns:1fr;
+  }
+
+  .video-overlay{
+    padding:15px;
+  }
+
+  .video-overlay video{
+    max-width:calc(100vw - 30px);
+    max-height:calc(100vh - 30px);
+    border-radius:6px;
+  }
+
+  .video-close{
+    top:5px;
+    right:5px;
+    width:42px;
+    height:42px;
+  }
+
+  .video-overlay-hint{
+    bottom:-2px;
+    white-space:nowrap;
+    font-size:9px;
+  }
+}
+
+/* =========================
+   PLANES
+========================= */
+
+.plans{
+  background:#050607;
+}
+
+.plans-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+  align-items:start;
+}
+
+.plan-card{
+  border:1px solid var(--line);
+  background:#0b0f10;
+  border-radius:18px;
+  overflow:hidden;
+  transition:.3s ease;
+}
+
+.plan-card:hover{
+  transform:translateY(-6px);
+  border-color:rgba(25,209,127,.35);
+  box-shadow:var(--shadow);
+}
+
+.plan-card img{
+  width:100%;
+  height:auto;
+}
+
+.plan-button{
+  display:block;
+  margin:18px;
+  text-align:center;
+}
+
+@media(max-width:900px){
+  .plans-grid{
+    grid-template-columns:1fr;
+    max-width:650px;
+    margin:auto;
+  }
+}
+
+/* =========================
+   FINAL CTA
+========================= */
+
+.final-cta{
+  position:relative;
+  text-align:center;
+  padding:120px 20px;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at center,rgba(25,209,127,.13),transparent 40%),
+    #070a0b;
+}
+
+.final-cta-inner{
+  position:relative;
+  z-index:2;
+  max-width:850px;
+  margin:auto;
+}
+
+.final-cta h2{
+  font-size:clamp(38px,6vw,72px);
+  line-height:1;
+  letter-spacing:-3px;
+  margin-bottom:20px;
+}
+
+.final-cta h2 strong{
+  color:var(--green);
+}
+
+.final-cta p{
+  color:#b8c1c3;
+  font-size:18px;
+  line-height:1.6;
+  margin-bottom:30px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  background:#030405;
+  border-top:1px solid var(--line);
+  padding:45px 7% 35px;
+}
+
+.footer-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:25px;
+}
+
+.footer-brand{
+  font-weight:900;
+  letter-spacing:1.3px;
+}
+
+.footer-brand span{
+  color:var(--green);
+}
+
+.socials{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.social{
+  width:42px;
+  height:42px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  border:1px solid var(--line);
+  background:#090c0d;
+  transition:.25s;
+}
+
+.social:hover{
+  border-color:var(--green);
+  transform:translateY(-3px);
+}
+
+.social svg{
+  width:20px;
+  height:20px;
+  fill:white;
+}
+
+.footer-copy{
+  margin-top:30px;
+  color:#667174;
+  font-size:11px;
+}
+
+@media(max-width:650px){
+  .footer-inner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+}
+
+/* =========================
+   FLOATING WHATSAPP
+========================= */
+
+.floating-whatsapp{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  background:#25D366;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+  box-shadow:0 10px 30px rgba(0,0,0,.45);
+  transition:.25s;
+}
+
+.floating-whatsapp:hover{
+  transform:scale(1.08);
+}
+
+.floating-whatsapp svg{
+  width:31px;
+  height:31px;
+  fill:white;
+}
+
+@media(max-width:480px){
+  .floating-whatsapp{
+    width:54px;
+    height:54px;
+    right:15px;
+    bottom:15px;
+  }
+
+  .floating-whatsapp svg{
+    width:28px;
+    height:28px;
+  }
+}
+</style>
 </head>
 
 <body>
 
 <!-- =========================
-     HEADER
+     NAVBAR
 ========================= -->
 
-<header>
+<nav class="navbar">
 
-  <div class="wrap nav">
+  <a href="#inicio" class="brand">
+    <div class="brand-mark"></div>
+    A SOLO <span>UNCLICK</span>
+  </a>
 
-    <a class="brand" href="#">
+  <div class="nav-links">
 
-      <img
-        src="Logotipo%20de%20Asolo%20UnClick.jpeg"
-        alt="A Solo UnClick"
-      >
+    <a href="#sistema">Cómo funciona</a>
+    <a href="#testimonios">Resultados</a>
+    <a href="#planes">Planes</a>
 
-      <span>A Solo UnClick</span>
-
+    <a
+      href="https://wa.me/56976169158?text=Hola%2C%20quiero%20mis%205%20d%C3%ADas%20gratis"
+      class="nav-cta"
+      target="_blank"
+      rel="noopener"
+    >
+      5 DÍAS GRATIS
     </a>
-
-    <nav>
-
-      <a href="#servicios">Servicios</a>
-
-      <a href="#proceso">Proceso</a>
-
-      <a href="#testimonios">Testimonios</a>
-
-      <a href="#industrias">Sectores</a>
-
-      <a
-        class="btn"
-        href="https://wa.me/56976169158?text=Hola%20A%20Solo%20UnClick%2C%20quiero%20saber%20como%20pueden%20conseguir%20clientes%20para%20mi%20negocio."
-        target="_blank"
-      >
-        WhatsApp
-      </a>
-
-    </nav>
 
   </div>
 
-</header>
+</nav>
 
-
-<main>
 
 <!-- =========================
      HERO
 ========================= -->
 
-<section class="hero">
+<section class="hero" id="inicio">
 
-  <div class="wrap">
+  <div class="hero-bg">
+
+    <img
+      src="banner1.jpeg"
+      class="hero-banner active"
+      alt="A Solo UnClick"
+    >
+
+    <img
+      src="banner2.jpeg"
+      class="hero-banner"
+      alt="A Solo UnClick"
+    >
+
+  </div>
+
+  <div class="hero-content">
 
     <div class="eyebrow">
-      A Solo UnClick
+      Clientes directo a tu WhatsApp
     </div>
 
     <h1>
-      MÁS CLIENTES.<br>
-      DIRECTO A TU WHATSAPP.
+      Llevamos clientes<br>
+      directo a tu <strong>WhatsApp.</strong>
     </h1>
 
     <p>
-      No necesitas seguidores. Necesitas clientes.
-      Creamos y optimizamos campañas para convertir
-      la atención de personas interesadas en conversaciones
-      comerciales por WhatsApp.
+      No necesitas seguidores, necesitas clientes.
+      Creamos campañas que encuentran personas interesadas,
+      las llevan directamente a WhatsApp y convierten esas
+      conversaciones en oportunidades reales de negocio.
     </p>
 
     <div class="hero-actions">
 
       <a
-        class="btn"
-        href="https://wa.me/56976169158?text=Hola%20A%20Solo%20UnClick%2C%20quiero%20conseguir%20mas%20clientes."
+        href="https://wa.me/56976169158?text=Hola%2C%20quiero%20mis%205%20d%C3%ADas%20gratis"
+        class="btn btn-primary"
         target="_blank"
+        rel="noopener"
       >
-        Quiero más clientes
+
+        <svg class="whatsapp-icon" viewBox="0 0 448 512">
+          <path d="M380.9 97.1C339-4.1 224.4-34.8 128.6 10.9 32.7 56.6-11.7 169.3 22.1 267.8L1 345.2l79.2-20.7c40.4 22 88.4 33.7 136.1 27.5 95.8-12.5 164.6-101.5 152.1-197.3-4.3-33.2-17.3-63.2-37.5-87.6zM217 324.6c-42.3 0-83.8-11.4-119.7-33l-5.4-3.2-47 12.3 12.5-45.8-3.5-5.9c-20.9-35.4-31.9-76-31.9-117.5 0-126 102.5-228.5 228.5-228.5 61.1 0 118.5 23.8 161.7 67s67 100.6 67 161.7c0 126-102.5 228.9-228.5 228.9zm125.1-171.2c-6.8-3.4-40.3-19.9-46.6-22.1-6.3-2.3-10.8-3.4-15.4 3.4-4.6 6.8-17.6 22.1-21.6 26.7-4 4.6-7.9 5.1-14.7 1.7-6.8-3.4-28.8-10.6-54.8-33.8-20.3-18.1-34-40.5-38-47.3-4-6.8-.4-10.5 3-13.9 3.1-3.1 6.8-7.9 10.2-11.9 3.4-4 4.5-6.8 6.8-11.4 2.3-4.6 1.1-8.5-.6-11.9-1.7-3.4-15.4-37.1-21.1-50.8-5.6-13.5-11.3-11.7-15.4-11.9-4-.2-8.5-.2-13-.2s-11.9 1.7-18.1 8.5c-6.2 6.8-23.8 23.2-23.8 56.6s24.4 65.7 27.8 70.2c3.4 4.6 48 73.3 116.4 102.8 16.3 7 29 11.2 38.9 14.3 16.3 5.2 31.1 4.5 42.8 2.7 13.1-2 40.3-16.5 46-32.5 5.7-16 5.7-29.7 4-32.5-1.7-2.8-6.2-4.5-13-7.9z"/>
+        </svg>
+
+        QUIERO MIS 5 DÍAS GRATIS
+
       </a>
 
-      <a
-        class="btn"
-        style="background:#1a1a1a;color:#fff;border:1px solid #333"
-        href="#servicios"
-      >
-        Ver servicios
+      <a href="#sistema" class="btn btn-secondary">
+        VER CÓMO FUNCIONA
       </a>
 
+    </div>
+
+    <div class="hero-note">
+      Sin compromiso inicial · Atención directa · Clientes por WhatsApp
     </div>
 
   </div>
@@ -454,93 +1010,96 @@
 
 
 <!-- =========================
-     SERVICIOS
+     TICKER
 ========================= -->
 
-<section id="servicios">
+<div class="ticker">
 
-  <div class="wrap">
+  <div class="ticker-track">
 
-    <div class="section-head">
+    <div class="ticker-item">Meta Ads</div>
+    <div class="ticker-item">Google Ads</div>
+    <div class="ticker-item">WhatsApp</div>
+    <div class="ticker-item">Clientes</div>
+    <div class="ticker-item">Conversaciones</div>
+    <div class="ticker-item">Resultados</div>
 
-      <div class="eyebrow">
-        Qué hacemos
-      </div>
+    <div class="ticker-item">Meta Ads</div>
+    <div class="ticker-item">Google Ads</div>
+    <div class="ticker-item">WhatsApp</div>
+    <div class="ticker-item">Clientes</div>
+    <div class="ticker-item">Conversaciones</div>
+    <div class="ticker-item">Resultados</div>
 
-      <h2>
-        Marketing orientado a resultados.
-      </h2>
+  </div>
 
+</div>
+
+
+<!-- =========================
+     SISTEMA
+========================= -->
+
+<section class="section section-dark" id="sistema">
+
+  <div class="section-title">
+
+    <div class="section-label">
+      Nuestro sistema
+    </div>
+
+    <h2>
+      De una persona interesada
+      a una conversación real.
+    </h2>
+
+    <p>
+      No buscamos solamente tráfico, likes o seguidores.
+      Nuestro objetivo es llevar personas con intención de compra
+      directamente al WhatsApp de tu negocio.
+    </p>
+
+  </div>
+
+  <div class="flow-grid">
+
+    <div class="flow-card">
+      <div class="flow-number">01</div>
+      <h3>Publicidad</h3>
       <p>
-        El objetivo no es acumular métricas de vanidad.
-        Es generar oportunidades comerciales que puedan
-        convertirse en cotizaciones y ventas.
+        Utilizamos Meta Ads y Google Ads para encontrar
+        personas que pueden necesitar tu producto o servicio.
       </p>
-
+      <div class="flow-arrow">→</div>
     </div>
 
+    <div class="flow-card">
+      <div class="flow-number">02</div>
+      <h3>Interés</h3>
+      <p>
+        El anuncio presenta una propuesta clara
+        diseñada para captar la atención de potenciales clientes.
+      </p>
+      <div class="flow-arrow">→</div>
+    </div>
 
-    <div class="grid">
+    <div class="flow-card">
+      <div class="flow-number">03</div>
+      <h3>WhatsApp</h3>
+      <p>
+        La persona interesada entra directamente
+        en conversación con tu negocio.
+      </p>
+      <div class="flow-arrow">→</div>
+    </div>
 
-      <article class="card">
-        <div class="number">01</div>
-        <h3>Meta Ads</h3>
-        <p>
-          Campañas en Facebook e Instagram orientadas
-          a generar conversaciones y leads.
-        </p>
-      </article>
-
-
-      <article class="card">
-        <div class="number">02</div>
-        <h3>Google Ads</h3>
-        <p>
-          Capturamos demanda de personas que ya están
-          buscando productos o servicios.
-        </p>
-      </article>
-
-
-      <article class="card">
-        <div class="number">03</div>
-        <h3>WhatsApp Marketing</h3>
-        <p>
-          Diseñamos el recorrido desde el anuncio
-          hasta la conversación comercial.
-        </p>
-      </article>
-
-
-      <article class="card">
-        <div class="number">04</div>
-        <h3>Creatividades</h3>
-        <p>
-          Imágenes, videos y mensajes pensados para
-          detener el scroll y provocar acción.
-        </p>
-      </article>
-
-
-      <article class="card">
-        <div class="number">05</div>
-        <h3>Optimización</h3>
-        <p>
-          Analizamos costo por conversación, CTR,
-          volumen y calidad de los leads para mejorar campañas.
-        </p>
-      </article>
-
-
-      <article class="card">
-        <div class="number">06</div>
-        <h3>Generación de Leads</h3>
-        <p>
-          Construimos sistemas de captación para negocios
-          locales y empresas de servicios.
-        </p>
-      </article>
-
+    <div class="flow-card">
+      <div class="flow-number">04</div>
+      <h3>Cliente</h3>
+      <p>
+        Tu negocio recibe una oportunidad real
+        de venta y puede cerrar directamente por WhatsApp.
+      </p>
     </div>
 
   </div>
@@ -549,53 +1108,78 @@
 
 
 <!-- =========================
-     PROCESO
+     INTERNATIONAL
 ========================= -->
 
-<section id="proceso">
+<section class="section international">
 
-  <div class="wrap">
+  <div class="international-inner">
 
-    <div class="section-head">
-
-      <div class="eyebrow">
-        El sistema
-      </div>
-
-      <h2>
-        Del anuncio al cliente.
-      </h2>
-
+    <div class="section-label">
+      Sin fronteras
     </div>
 
+    <h2>
+      Tu negocio puede conseguir clientes
+      <strong>desde cualquier lugar.</strong>
+    </h2>
 
-    <div class="process">
+    <p>
+      Nuestro sistema puede llevar personas interesadas
+      directamente al WhatsApp de un negocio desde cualquier
+      lugar del mundo. La ubicación ya no es una barrera para
+      captar nuevos clientes.
+    </p>
 
-      <div class="step">
-        <span class="number">01</span>
-        <strong>Anuncio</strong>
-      </div>
+  </div>
 
-      <div class="step">
-        <span class="number">02</span>
-        <strong>Interés</strong>
-      </div>
+</section>
 
-      <div class="step">
-        <span class="number">03</span>
-        <strong>WhatsApp</strong>
-      </div>
 
-      <div class="step">
-        <span class="number">04</span>
-        <strong>Cotización</strong>
-      </div>
+<!-- =========================
+     INTERFAZ
+========================= -->
 
-      <div class="step">
-        <span class="number">05</span>
-        <strong>Cliente</strong>
-      </div>
+<section class="section interface-section" id="interfaz">
 
+  <div class="section-title">
+
+    <div class="section-label">
+      Centro de operaciones
+    </div>
+
+    <h2>
+      Esto es lo que realmente hacemos.
+    </h2>
+
+    <p>
+      Gestión, campañas, seguimiento y optimización.
+      Nuestro trabajo está diseñado para convertir publicidad
+      en conversaciones comerciales.
+    </p>
+
+  </div>
+
+  <div class="interface-stack">
+
+    <div class="interface-card">
+      <img src="pantallazointerfaz1.jpeg" alt="Interfaz A Solo UnClick 1">
+    </div>
+
+    <div class="interface-card">
+      <img src="pantallazointerfaz2.jpeg" alt="Interfaz A Solo UnClick 2">
+    </div>
+
+    <div class="interface-card">
+      <img src="pantallazointerfaz3.jpeg" alt="Interfaz A Solo UnClick 3">
+    </div>
+
+    <div class="interface-card">
+      <img src="pantallazointerfaz4.jpeg" alt="Interfaz A Solo UnClick 4">
+    </div>
+
+    <div class="interface-card">
+      <img src="pantallazointerfaz5.jpeg" alt="Interfaz A Solo UnClick 5">
     </div>
 
   </div>
@@ -605,76 +1189,194 @@
 
 <!-- =========================
      TESTIMONIOS
-     
-     SOLO SE DEJAN:
-     1. Fernando
-     2. Mudanzas Los Mendez
-
-     ELIMINADOS:
-     - Gini Transporta Guliana
-     - Pablo Pinzón Colombia
 ========================= -->
 
-<section id="testimonios">
+<section class="section testimonials" id="testimonios">
 
-  <div class="wrap">
+  <div class="section-title">
 
-    <div class="section-head">
+    <div class="section-label">
+      Testimonios
+    </div>
 
-      <div class="eyebrow">
-        Prueba social
+    <h2>
+      Empresas que ya probaron el sistema.
+    </h2>
+
+    <p>
+      Pulsa cualquier video para verlo ampliado y completo.
+    </p>
+
+  </div>
+
+
+  <div class="video-grid">
+
+
+    <!-- =========================
+         VIDEO 1
+         ARCHIVO EXACTO
+    ========================= -->
+
+    <div class="video-card">
+
+      <div class="video-wrapper">
+
+        <video
+          class="testimonial-video"
+          data-video-file="testimonio fernando chile.mp4"
+          muted
+          autoplay
+          loop
+          playsinline
+          webkit-playsinline
+          preload="auto"
+        >
+          <source
+            src="testimonio%20fernando%20chile.mp4"
+            type="video/mp4"
+          >
+        </video>
+
       </div>
 
-      <h2>
-        Testimonios de clientes.
-      </h2>
+      <div class="video-info">
 
-      <p>
-        Experiencias reales de negocios que han trabajado
-        campañas de captación.
-      </p>
+        <h3>Fernando · Chile</h3>
+
+        <p>Testimonio de cliente.</p>
+
+        <span class="video-hint">
+          Pulsa para ampliar y reproducir
+        </span>
+
+      </div>
 
     </div>
 
 
-    <div class="media-grid">
+    <!-- =========================
+         VIDEO 2
+         ARCHIVO EXACTO
+    ========================= -->
 
+    <div class="video-card">
 
-      <!-- FERNANDO -->
-
-      <article class="media">
-
-        <video
-          controls
-          preload="metadata"
-          playsinline
-          src="testimonio%20fernando%20chile.mp4"
-        ></video>
-
-        <div class="caption">
-          Testimonio — Fernando, Chile
-        </div>
-
-      </article>
-
-
-      <!-- MUDANZAS LOS MENDEZ -->
-
-      <article class="media">
+      <div class="video-wrapper">
 
         <video
-          controls
-          preload="metadata"
+          class="testimonial-video"
+          data-video-file="testimonio gini transporta guliana 3.mp4"
+          muted
+          autoplay
+          loop
           playsinline
-          src="testimonio%20mudanzas%20los%20mendez.mp4"
-        ></video>
+          webkit-playsinline
+          preload="auto"
+        >
+          <source
+            src="testimonio%20gini%20transporta%20guliana%203.mp4"
+            type="video/mp4"
+          >
+        </video>
 
-        <div class="caption">
-          Testimonio — Mudanzas Los Mendez
-        </div>
+      </div>
 
-      </article>
+      <div class="video-info">
 
+        <h3>Gini · Transporta Guliana</h3>
+
+        <p>Testimonio de cliente.</p>
+
+        <span class="video-hint">
+          Pulsa para ampliar y reproducir
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <!-- =========================
+         VIDEO 3
+         ARCHIVO EXACTO
+    ========================= -->
+
+    <div class="video-card">
+
+      <div class="video-wrapper">
+
+        <video
+          class="testimonial-video"
+          data-video-file="testimonio mudanzas los mendez.mp4"
+          muted
+          autoplay
+          loop
+          playsinline
+          webkit-playsinline
+          preload="auto"
+        >
+          <source
+            src="testimonio%20mudanzas%20los%20mendez.mp4"
+            type="video/mp4"
+          >
+        </video>
+
+      </div>
+
+      <div class="video-info">
+
+        <h3>Mudanzas Los Méndez</h3>
+
+        <p>Testimonio de cliente.</p>
+
+        <span class="video-hint">
+          Pulsa para ampliar y reproducir
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <!-- =========================
+         VIDEO 4
+         ARCHIVO EXACTO
+    ========================= -->
+
+    <div class="video-card">
+
+      <div class="video-wrapper">
+
+        <video
+          class="testimonial-video"
+          data-video-file="testimonio pablo pinzón colombia.mp4"
+          muted
+          autoplay
+          loop
+          playsinline
+          webkit-playsinline
+          preload="auto"
+        >
+          <source
+            src="testimonio%20pablo%20pinz%C3%B3n%20colombia.mp4"
+            type="video/mp4"
+          >
+        </video>
+
+      </div>
+
+      <div class="video-info">
+
+        <h3>Pablo Pinzón · Colombia</h3>
+
+        <p>Testimonio de cliente.</p>
+
+        <span class="video-hint">
+          Pulsa para ampliar y reproducir
+        </span>
+
+      </div>
 
     </div>
 
@@ -684,105 +1386,128 @@
 
 
 <!-- =========================
-     SECTORES
+     VIDEO OVERLAY
 ========================= -->
 
-<section id="industrias">
+<div
+  class="video-overlay"
+  id="videoOverlay"
+  aria-hidden="true"
+>
 
-  <div class="wrap">
+  <div class="video-overlay-inner">
 
-    <div class="section-head">
+    <video
+      id="expandedVideo"
+      playsinline
+      webkit-playsinline
+      preload="auto"
+    ></video>
 
-      <div class="eyebrow">
-        Especialización
-      </div>
+    <button
+      type="button"
+      class="video-close"
+      id="videoClose"
+      aria-label="Cerrar video"
+    >
+      ×
+    </button>
 
-      <h2>
-        Especialmente útil para negocios que necesitan clientes.
-      </h2>
-
-    </div>
-
-
-    <div class="grid">
-
-      <article class="card">
-
-        <h3>
-          Fletes y mudanzas
-        </h3>
-
-        <p>
-          Campañas para captar personas que necesitan
-          trasladar muebles, cargas o realizar una mudanza.
-        </p>
-
-      </article>
-
-
-      <article class="card">
-
-        <h3>
-          Transportes
-        </h3>
-
-        <p>
-          Generación de oportunidades comerciales para
-          servicios de transporte y carga.
-        </p>
-
-      </article>
-
-
-      <article class="card">
-
-        <h3>
-          Negocios locales
-        </h3>
-
-        <p>
-          Sistemas de captación orientados a personas
-          dentro del área donde opera tu negocio.
-        </p>
-
-      </article>
-
+    <div class="video-overlay-hint">
+      Pulsa nuevamente para volver
     </div>
 
   </div>
 
-</section>
+</div>
 
 
 <!-- =========================
-     CTA
+     PLANES
 ========================= -->
 
-<section>
+<section class="section plans" id="planes">
 
-  <div class="wrap">
+  <div class="section-title">
 
-    <div class="cta">
+    <div class="section-label">
+      Planes
+    </div>
 
-      <div class="eyebrow">
-        Empieza con nosotros
-      </div>
+    <h2>
+      Elige cómo quieres comenzar.
+    </h2>
 
-      <h2>
-        5 DÍAS GRATIS DE NUESTRA GESTIÓN
-      </h2>
+    <p>
+      Conoce nuestras alternativas de gestión y comienza
+      llevando clientes directamente a tu WhatsApp.
+    </p>
 
-      <p>
-        Probamos el sistema, medimos la respuesta
-        y analizamos las oportunidades generadas.
-      </p>
+  </div>
+
+  <div class="plans-grid">
+
+    <div class="plan-card">
+
+      <img src="planmensual1.jpeg" alt="Plan mensual 1">
 
       <a
-        class="btn"
-        href="https://wa.me/56976169158?text=Hola%20A%20Solo%20UnClick%2C%20quiero%20los%205%20dias%20gratis%20de%20gestion."
+        href="https://wa.me/56976169158?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20plan%201"
+        class="btn btn-primary plan-button"
         target="_blank"
+        rel="noopener"
       >
-        Hablar por WhatsApp
+
+        <svg class="whatsapp-icon" viewBox="0 0 448 512">
+          <path d="M380.9 97.1C339-4.1 224.4-34.8 128.6 10.9 32.7 56.6-11.7 169.3 22.1 267.8L1 345.2l79.2-20.7c40.4 22 88.4 33.7 136.1 27.5 95.8-12.5 164.6-101.5 152.1-197.3-4.3-33.2-17.3-63.2-37.5-87.6zM217 324.6c-42.3 0-83.8-11.4-119.7-33l-5.4-3.2-47 12.3 12.5-45.8-3.5-5.9c-20.9-35.4-31.9-76-31.9-117.5 0-126 102.5-228.5 228.5-228.5 61.1 0 118.5 23.8 161.7 67s67 100.6 67 161.7c0 126-102.5 228.9-228.5 228.9zm125.1-171.2c-6.8-3.4-40.3-19.9-46.6-22.1-6.3-2.3-10.8-3.4-15.4 3.4-4.6 6.8-17.6 22.1-21.6 26.7-4 4.6-7.9 5.1-14.7 1.7-6.8-3.4-28.8-10.6-54.8-33.8-20.3-18.1-34-40.5-38-47.3-4-6.8-.4-10.5 3-13.9 3.1-3.1 6.8-7.9 10.2-11.9 3.4-4 4.5-6.8 6.8-11.4 2.3-4.6 1.1-8.5-.6-11.9-1.7-3.4-15.4-37.1-21.1-50.8-5.6-13.5-11.3-11.7-15.4-11.9-4-.2-8.5-.2-13-.2s-11.9 1.7-18.1 8.5c-6.2 6.8-23.8 23.2-23.8 56.6s24.4 65.7 27.8 70.2c3.4 4.6 48 73.3 116.4 102.8 16.3 7 29 11.2 38.9 14.3 16.3 5.2 31.1 4.5 42.8 2.7 13.1-2 40.3-16.5 46-32.5 5.7-16 5.7-29.7 4-32.5-1.7-2.8-6.2-4.5-13-7.9z"/>
+        </svg>
+
+        QUIERO INFORMACIÓN
+
+      </a>
+
+    </div>
+
+
+    <div class="plan-card">
+
+      <img src="planmensual2.jpeg" alt="Plan mensual 2">
+
+      <a
+        href="https://wa.me/56976169158?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20plan%202"
+        class="btn btn-primary plan-button"
+        target="_blank"
+        rel="noopener"
+      >
+
+        <svg class="whatsapp-icon" viewBox="0 0 448 512">
+          <path d="M380.9 97.1C339-4.1 224.4-34.8 128.6 10.9 32.7 56.6-11.7 169.3 22.1 267.8L1 345.2l79.2-20.7c40.4 22 88.4 33.7 136.1 27.5 95.8-12.5 164.6-101.5 152.1-197.3-4.3-33.2-17.3-63.2-37.5-87.6zM217 324.6c-42.3 0-83.8-11.4-119.7-33l-5.4-3.2-47 12.3 12.5-45.8-3.5-5.9c-20.9-35.4-31.9-76-31.9-117.5 0-126 102.5-228.5 228.5-228.5 61.1 0 118.5 23.8 161.7 67s67 100.6 67 161.7c0 126-102.5 228.9-228.5 228.9zm125.1-171.2c-6.8-3.4-40.3-19.9-46.6-22.1-6.3-2.3-10.8-3.4-15.4 3.4-4.6 6.8-17.6 22.1-21.6 26.7-4 4.6-7.9 5.1-14.7 1.7-6.8-3.4-28.8-10.6-54.8-33.8-20.3-18.1-34-40.5-38-47.3-4-6.8-.4-10.5 3-13.9 3.1-3.1 6.8-7.9 10.2-11.9 3.4-4 4.5-6.8 6.8-11.4 2.3-4.6 1.1-8.5-.6-11.9-1.7-3.4-15.4-37.1-21.1-50.8-5.6-13.5-11.3-11.7-15.4-11.9-4-.2-8.5-.2-13-.2s-11.9 1.7-18.1 8.5c-6.2 6.8-23.8 23.2-23.8 56.6s24.4 65.7 27.8 70.2c3.4 4.6 48 73.3 116.4 102.8 16.3 7 29 11.2 38.9 14.3 16.3 5.2 31.1 4.5 42.8 2.7 13.1-2 40.3-16.5 46-32.5 5.7-16 5.7-29.7 4-32.5-1.7-2.8-6.2-4.5-13-7.9z"/>
+        </svg>
+
+        QUIERO INFORMACIÓN
+
+      </a>
+
+    </div>
+
+
+    <div class="plan-card">
+
+      <img src="planmensual3.jpeg" alt="Plan mensual 3">
+
+      <a
+        href="https://wa.me/56976169158?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20plan%203"
+        class="btn btn-primary plan-button"
+        target="_blank"
+        rel="noopener"
+      >
+
+        <svg class="whatsapp-icon" viewBox="0 0 448 512">
+          <path d="M380.9 97.1C339-4.1 224.4-34.8 128.6 10.9 32.7 56.6-11.7 169.3 22.1 267.8L1 345.2l79.2-20.7c40.4 22 88.4 33.7 136.1 27.5 95.8-12.5 164.6-101.5 152.1-197.3-4.3-33.2-17.3-63.2-37.5-87.6zM217 324.6c-42.3 0-83.8-11.4-119.7-33l-5.4-3.2-47 12.3 12.5-45.8-3.5-5.9c-20.9-35.4-31.9-76-31.9-117.5 0-126 102.5-228.5 228.5-228.5 61.1 0 118.5 23.8 161.7 67s67 100.6 67 161.7c0 126-102.5 228.9-228.5 228.9zm125.1-171.2c-6.8-3.4-40.3-19.9-46.6-22.1-6.3-2.3-10.8-3.4-15.4 3.4-4.6 6.8-17.6 22.1-21.6 26.7-4 4.6-7.9 5.1-14.7 1.7-6.8-3.4-28.8-10.6-54.8-33.8-20.3-18.1-34-40.5-38-47.3-4-6.8-.4-10.5 3-13.9 3.1-3.1 6.8-7.9 10.2-11.9 3.4-4 4.5-6.8 6.8-11.4 2.3-4.6 1.1-8.5-.6-11.9-1.7-3.4-15.4-37.1-21.1-50.8-5.6-13.5-11.3-11.7-15.4-11.9-4-.2-8.5-.2-13-.2s-11.9 1.7-18.1 8.5c-6.2 6.8-23.8 23.2-23.8 56.6s24.4 65.7 27.8 70.2c3.4 4.6 48 73.3 116.4 102.8 16.3 7 29 11.2 38.9 14.3 16.3 5.2 31.1 4.5 42.8 2.7 13.1-2 40.3-16.5 46-32.5 5.7-16 5.7-29.7 4-32.5-1.7-2.8-6.2-4.5-13-7.9z"/>
+        </svg>
+
+        QUIERO INFORMACIÓN
+
       </a>
 
     </div>
@@ -791,7 +1516,46 @@
 
 </section>
 
-</main>
+
+<!-- =========================
+     FINAL CTA
+========================= -->
+
+<section class="final-cta">
+
+  <div class="final-cta-inner">
+
+    <div class="section-label">
+      Empieza ahora
+    </div>
+
+    <h2>
+      Prueba <strong>5 días gratis.</strong>
+    </h2>
+
+    <p>
+      Conoce cómo podemos llevar clientes directamente
+      al WhatsApp de tu negocio antes de tomar una decisión.
+    </p>
+
+    <a
+      href="https://wa.me/56976169158?text=Hola%2C%20quiero%20mis%205%20d%C3%ADas%20gratis"
+      class="btn btn-primary"
+      target="_blank"
+      rel="noopener"
+    >
+
+      <svg class="whatsapp-icon" viewBox="0 0 448 512">
+        <path d="M380.9 97.1C339-4.1 224.4-34.8 128.6 10.9 32.7 56.6-11.7 169.3 22.1 267.8L1 345.2l79.2-20.7c40.4 22 88.4 33.7 136.1 27.5 95.8-12.5 164.6-101.5 152.1-197.3-4.3-33.2-17.3-63.2-37.5-87.6zM217 324.6c-42.3 0-83.8-11.4-119.7-33l-5.4-3.2-47 12.3 12.5-45.8-3.5-5.9c-20.9-35.4-31.9-76-31.9-117.5 0-126 102.5-228.5 228.5-228.5 61.1 0 118.5 23.8 161.7 67s67 100.6 67 161.7c0 126-102.5 228.9-228.5 228.9zm125.1-171.2c-6.8-3.4-40.3-19.9-46.6-22.1-6.3-2.3-10.8-3.4-15.4 3.4-4.6 6.8-17.6 22.1-21.6 26.7-4 4.6-7.9 5.1-14.7 1.7-6.8-3.4-28.8-10.6-54.8-33.8-20.3-18.1-34-40.5-38-47.3-4-6.8-.4-10.5 3-13.9 3.1-3.1 6.8-7.9 10.2-11.9 3.4-4 4.5-6.8 6.8-11.4 2.3-4.6 1.1-8.5-.6-11.9-1.7-3.4-15.4-37.1-21.1-50.8-5.6-13.5-11.3-11.7-15.4-11.9-4-.2-8.5-.2-13-.2s-11.9 1.7-18.1 8.5c-6.2 6.8-23.8 23.2-23.8 56.6s24.4 65.7 27.8 70.2c3.4 4.6 48 73.3 116.4 102.8 16.3 7 29 11.2 38.9 14.3 16.3 5.2 31.1 4.5 42.8 2.7 13.1-2 40.3-16.5 46-32.5 5.7-16 5.7-29.7 4-32.5-1.7-2.8-6.2-4.5-13-7.9z"/>
+      </svg>
+
+      QUIERO MIS 5 DÍAS GRATIS
+
+    </a>
+
+  </div>
+
+</section>
 
 
 <!-- =========================
@@ -800,60 +1564,672 @@
 
 <footer>
 
-  <div class="wrap footer-row">
+  <div class="footer-inner">
 
-    <div>
-      <strong>A Solo UnClick</strong>
-      <br>
-      Más clientes. Directo a tu WhatsApp.
+    <div class="footer-brand">
+      A SOLO <span>UNCLICK</span>
     </div>
-
 
     <div class="socials">
 
       <a
-        href="https://www.facebook.com/people/A-Solo-Un-Click/61591429061157/"
-        target="_blank"
-      >
-        Facebook
-      </a>
-
-
-      <a
-        href="https://www.instagram.com/asolounclickagencia"
-        target="_blank"
-      >
-        Instagram
-      </a>
-
-
-      <a
+        class="social"
         href="https://wa.me/56976169158"
         target="_blank"
+        rel="noopener"
+        aria-label="WhatsApp"
       >
-        WhatsApp
+
+        <svg viewBox="0 0 448 512">
+          <path d="M380.9 97.1C339-4.1 224.4-34.8 128.6 10.9 32.7 56.6-11.7 169.3 22.1 267.8L1 345.2l79.2-20.7c40.4 22 88.4 33.7 136.1 27.5 95.8-12.5 164.6-101.5 152.1-197.3-4.3-33.2-17.3-63.2-37.5-87.6zM217 324.6c-42.3 0-83.8-11.4-119.7-33l-5.4-3.2-47 12.3 12.5-45.8-3.5-5.9c-20.9-35.4-31.9-76-31.9-117.5 0-126 102.5-228.5 228.5-228.5 61.1 0 118.5 23.8 161.7 67s67 100.6 67 161.7c0 126-102.5 228.9-228.5 228.9zm125.1-171.2c-6.8-3.4-40.3-19.9-46.6-22.1-6.3-2.3-10.8-3.4-15.4 3.4-4.6 6.8-17.6 22.1-21.6 26.7-4 4.6-7.9 5.1-14.7 1.7-6.8-3.4-28.8-10.6-54.8-33.8-20.3-18.1-34-40.5-38-47.3-4-6.8-.4-10.5 3-13.9 3.1-3.1 6.8-7.9 10.2-11.9 3.4-4 4.5-6.8 6.8-11.4 2.3-4.6 1.1-8.5-.6-11.9-1.7-3.4-15.4-37.1-21.1-50.8-5.6-13.5-11.3-11.7-15.4-11.9-4-.2-8.5-.2-13-.2s-11.9 1.7-18.1 8.5c-6.2 6.8-23.8 23.2-23.8 56.6s24.4 65.7 27.8 70.2c3.4 4.6 48 73.3 116.4 102.8 16.3 7 29 11.2 38.9 14.3 16.3 5.2 31.1 4.5 42.8 2.7 13.1-2 40.3-16.5 46-32.5 5.7-16 5.7-29.7 4-32.5-1.7-2.8-6.2-4.5-13-7.9z"/>
+        </svg>
+
+      </a>
+
+      <a
+        class="social"
+        href="https://www.facebook.com/people/A-Solo-Un-Click/61591429061157/"
+        target="_blank"
+        rel="noopener"
+        aria-label="Facebook"
+      >
+
+        <svg viewBox="0 0 320 512">
+          <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06H297V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/>
+        </svg>
+
+      </a>
+
+      <a
+        class="social"
+        href="https://www.instagram.com/asolounclickagencia?stkn=MWJuZzJ2eW1lMGlyMw%3D%3D&fbclid=IwY2xjawUyGNxleHRuA2FlbQIxMABwZG9mAWJyaWQRMVdZVUo2VmxvOWlPRFhuZnZzcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEeBAaPDKlQNwwxEyMSPbgOEHSYldZkuMA3ddHWcQ4CRihVM8bCKy7RE2Wcg9c_aem_Anws3QwdDDsCAqxw2Nx5hA"
+        target="_blank"
+        rel="noopener"
+        aria-label="Instagram"
+      >
+
+        <svg viewBox="0 0 448 512">
+          <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8z"/>
+          <path d="M398.8 80c-7.8-20.7-24.1-37-44.8-44.8C319.7 25.3 224 25.3 224 25.3s-95.7 0-130 9.9C73.3 43 57 59.3 49.2 80 39.3 114.3 39.3 256 39.3 256s0 141.7 9.9 176c7.8 20.7 24.1 37 44.8 44.8 34.3 9.9 130 9.9 130 9.9s95.7 0 130-9.9c20.7-7.8 37-24.1 44.8-44.8 9.9-34.3 9.9-176 9.9-176s0-141.7-9.9-176zM224 338c-45.8 0-82.9-37.1-82.9-82.9s37.1-82.9 82.9-82.9 82.9 37.1 82.9 82.9S269.8 338 224 338z"/>
+        </svg>
+
       </a>
 
     </div>
 
   </div>
 
+  <div class="footer-copy">
+    © 2026 A Solo UnClick. Todos los derechos reservados.
+  </div>
+
 </footer>
 
 
 <!-- =========================
-     WHATSAPP FLOTANTE
+     FLOATING WHATSAPP
 ========================= -->
 
 <a
-  class="wa"
-  href="https://wa.me/56976169158"
+  href="https://wa.me/56976169158?text=Hola%2C%20quiero%20mis%205%20d%C3%ADas%20gratis"
+  class="floating-whatsapp"
   target="_blank"
-  aria-label="WhatsApp"
+  rel="noopener"
+  aria-label="Contactar por WhatsApp"
 >
-  WA
+
+  <svg viewBox="0 0 448 512">
+    <path d="M380.9 97.1C339-4.1 224.4-34.8 128.6 10.9 32.7 56.6-11.7 169.3 22.1 267.8L1 345.2l79.2-20.7c40.4 22 88.4 33.7 136.1 27.5 95.8-12.5 164.6-101.5 152.1-197.3-4.3-33.2-17.3-63.2-37.5-87.6zM217 324.6c-42.3 0-83.8-11.4-119.7-33l-5.4-3.2-47 12.3 12.5-45.8-3.5-5.9c-20.9-35.4-31.9-76-31.9-117.5 0-126 102.5-228.5 228.5-228.5 61.1 0 118.5 23.8 161.7 67s67 100.6 67 161.7c0 126-102.5 228.9-228.5 228.9zm125.1-171.2c-6.8-3.4-40.3-19.9-46.6-22.1-6.3-2.3-10.8-3.4-15.4 3.4-4.6 6.8-17.6 22.1-21.6 26.7-4 4.6-7.9 5.1-14.7 1.7-6.8-3.4-28.8-10.6-54.8-33.8-20.3-18.1-34-40.5-38-47.3-4-6.8-.4-10.5 3-13.9 3.1-3.1 6.8-7.9 10.2-11.9 3.4-4 4.5-6.8 6.8-11.4 2.3-4.6 1.1-8.5-.6-11.9-1.7-3.4-15.4-37.1-21.1-50.8-5.6-13.5-11.3-11.7-15.4-11.9-4-.2-8.5-.2-13-.2s-11.9 1.7-18.1 8.5c-6.2 6.8-23.8 23.2-23.8 56.6s24.4 65.7 27.8 70.2c3.4 4.6 48 73.3 116.4 102.8 16.3 7 29 11.2 38.9 14.3 16.3 5.2 31.1 4.5 42.8 2.7 13.1-2 40.3-16.5 46-32.5 5.7-16 5.7-29.7 4-32.5-1.7-2.8-6.2-4.5-13-7.9z"/>
+  </svg>
+
 </a>
 
+
+<script>
+
+/* =========================================================
+   HERO BANNERS
+========================================================= */
+
+const banners = document.querySelectorAll(".hero-banner");
+
+let currentBanner = 0;
+
+setInterval(() => {
+
+  banners[currentBanner].classList.remove("active");
+
+  currentBanner =
+    (currentBanner + 1) % banners.length;
+
+  banners[currentBanner].classList.add("active");
+
+}, 6500);
+
+
+/* =========================================================
+   INTERFACE ANIMATION
+========================================================= */
+
+const interfaceCards =
+  document.querySelectorAll(".interface-card");
+
+const interfaceObserver =
+  new IntersectionObserver(
+    entries => {
+
+      entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+          entry.target.classList.add("visible");
+        }
+
+      });
+
+    },
+    {
+      threshold:.15
+    }
+  );
+
+interfaceCards.forEach(card => {
+  interfaceObserver.observe(card);
+});
+
+
+/* =========================================================
+   SISTEMA DE VIDEOS
+========================================================= */
+
+const videoWrappers =
+  document.querySelectorAll(".video-wrapper");
+
+const originalVideos =
+  document.querySelectorAll(".testimonial-video");
+
+const videoOverlay =
+  document.getElementById("videoOverlay");
+
+const expandedVideo =
+  document.getElementById("expandedVideo");
+
+const videoClose =
+  document.getElementById("videoClose");
+
+let activeOriginalVideo = null;
+
+
+/* =========================================================
+   CONSTRUCCIÓN SEGURA DE RUTAS
+   =========================================================
+   
+   IMPORTANTE:
+   Los archivos tienen espacios en sus nombres.
+   encodeURI() convierte correctamente esos espacios
+   para que GitHub Pages pueda solicitar el archivo.
+========================================================= */
+
+function videoPath(filename){
+
+  return encodeURI(filename);
+
+}
+
+
+/* =========================================================
+   PREPARAR TODOS LOS VIDEOS
+========================================================= */
+
+originalVideos.forEach(video => {
+
+  const filename =
+    video.dataset.videoFile;
+
+  const encodedPath =
+    videoPath(filename);
+
+  /*
+     Reemplazamos el source existente por una
+     ruta codificada explícitamente.
+  */
+
+  const source =
+    video.querySelector("source");
+
+  if(source){
+
+    source.src =
+      encodedPath;
+
+  }
+
+  video.muted = true;
+  video.defaultMuted = true;
+  video.loop = true;
+  video.autoplay = true;
+  video.playsInline = true;
+
+  /*
+     Forzamos al navegador a volver a cargar
+     el archivo desde GitHub Pages.
+  */
+
+  video.load();
+
+});
+
+
+/* =========================================================
+   REPRODUCCIÓN AUTOMÁTICA SILENCIOSA
+========================================================= */
+
+function startSmallVideo(video){
+
+  video.muted = true;
+  video.defaultMuted = true;
+  video.loop = true;
+  video.autoplay = true;
+  video.playsInline = true;
+
+  const promise =
+    video.play();
+
+  if(promise){
+
+    promise.catch(() => {
+
+      /*
+         En móviles el autoplay puede quedar
+         bloqueado hasta que el usuario interactúe.
+         El video sigue estando correctamente cargado.
+      */
+
+    });
+
+  }
+
+}
+
+
+/* =========================================================
+   INICIAR LOS VIDEOS CUANDO EL DOCUMENTO ESTÉ LISTO
+========================================================= */
+
+window.addEventListener("load", () => {
+
+  originalVideos.forEach(video => {
+
+    startSmallVideo(video);
+
+  });
+
+});
+
+
+/* =========================================================
+   RECARGAR VIDEO SI EL NAVEGADOR REPORTA ERROR
+========================================================= */
+
+originalVideos.forEach(video => {
+
+  video.addEventListener("error", () => {
+
+    const filename =
+      video.dataset.videoFile;
+
+    if(!filename){
+      return;
+    }
+
+    const encodedPath =
+      videoPath(filename);
+
+    /*
+       Reasignamos directamente el src del video.
+       Esto evita depender solamente del <source>.
+    */
+
+    video.src =
+      encodedPath;
+
+    video.load();
+
+    startSmallVideo(video);
+
+  });
+
+});
+
+
+/* =========================================================
+   ABRIR VIDEO AMPLIADO
+========================================================= */
+
+function openVideo(originalVideo){
+
+  if(activeOriginalVideo){
+
+    closeExpandedVideo();
+
+  }
+
+  activeOriginalVideo =
+    originalVideo;
+
+
+  const filename =
+    originalVideo.dataset.videoFile;
+
+  if(!filename){
+
+    activeOriginalVideo = null;
+    return;
+
+  }
+
+
+  const encodedPath =
+    videoPath(filename);
+
+
+  /*
+     Pausar completamente el video pequeño.
+  */
+
+  originalVideo.pause();
+
+
+  /*
+     Limpiar el visor anterior.
+  */
+
+  expandedVideo.pause();
+
+  expandedVideo.removeAttribute("src");
+
+  expandedVideo.load();
+
+
+  /*
+     Cargar EXACTAMENTE el mismo archivo.
+  */
+
+  expandedVideo.src =
+    encodedPath;
+
+
+  expandedVideo.currentTime =
+    0;
+
+
+  /*
+     El video ampliado sí tiene sonido.
+  */
+
+  expandedVideo.muted =
+    false;
+
+  expandedVideo.defaultMuted =
+    false;
+
+  expandedVideo.controls =
+    false;
+
+  expandedVideo.loop =
+    false;
+
+  expandedVideo.playsInline =
+    true;
+
+
+  /*
+     Mostrar pantalla completa.
+  */
+
+  videoOverlay.classList.add("active");
+
+  videoOverlay.setAttribute(
+    "aria-hidden",
+    "false"
+  );
+
+  document.body.classList.add("video-open");
+
+
+  /*
+     Cargar nuevamente.
+  */
+
+  expandedVideo.load();
+
+
+  /*
+     Esperar a que el archivo esté listo.
+  */
+
+  expandedVideo.onloadedmetadata = () => {
+
+    expandedVideo.currentTime =
+      0;
+
+    /*
+       El usuario acaba de tocar el video,
+       por lo que intentamos reproducir
+       directamente con sonido.
+    */
+
+    const playPromise =
+      expandedVideo.play();
+
+    if(playPromise){
+
+      playPromise.catch(() => {
+
+        /*
+           Si el navegador bloquea sonido,
+           dejamos el video listo para que
+           el siguiente toque lo reproduzca.
+        */
+
+        expandedVideo.muted =
+          false;
+
+      });
+
+    }
+
+  };
+
+}
+
+
+/* =========================================================
+   CERRAR VIDEO AMPLIADO
+========================================================= */
+
+function closeExpandedVideo(){
+
+  if(!activeOriginalVideo){
+
+    videoOverlay.classList.remove("active");
+
+    videoOverlay.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+    document.body.classList.remove("video-open");
+
+    return;
+
+  }
+
+
+  /*
+     Detener visor.
+  */
+
+  expandedVideo.pause();
+
+  expandedVideo.currentTime =
+    0;
+
+  expandedVideo.removeAttribute("src");
+
+  expandedVideo.load();
+
+
+  /*
+     Recuperar video pequeño.
+  */
+
+  activeOriginalVideo.muted =
+    true;
+
+  activeOriginalVideo.defaultMuted =
+    true;
+
+  activeOriginalVideo.loop =
+    true;
+
+  activeOriginalVideo.playsInline =
+    true;
+
+  activeOriginalVideo.currentTime =
+    0;
+
+
+  /*
+     Volver a reproducir.
+  */
+
+  startSmallVideo(
+    activeOriginalVideo
+  );
+
+
+  activeOriginalVideo =
+    null;
+
+
+  videoOverlay.classList.remove("active");
+
+  videoOverlay.setAttribute(
+    "aria-hidden",
+    "true"
+  );
+
+  document.body.classList.remove("video-open");
+
+}
+
+
+/* =========================================================
+   CLIC EN LOS VIDEOS PEQUEÑOS
+========================================================= */
+
+videoWrappers.forEach(wrapper => {
+
+  const video =
+    wrapper.querySelector("video");
+
+  wrapper.addEventListener("click", () => {
+
+    openVideo(video);
+
+  });
+
+});
+
+
+/* =========================================================
+   CLIC EN VIDEO AMPLIADO
+========================================================= */
+
+expandedVideo.addEventListener(
+  "click",
+  event => {
+
+    event.stopPropagation();
+
+    closeExpandedVideo();
+
+  }
+);
+
+
+/* =========================================================
+   BOTÓN X
+========================================================= */
+
+videoClose.addEventListener(
+  "click",
+  event => {
+
+    event.stopPropagation();
+
+    closeExpandedVideo();
+
+  }
+);
+
+
+/* =========================================================
+   CLIC EN FONDO
+========================================================= */
+
+videoOverlay.addEventListener(
+  "click",
+  event => {
+
+    if(event.target === videoOverlay){
+
+      closeExpandedVideo();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   TECLA ESC
+========================================================= */
+
+document.addEventListener(
+  "keydown",
+  event => {
+
+    if(
+      event.key === "Escape" &&
+      activeOriginalVideo
+    ){
+
+      closeExpandedVideo();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   SI EL VIDEO AMPLIADO TERMINA
+========================================================= */
+
+expandedVideo.addEventListener(
+  "ended",
+  () => {
+
+    closeExpandedVideo();
+
+  }
+);
+
+
+/* =========================================================
+   SI EL USUARIO SALE DE LA PÁGINA
+========================================================= */
+
+document.addEventListener(
+  "visibilitychange",
+  () => {
+
+    if(document.hidden){
+
+      if(activeOriginalVideo){
+
+        closeExpandedVideo();
+
+      }
+
+      originalVideos.forEach(video => {
+
+        video.pause();
+
+        video.muted =
+          true;
+
+      });
+
+    }else{
+
+      originalVideos.forEach(video => {
+
+        if(!activeOriginalVideo){
+
+          startSmallVideo(video);
+
+        }
+
+      });
+
+    }
+
+  }
+);
+
+</script>
 
 </body>
 </html>
