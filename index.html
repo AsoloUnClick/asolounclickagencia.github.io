@@ -7,7 +7,6 @@
 <title>A Solo UnClick | Clientes directo a tu WhatsApp</title>
 
 <style>
-
 :root{
   --green:#19d17f;
   --green-dark:#0ca960;
@@ -50,7 +49,6 @@ img{
   max-width:100%;
   display:block;
 }
-
 
 /* =========================
    NAVBAR
@@ -125,7 +123,6 @@ img{
 }
 
 @media(max-width:760px){
-
   .navbar{
     height:64px;
     padding:0 18px;
@@ -144,9 +141,7 @@ img{
     font-size:11px;
     padding:9px 12px;
   }
-
 }
-
 
 /* =========================
    HERO
@@ -172,17 +167,8 @@ img{
   position:absolute;
   inset:0;
   background:
-    linear-gradient(
-      90deg,
-      rgba(0,0,0,.88) 0%,
-      rgba(0,0,0,.66) 43%,
-      rgba(0,0,0,.25) 100%
-    ),
-    linear-gradient(
-      0deg,
-      rgba(0,0,0,.7),
-      transparent 45%
-    );
+    linear-gradient(90deg,rgba(0,0,0,.88) 0%,rgba(0,0,0,.66) 43%,rgba(0,0,0,.25) 100%),
+    linear-gradient(0deg,rgba(0,0,0,.7),transparent 45%);
   z-index:2;
 }
 
@@ -307,7 +293,6 @@ img{
 }
 
 @media(max-width:760px){
-
   .hero{
     min-height:760px;
     padding:105px 20px 60px;
@@ -329,9 +314,7 @@ img{
   .btn{
     width:100%;
   }
-
 }
-
 
 /* =========================
    TICKER
@@ -370,15 +353,9 @@ img{
 }
 
 @keyframes ticker{
-  from{
-    transform:translateX(0)
-  }
-
-  to{
-    transform:translateX(-50%)
-  }
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
 }
-
 
 /* =========================
    GENERAL
@@ -418,7 +395,6 @@ img{
   font-size:17px;
   line-height:1.7;
 }
-
 
 /* =========================
    FLOW
@@ -473,15 +449,12 @@ img{
 }
 
 @media(max-width:900px){
-
   .flow-grid{
     grid-template-columns:repeat(2,1fr);
   }
-
 }
 
 @media(max-width:580px){
-
   .section{
     padding:75px 20px;
   }
@@ -489,9 +462,7 @@ img{
   .flow-grid{
     grid-template-columns:1fr;
   }
-
 }
-
 
 /* =========================
    INTERNATIONAL
@@ -501,11 +472,7 @@ img{
   position:relative;
   overflow:hidden;
   background:
-    radial-gradient(
-      circle at 85% 40%,
-      rgba(25,209,127,.12),
-      transparent 30%
-    ),
+    radial-gradient(circle at 85% 40%,rgba(25,209,127,.12),transparent 30%),
     #080b0c;
 }
 
@@ -531,7 +498,6 @@ img{
   line-height:1.7;
 }
 
-
 /* =========================
    INTERFACE
 ========================= */
@@ -551,9 +517,7 @@ img{
   position:relative;
   opacity:0;
   transform:translateY(60px) scale(.97);
-  transition:
-    opacity .8s ease,
-    transform .8s ease;
+  transition:opacity .8s ease,transform .8s ease;
   border-radius:20px;
   overflow:hidden;
   border:1px solid rgba(255,255,255,.09);
@@ -570,7 +534,6 @@ img{
   width:100%;
   height:auto;
 }
-
 
 /* =========================
    TESTIMONIALS
@@ -632,7 +595,6 @@ img{
   letter-spacing:1px;
 }
 
-
 /* =========================
    VIDEO OVERLAY
 ========================= */
@@ -641,18 +603,12 @@ img{
   position:fixed;
   inset:0;
   z-index:5000;
-
   display:none;
-
   align-items:center;
   justify-content:center;
-
-  background:rgba(0,0,0,.96);
-
-  padding:20px;
-
+  background:rgba(0,0,0,.94);
+  padding:40px;
   opacity:0;
-
   transition:opacity .25s ease;
 }
 
@@ -663,10 +619,8 @@ img{
 
 .video-overlay-inner{
   position:relative;
-
   width:100%;
   height:100%;
-
   display:flex;
   align-items:center;
   justify-content:center;
@@ -674,56 +628,31 @@ img{
 
 .video-overlay video{
   display:block;
-
-  /*
-     IMPORTANTE:
-     No forzamos 16:9.
-     El video conserva su proporción
-     original y nunca se recorta.
-  */
-
   width:auto;
   height:auto;
-
-  max-width:94vw;
-  max-height:88vh;
-
+  max-width:calc(100vw - 80px);
+  max-height:calc(100vh - 80px);
   object-fit:contain;
-
   background:#000;
-
-  border-radius:8px;
-
-  box-shadow:
-    0 20px 80px rgba(0,0,0,.8);
-
+  border-radius:10px;
+  box-shadow:0 20px 80px rgba(0,0,0,.7);
   cursor:pointer;
 }
 
 .video-close{
   position:absolute;
-
-  top:8px;
-  right:8px;
-
+  top:0;
+  right:0;
   width:46px;
   height:46px;
-
   border-radius:50%;
-
   border:1px solid rgba(255,255,255,.25);
-
-  background:rgba(0,0,0,.7);
-
+  background:rgba(0,0,0,.65);
   color:white;
-
   font-size:27px;
   line-height:1;
-
   cursor:pointer;
-
   z-index:10;
-
   transition:.2s;
 }
 
@@ -734,23 +663,14 @@ img{
 
 .video-overlay-hint{
   position:absolute;
-
-  bottom:4px;
+  bottom:5px;
   left:50%;
-
   transform:translateX(-50%);
-
   color:rgba(255,255,255,.65);
-
   font-size:11px;
-
   letter-spacing:1px;
-
   text-transform:uppercase;
-
   pointer-events:none;
-
-  text-align:center;
 }
 
 @media(max-width:760px){
@@ -760,13 +680,13 @@ img{
   }
 
   .video-overlay{
-    padding:10px;
+    padding:15px;
   }
 
   .video-overlay video{
-    max-width:96vw;
-    max-height:86vh;
-    border-radius:5px;
+    max-width:calc(100vw - 30px);
+    max-height:calc(100vh - 30px);
+    border-radius:6px;
   }
 
   .video-close{
@@ -777,16 +697,14 @@ img{
   }
 
   .video-overlay-hint{
-    bottom:2px;
+    bottom:-2px;
     white-space:nowrap;
     font-size:9px;
   }
-
 }
 
-
 /* =========================
-   PLANS
+   PLANES
 ========================= */
 
 .plans{
@@ -826,15 +744,12 @@ img{
 }
 
 @media(max-width:900px){
-
   .plans-grid{
     grid-template-columns:1fr;
     max-width:650px;
     margin:auto;
   }
-
 }
-
 
 /* =========================
    FINAL CTA
@@ -845,13 +760,8 @@ img{
   text-align:center;
   padding:120px 20px;
   overflow:hidden;
-
   background:
-    radial-gradient(
-      circle at center,
-      rgba(25,209,127,.13),
-      transparent 40%
-    ),
+    radial-gradient(circle at center,rgba(25,209,127,.13),transparent 40%),
     #070a0b;
 }
 
@@ -879,7 +789,6 @@ img{
   line-height:1.6;
   margin-bottom:30px;
 }
-
 
 /* =========================
    FOOTER
@@ -916,17 +825,12 @@ footer{
 .social{
   width:42px;
   height:42px;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
   border-radius:50%;
-
   border:1px solid var(--line);
-
   background:#090c0d;
-
   transition:.25s;
 }
 
@@ -948,14 +852,11 @@ footer{
 }
 
 @media(max-width:650px){
-
   .footer-inner{
     flex-direction:column;
     align-items:flex-start;
   }
-
 }
-
 
 /* =========================
    FLOATING WHATSAPP
@@ -963,26 +864,17 @@ footer{
 
 .floating-whatsapp{
   position:fixed;
-
   right:20px;
   bottom:20px;
-
   width:58px;
   height:58px;
-
   border-radius:50%;
-
   background:#25D366;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
   z-index:999;
-
-  box-shadow:
-    0 10px 30px rgba(0,0,0,.45);
-
+  box-shadow:0 10px 30px rgba(0,0,0,.45);
   transition:.25s;
 }
 
@@ -997,7 +889,6 @@ footer{
 }
 
 @media(max-width:480px){
-
   .floating-whatsapp{
     width:54px;
     height:54px;
@@ -1009,15 +900,11 @@ footer{
     width:28px;
     height:28px;
   }
-
 }
-
 </style>
 </head>
 
-
 <body>
-
 
 <!-- =========================
      NAVBAR
@@ -1033,9 +920,7 @@ footer{
   <div class="nav-links">
 
     <a href="#sistema">Cómo funciona</a>
-
     <a href="#testimonios">Resultados</a>
-
     <a href="#planes">Planes</a>
 
     <a
@@ -1102,9 +987,7 @@ footer{
       >
 
         <svg class="whatsapp-icon" viewBox="0 0 448 512">
-
           <path d="M380.9 97.1C339-4.1 224.4-34.8 128.6 10.9 32.7 56.6-11.7 169.3 22.1 267.8L1 345.2l79.2-20.7c40.4 22 88.4 33.7 136.1 27.5 95.8-12.5 164.6-101.5 152.1-197.3-4.3-33.2-17.3-63.2-37.5-87.6zM217 324.6c-42.3 0-83.8-11.4-119.7-33l-5.4-3.2-47 12.3 12.5-45.8-3.5-5.9c-20.9-35.4-31.9-76-31.9-117.5 0-126 102.5-228.5 228.5-228.5 61.1 0 118.5 23.8 161.7 67s67 100.6 67 161.7c0 126-102.5 228.9-228.5 228.9zm125.1-171.2c-6.8-3.4-40.3-19.9-46.6-22.1-6.3-2.3-10.8-3.4-15.4 3.4-4.6 6.8-17.6 22.1-21.6 26.7-4 4.6-7.9 5.1-14.7 1.7-6.8-3.4-28.8-10.6-54.8-33.8-20.3-18.1-34-40.5-38-47.3-4-6.8-.4-10.5 3-13.9 3.1-3.1 6.8-7.9 10.2-11.9 3.4-4 4.5-6.8 6.8-11.4 2.3-4.6 1.1-8.5-.6-11.9-1.7-3.4-15.4-37.1-21.1-50.8-5.6-13.5-11.3-11.7-15.4-11.9-4-.2-8.5-.2-13-.2s-11.9 1.7-18.1 8.5c-6.2 6.8-23.8 23.2-23.8 56.6s24.4 65.7 27.8 70.2c3.4 4.6 48 73.3 116.4 102.8 16.3 7 29 11.2 38.9 14.3 16.3 5.2 31.1 4.5 42.8 2.7 13.1-2 40.3-16.5 46-32.5 5.7-16 5.7-29.7 4-32.5-1.7-2.8-6.2-4.5-13-7.9z"/>
-
         </svg>
 
         QUIERO MIS 5 DÍAS GRATIS
@@ -1181,64 +1064,42 @@ footer{
   <div class="flow-grid">
 
     <div class="flow-card">
-
       <div class="flow-number">01</div>
-
       <h3>Publicidad</h3>
-
       <p>
         Utilizamos Meta Ads y Google Ads para encontrar
         personas que pueden necesitar tu producto o servicio.
       </p>
-
       <div class="flow-arrow">→</div>
-
     </div>
 
-
     <div class="flow-card">
-
       <div class="flow-number">02</div>
-
       <h3>Interés</h3>
-
       <p>
         El anuncio presenta una propuesta clara
         diseñada para captar la atención de potenciales clientes.
       </p>
-
       <div class="flow-arrow">→</div>
-
     </div>
 
-
     <div class="flow-card">
-
       <div class="flow-number">03</div>
-
       <h3>WhatsApp</h3>
-
       <p>
         La persona interesada entra directamente
         en conversación con tu negocio.
       </p>
-
       <div class="flow-arrow">→</div>
-
     </div>
 
-
     <div class="flow-card">
-
       <div class="flow-number">04</div>
-
       <h3>Cliente</h3>
-
       <p>
         Tu negocio recibe una oportunidad real
         de venta y puede cerrar directamente por WhatsApp.
       </p>
-
     </div>
 
   </div>
@@ -1352,9 +1213,10 @@ footer{
   <div class="video-grid">
 
 
-    <!-- =====================
+    <!-- =========================
          VIDEO 1
-    ====================== -->
+         ARCHIVO EXACTO
+    ========================= -->
 
     <div class="video-card">
 
@@ -1362,15 +1224,16 @@ footer{
 
         <video
           class="testimonial-video"
+          data-video-file="testimonio fernando chile.mp4"
           muted
           autoplay
           loop
           playsinline
+          webkit-playsinline
           preload="auto"
-          data-video="testimonio fernando chile.mp4"
         >
           <source
-            src="testimonio fernando chile.mp4"
+            src="testimonio%20fernando%20chile.mp4"
             type="video/mp4"
           >
         </video>
@@ -1392,9 +1255,10 @@ footer{
     </div>
 
 
-    <!-- =====================
+    <!-- =========================
          VIDEO 2
-    ====================== -->
+         ARCHIVO EXACTO
+    ========================= -->
 
     <div class="video-card">
 
@@ -1402,15 +1266,16 @@ footer{
 
         <video
           class="testimonial-video"
+          data-video-file="testimonio gini transporta guliana 3.mp4"
           muted
           autoplay
           loop
           playsinline
+          webkit-playsinline
           preload="auto"
-          data-video="testimonio gini transporta guliana 3.mp4"
         >
           <source
-            src="testimonio gini transporta guliana 3.mp4"
+            src="testimonio%20gini%20transporta%20guliana%203.mp4"
             type="video/mp4"
           >
         </video>
@@ -1432,9 +1297,10 @@ footer{
     </div>
 
 
-    <!-- =====================
+    <!-- =========================
          VIDEO 3
-    ====================== -->
+         ARCHIVO EXACTO
+    ========================= -->
 
     <div class="video-card">
 
@@ -1442,15 +1308,16 @@ footer{
 
         <video
           class="testimonial-video"
+          data-video-file="testimonio mudanzas los mendez.mp4"
           muted
           autoplay
           loop
           playsinline
+          webkit-playsinline
           preload="auto"
-          data-video="testimonio mudanzas los mendez.mp4"
         >
           <source
-            src="testimonio mudanzas los mendez.mp4"
+            src="testimonio%20mudanzas%20los%20mendez.mp4"
             type="video/mp4"
           >
         </video>
@@ -1472,9 +1339,10 @@ footer{
     </div>
 
 
-    <!-- =====================
+    <!-- =========================
          VIDEO 4
-    ====================== -->
+         ARCHIVO EXACTO
+    ========================= -->
 
     <div class="video-card">
 
@@ -1482,15 +1350,16 @@ footer{
 
         <video
           class="testimonial-video"
+          data-video-file="testimonio pablo pinzón colombia.mp4"
           muted
           autoplay
           loop
           playsinline
+          webkit-playsinline
           preload="auto"
-          data-video="testimonio pablo pinzón colombia.mp4"
         >
           <source
-            src="testimonio pablo pinzón colombia.mp4"
+            src="testimonio%20pablo%20pinz%C3%B3n%20colombia.mp4"
             type="video/mp4"
           >
         </video>
@@ -1531,6 +1400,7 @@ footer{
     <video
       id="expandedVideo"
       playsinline
+      webkit-playsinline
       preload="auto"
     ></video>
 
@@ -1577,13 +1447,9 @@ footer{
 
   <div class="plans-grid">
 
-
     <div class="plan-card">
 
-      <img
-        src="planmensual1.jpeg"
-        alt="Plan mensual 1"
-      >
+      <img src="planmensual1.jpeg" alt="Plan mensual 1">
 
       <a
         href="https://wa.me/56976169158?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20plan%201"
@@ -1593,9 +1459,7 @@ footer{
       >
 
         <svg class="whatsapp-icon" viewBox="0 0 448 512">
-
           <path d="M380.9 97.1C339-4.1 224.4-34.8 128.6 10.9 32.7 56.6-11.7 169.3 22.1 267.8L1 345.2l79.2-20.7c40.4 22 88.4 33.7 136.1 27.5 95.8-12.5 164.6-101.5 152.1-197.3-4.3-33.2-17.3-63.2-37.5-87.6zM217 324.6c-42.3 0-83.8-11.4-119.7-33l-5.4-3.2-47 12.3 12.5-45.8-3.5-5.9c-20.9-35.4-31.9-76-31.9-117.5 0-126 102.5-228.5 228.5-228.5 61.1 0 118.5 23.8 161.7 67s67 100.6 67 161.7c0 126-102.5 228.9-228.5 228.9zm125.1-171.2c-6.8-3.4-40.3-19.9-46.6-22.1-6.3-2.3-10.8-3.4-15.4 3.4-4.6 6.8-17.6 22.1-21.6 26.7-4 4.6-7.9 5.1-14.7 1.7-6.8-3.4-28.8-10.6-54.8-33.8-20.3-18.1-34-40.5-38-47.3-4-6.8-.4-10.5 3-13.9 3.1-3.1 6.8-7.9 10.2-11.9 3.4-4 4.5-6.8 6.8-11.4 2.3-4.6 1.1-8.5-.6-11.9-1.7-3.4-15.4-37.1-21.1-50.8-5.6-13.5-11.3-11.7-15.4-11.9-4-.2-8.5-.2-13-.2s-11.9 1.7-18.1 8.5c-6.2 6.8-23.8 23.2-23.8 56.6s24.4 65.7 27.8 70.2c3.4 4.6 48 73.3 116.4 102.8 16.3 7 29 11.2 38.9 14.3 16.3 5.2 31.1 4.5 42.8 2.7 13.1-2 40.3-16.5 46-32.5 5.7-16 5.7-29.7 4-32.5-1.7-2.8-6.2-4.5-13-7.9z"/>
-
         </svg>
 
         QUIERO INFORMACIÓN
@@ -1607,10 +1471,7 @@ footer{
 
     <div class="plan-card">
 
-      <img
-        src="planmensual2.jpeg"
-        alt="Plan mensual 2"
-      >
+      <img src="planmensual2.jpeg" alt="Plan mensual 2">
 
       <a
         href="https://wa.me/56976169158?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20plan%202"
@@ -1620,9 +1481,7 @@ footer{
       >
 
         <svg class="whatsapp-icon" viewBox="0 0 448 512">
-
           <path d="M380.9 97.1C339-4.1 224.4-34.8 128.6 10.9 32.7 56.6-11.7 169.3 22.1 267.8L1 345.2l79.2-20.7c40.4 22 88.4 33.7 136.1 27.5 95.8-12.5 164.6-101.5 152.1-197.3-4.3-33.2-17.3-63.2-37.5-87.6zM217 324.6c-42.3 0-83.8-11.4-119.7-33l-5.4-3.2-47 12.3 12.5-45.8-3.5-5.9c-20.9-35.4-31.9-76-31.9-117.5 0-126 102.5-228.5 228.5-228.5 61.1 0 118.5 23.8 161.7 67s67 100.6 67 161.7c0 126-102.5 228.9-228.5 228.9zm125.1-171.2c-6.8-3.4-40.3-19.9-46.6-22.1-6.3-2.3-10.8-3.4-15.4 3.4-4.6 6.8-17.6 22.1-21.6 26.7-4 4.6-7.9 5.1-14.7 1.7-6.8-3.4-28.8-10.6-54.8-33.8-20.3-18.1-34-40.5-38-47.3-4-6.8-.4-10.5 3-13.9 3.1-3.1 6.8-7.9 10.2-11.9 3.4-4 4.5-6.8 6.8-11.4 2.3-4.6 1.1-8.5-.6-11.9-1.7-3.4-15.4-37.1-21.1-50.8-5.6-13.5-11.3-11.7-15.4-11.9-4-.2-8.5-.2-13-.2s-11.9 1.7-18.1 8.5c-6.2 6.8-23.8 23.2-23.8 56.6s24.4 65.7 27.8 70.2c3.4 4.6 48 73.3 116.4 102.8 16.3 7 29 11.2 38.9 14.3 16.3 5.2 31.1 4.5 42.8 2.7 13.1-2 40.3-16.5 46-32.5 5.7-16 5.7-29.7 4-32.5-1.7-2.8-6.2-4.5-13-7.9z"/>
-
         </svg>
 
         QUIERO INFORMACIÓN
@@ -1634,10 +1493,7 @@ footer{
 
     <div class="plan-card">
 
-      <img
-        src="planmensual3.jpeg"
-        alt="Plan mensual 3"
-      >
+      <img src="planmensual3.jpeg" alt="Plan mensual 3">
 
       <a
         href="https://wa.me/56976169158?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20plan%203"
@@ -1647,9 +1503,7 @@ footer{
       >
 
         <svg class="whatsapp-icon" viewBox="0 0 448 512">
-
           <path d="M380.9 97.1C339-4.1 224.4-34.8 128.6 10.9 32.7 56.6-11.7 169.3 22.1 267.8L1 345.2l79.2-20.7c40.4 22 88.4 33.7 136.1 27.5 95.8-12.5 164.6-101.5 152.1-197.3-4.3-33.2-17.3-63.2-37.5-87.6zM217 324.6c-42.3 0-83.8-11.4-119.7-33l-5.4-3.2-47 12.3 12.5-45.8-3.5-5.9c-20.9-35.4-31.9-76-31.9-117.5 0-126 102.5-228.5 228.5-228.5 61.1 0 118.5 23.8 161.7 67s67 100.6 67 161.7c0 126-102.5 228.9-228.5 228.9zm125.1-171.2c-6.8-3.4-40.3-19.9-46.6-22.1-6.3-2.3-10.8-3.4-15.4 3.4-4.6 6.8-17.6 22.1-21.6 26.7-4 4.6-7.9 5.1-14.7 1.7-6.8-3.4-28.8-10.6-54.8-33.8-20.3-18.1-34-40.5-38-47.3-4-6.8-.4-10.5 3-13.9 3.1-3.1 6.8-7.9 10.2-11.9 3.4-4 4.5-6.8 6.8-11.4 2.3-4.6 1.1-8.5-.6-11.9-1.7-3.4-15.4-37.1-21.1-50.8-5.6-13.5-11.3-11.7-15.4-11.9-4-.2-8.5-.2-13-.2s-11.9 1.7-18.1 8.5c-6.2 6.8-23.8 23.2-23.8 56.6s24.4 65.7 27.8 70.2c3.4 4.6 48 73.3 116.4 102.8 16.3 7 29 11.2 38.9 14.3 16.3 5.2 31.1 4.5 42.8 2.7 13.1-2 40.3-16.5 46-32.5 5.7-16 5.7-29.7 4-32.5-1.7-2.8-6.2-4.5-13-7.9z"/>
-
         </svg>
 
         QUIERO INFORMACIÓN
@@ -1692,9 +1546,7 @@ footer{
     >
 
       <svg class="whatsapp-icon" viewBox="0 0 448 512">
-
         <path d="M380.9 97.1C339-4.1 224.4-34.8 128.6 10.9 32.7 56.6-11.7 169.3 22.1 267.8L1 345.2l79.2-20.7c40.4 22 88.4 33.7 136.1 27.5 95.8-12.5 164.6-101.5 152.1-197.3-4.3-33.2-17.3-63.2-37.5-87.6zM217 324.6c-42.3 0-83.8-11.4-119.7-33l-5.4-3.2-47 12.3 12.5-45.8-3.5-5.9c-20.9-35.4-31.9-76-31.9-117.5 0-126 102.5-228.5 228.5-228.5 61.1 0 118.5 23.8 161.7 67s67 100.6 67 161.7c0 126-102.5 228.9-228.5 228.9zm125.1-171.2c-6.8-3.4-40.3-19.9-46.6-22.1-6.3-2.3-10.8-3.4-15.4 3.4-4.6 6.8-17.6 22.1-21.6 26.7-4 4.6-7.9 5.1-14.7 1.7-6.8-3.4-28.8-10.6-54.8-33.8-20.3-18.1-34-40.5-38-47.3-4-6.8-.4-10.5 3-13.9 3.1-3.1 6.8-7.9 10.2-11.9 3.4-4 4.5-6.8 6.8-11.4 2.3-4.6 1.1-8.5-.6-11.9-1.7-3.4-15.4-37.1-21.1-50.8-5.6-13.5-11.3-11.7-15.4-11.9-4-.2-8.5-.2-13-.2s-11.9 1.7-18.1 8.5c-6.2 6.8-23.8 23.2-23.8 56.6s24.4 65.7 27.8 70.2c3.4 4.6 48 73.3 116.4 102.8 16.3 7 29 11.2 38.9 14.3 16.3 5.2 31.1 4.5 42.8 2.7 13.1-2 40.3-16.5 46-32.5 5.7-16 5.7-29.7 4-32.5-1.7-2.8-6.2-4.5-13-7.9z"/>
-
       </svg>
 
       QUIERO MIS 5 DÍAS GRATIS
@@ -1729,13 +1581,10 @@ footer{
       >
 
         <svg viewBox="0 0 448 512">
-
           <path d="M380.9 97.1C339-4.1 224.4-34.8 128.6 10.9 32.7 56.6-11.7 169.3 22.1 267.8L1 345.2l79.2-20.7c40.4 22 88.4 33.7 136.1 27.5 95.8-12.5 164.6-101.5 152.1-197.3-4.3-33.2-17.3-63.2-37.5-87.6zM217 324.6c-42.3 0-83.8-11.4-119.7-33l-5.4-3.2-47 12.3 12.5-45.8-3.5-5.9c-20.9-35.4-31.9-76-31.9-117.5 0-126 102.5-228.5 228.5-228.5 61.1 0 118.5 23.8 161.7 67s67 100.6 67 161.7c0 126-102.5 228.9-228.5 228.9zm125.1-171.2c-6.8-3.4-40.3-19.9-46.6-22.1-6.3-2.3-10.8-3.4-15.4 3.4-4.6 6.8-17.6 22.1-21.6 26.7-4 4.6-7.9 5.1-14.7 1.7-6.8-3.4-28.8-10.6-54.8-33.8-20.3-18.1-34-40.5-38-47.3-4-6.8-.4-10.5 3-13.9 3.1-3.1 6.8-7.9 10.2-11.9 3.4-4 4.5-6.8 6.8-11.4 2.3-4.6 1.1-8.5-.6-11.9-1.7-3.4-15.4-37.1-21.1-50.8-5.6-13.5-11.3-11.7-15.4-11.9-4-.2-8.5-.2-13-.2s-11.9 1.7-18.1 8.5c-6.2 6.8-23.8 23.2-23.8 56.6s24.4 65.7 27.8 70.2c3.4 4.6 48 73.3 116.4 102.8 16.3 7 29 11.2 38.9 14.3 16.3 5.2 31.1 4.5 42.8 2.7 13.1-2 40.3-16.5 46-32.5 5.7-16 5.7-29.7 4-32.5-1.7-2.8-6.2-4.5-13-7.9z"/>
-
         </svg>
 
       </a>
-
 
       <a
         class="social"
@@ -1746,13 +1595,10 @@ footer{
       >
 
         <svg viewBox="0 0 320 512">
-
           <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06H297V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/>
-
         </svg>
 
       </a>
-
 
       <a
         class="social"
@@ -1763,11 +1609,8 @@ footer{
       >
 
         <svg viewBox="0 0 448 512">
-
           <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8z"/>
-
           <path d="M398.8 80c-7.8-20.7-24.1-37-44.8-44.8C319.7 25.3 224 25.3 224 25.3s-95.7 0-130 9.9C73.3 43 57 59.3 49.2 80 39.3 114.3 39.3 256 39.3 256s0 141.7 9.9 176c7.8 20.7 24.1 37 44.8 44.8 34.3 9.9 130 9.9 130 9.9s95.7 0 130-9.9c20.7-7.8 37-24.1 44.8-44.8 9.9-34.3 9.9-176 9.9-176s0-141.7-9.9-176zM224 338c-45.8 0-82.9-37.1-82.9-82.9s37.1-82.9 82.9-82.9 82.9 37.1 82.9 82.9S269.8 338 224 338z"/>
-
         </svg>
 
       </a>
@@ -1796,9 +1639,7 @@ footer{
 >
 
   <svg viewBox="0 0 448 512">
-
     <path d="M380.9 97.1C339-4.1 224.4-34.8 128.6 10.9 32.7 56.6-11.7 169.3 22.1 267.8L1 345.2l79.2-20.7c40.4 22 88.4 33.7 136.1 27.5 95.8-12.5 164.6-101.5 152.1-197.3-4.3-33.2-17.3-63.2-37.5-87.6zM217 324.6c-42.3 0-83.8-11.4-119.7-33l-5.4-3.2-47 12.3 12.5-45.8-3.5-5.9c-20.9-35.4-31.9-76-31.9-117.5 0-126 102.5-228.5 228.5-228.5 61.1 0 118.5 23.8 161.7 67s67 100.6 67 161.7c0 126-102.5 228.9-228.5 228.9zm125.1-171.2c-6.8-3.4-40.3-19.9-46.6-22.1-6.3-2.3-10.8-3.4-15.4 3.4-4.6 6.8-17.6 22.1-21.6 26.7-4 4.6-7.9 5.1-14.7 1.7-6.8-3.4-28.8-10.6-54.8-33.8-20.3-18.1-34-40.5-38-47.3-4-6.8-.4-10.5 3-13.9 3.1-3.1 6.8-7.9 10.2-11.9 3.4-4 4.5-6.8 6.8-11.4 2.3-4.6 1.1-8.5-.6-11.9-1.7-3.4-15.4-37.1-21.1-50.8-5.6-13.5-11.3-11.7-15.4-11.9-4-.2-8.5-.2-13-.2s-11.9 1.7-18.1 8.5c-6.2 6.8-23.8 23.2-23.8 56.6s24.4 65.7 27.8 70.2c3.4 4.6 48 73.3 116.4 102.8 16.3 7 29 11.2 38.9 14.3 16.3 5.2 31.1 4.5 42.8 2.7 13.1-2 40.3-16.5 46-32.5 5.7-16 5.7-29.7 4-32.5-1.7-2.8-6.2-4.5-13-7.9z"/>
-
   </svg>
 
 </a>
@@ -1806,32 +1647,24 @@ footer{
 
 <script>
 
-
 /* =========================================================
    HERO BANNERS
 ========================================================= */
 
-const banners =
-  document.querySelectorAll(".hero-banner");
+const banners = document.querySelectorAll(".hero-banner");
 
 let currentBanner = 0;
 
 setInterval(() => {
 
-  if(!banners.length){
-    return;
-  }
-
-  banners[currentBanner]
-    .classList.remove("active");
+  banners[currentBanner].classList.remove("active");
 
   currentBanner =
     (currentBanner + 1) % banners.length;
 
-  banners[currentBanner]
-    .classList.add("active");
+  banners[currentBanner].classList.add("active");
 
-},6500);
+}, 6500);
 
 
 /* =========================================================
@@ -1843,33 +1676,24 @@ const interfaceCards =
 
 const interfaceObserver =
   new IntersectionObserver(
-
     entries => {
 
       entries.forEach(entry => {
 
         if(entry.isIntersecting){
-
-          entry.target
-            .classList
-            .add("visible");
-
+          entry.target.classList.add("visible");
         }
 
       });
 
     },
-
     {
       threshold:.15
     }
-
   );
 
 interfaceCards.forEach(card => {
-
   interfaceObserver.observe(card);
-
 });
 
 
@@ -1896,21 +1720,16 @@ let activeOriginalVideo = null;
 
 
 /* =========================================================
-   FUNCIÓN PARA CODIFICAR CORRECTAMENTE LOS NOMBRES
-   DE ARCHIVO DE GITHUB PAGES
+   CONSTRUCCIÓN SEGURA DE RUTAS
+   =========================================================
+   
+   IMPORTANTE:
+   Los archivos tienen espacios en sus nombres.
+   encodeURI() convierte correctamente esos espacios
+   para que GitHub Pages pueda solicitar el archivo.
 ========================================================= */
 
-function encodeVideoPath(filename){
-
-  /*
-     encodeURI mantiene los espacios y caracteres
-     especiales correctamente convertidos para una URL.
-
-     Esto es especialmente importante para:
-     - espacios
-     - í
-     - otros caracteres especiales
-  */
+function videoPath(filename){
 
   return encodeURI(filename);
 
@@ -1918,107 +1737,126 @@ function encodeVideoPath(filename){
 
 
 /* =========================================================
-   CARGAR VIDEOS PEQUEÑOS
+   PREPARAR TODOS LOS VIDEOS
 ========================================================= */
 
 originalVideos.forEach(video => {
 
   const filename =
-    video.dataset.video;
-
-  if(!filename){
-    return;
-  }
-
-  /*
-     Quitamos cualquier source anterior
-     para controlar nosotros la URL.
-  */
-
-  video.pause();
-
-  video.removeAttribute("src");
-
-  while(video.firstChild){
-
-    video.removeChild(
-      video.firstChild
-    );
-
-  }
-
-  /*
-     Construimos la URL correctamente.
-  */
+    video.dataset.videoFile;
 
   const encodedPath =
-    encodeVideoPath(filename);
-
-  video.src = encodedPath;
-
-  video.muted = true;
-
-  video.defaultMuted = true;
-
-  video.autoplay = true;
-
-  video.loop = true;
-
-  video.playsInline = true;
-
-  video.preload = "auto";
+    videoPath(filename);
 
   /*
-     Forzamos la carga.
+     Reemplazamos el source existente por una
+     ruta codificada explícitamente.
+  */
+
+  const source =
+    video.querySelector("source");
+
+  if(source){
+
+    source.src =
+      encodedPath;
+
+  }
+
+  video.muted = true;
+  video.defaultMuted = true;
+  video.loop = true;
+  video.autoplay = true;
+  video.playsInline = true;
+
+  /*
+     Forzamos al navegador a volver a cargar
+     el archivo desde GitHub Pages.
   */
 
   video.load();
 
-  /*
-     Intentamos iniciar el loop silencioso.
-  */
+});
 
-  const startVideo = () => {
 
-    video.muted = true;
+/* =========================================================
+   REPRODUCCIÓN AUTOMÁTICA SILENCIOSA
+========================================================= */
 
-    const promise =
-      video.play();
+function startSmallVideo(video){
 
-    if(promise){
+  video.muted = true;
+  video.defaultMuted = true;
+  video.loop = true;
+  video.autoplay = true;
+  video.playsInline = true;
 
-      promise.catch(() => {});
+  const promise =
+    video.play();
 
+  if(promise){
+
+    promise.catch(() => {
+
+      /*
+         En móviles el autoplay puede quedar
+         bloqueado hasta que el usuario interactúe.
+         El video sigue estando correctamente cargado.
+      */
+
+    });
+
+  }
+
+}
+
+
+/* =========================================================
+   INICIAR LOS VIDEOS CUANDO EL DOCUMENTO ESTÉ LISTO
+========================================================= */
+
+window.addEventListener("load", () => {
+
+  originalVideos.forEach(video => {
+
+    startSmallVideo(video);
+
+  });
+
+});
+
+
+/* =========================================================
+   RECARGAR VIDEO SI EL NAVEGADOR REPORTA ERROR
+========================================================= */
+
+originalVideos.forEach(video => {
+
+  video.addEventListener("error", () => {
+
+    const filename =
+      video.dataset.videoFile;
+
+    if(!filename){
+      return;
     }
 
-  };
+    const encodedPath =
+      videoPath(filename);
 
-  /*
-     Algunos móviles necesitan esperar
-     a que el navegador tenga datos.
-  */
+    /*
+       Reasignamos directamente el src del video.
+       Esto evita depender solamente del <source>.
+    */
 
-  video.addEventListener(
-    "loadeddata",
-    startVideo,
-    {once:true}
-  );
+    video.src =
+      encodedPath;
 
-  video.addEventListener(
-    "canplay",
-    startVideo,
-    {once:true}
-  );
+    video.load();
 
-  /*
-     Segundo intento después de un momento.
-  */
+    startSmallVideo(video);
 
-  setTimeout(() => {
-
-    startVideo();
-
-  },800);
+  });
 
 });
 
@@ -2029,62 +1867,40 @@ originalVideos.forEach(video => {
 
 function openVideo(originalVideo){
 
-  if(!originalVideo){
-    return;
-  }
-
-
-  /*
-     Si había otro video abierto,
-     lo cerramos primero.
-  */
-
   if(activeOriginalVideo){
 
     closeExpandedVideo();
 
   }
 
-
   activeOriginalVideo =
     originalVideo;
 
 
-  /*
-     Obtenemos el nombre real del archivo
-     desde data-video.
-  */
-
   const filename =
-    originalVideo.dataset.video;
-
+    originalVideo.dataset.videoFile;
 
   if(!filename){
 
     activeOriginalVideo = null;
-
     return;
 
   }
 
 
+  const encodedPath =
+    videoPath(filename);
+
+
   /*
-     Detenemos el video pequeño.
+     Pausar completamente el video pequeño.
   */
 
   originalVideo.pause();
 
 
   /*
-     Construimos nuevamente la ruta.
-  */
-
-  const encodedPath =
-    encodeVideoPath(filename);
-
-
-  /*
-     Limpiamos completamente el visor.
+     Limpiar el visor anterior.
   */
 
   expandedVideo.pause();
@@ -2095,32 +1911,39 @@ function openVideo(originalVideo){
 
 
   /*
-     Cargamos el archivo.
+     Cargar EXACTAMENTE el mismo archivo.
   */
 
   expandedVideo.src =
     encodedPath;
 
 
-  expandedVideo.controls = false;
+  expandedVideo.currentTime =
+    0;
 
-  expandedVideo.loop = false;
-
-  expandedVideo.playsInline = true;
 
   /*
-     MUY IMPORTANTE:
-     El usuario acaba de pulsar el video,
-     por lo que aquí podemos solicitar sonido.
+     El video ampliado sí tiene sonido.
   */
 
-  expandedVideo.muted = false;
+  expandedVideo.muted =
+    false;
 
-  expandedVideo.volume = 1;
+  expandedVideo.defaultMuted =
+    false;
+
+  expandedVideo.controls =
+    false;
+
+  expandedVideo.loop =
+    false;
+
+  expandedVideo.playsInline =
+    true;
 
 
   /*
-     Mostramos el visor ANTES de cargarlo.
+     Mostrar pantalla completa.
   */
 
   videoOverlay.classList.add("active");
@@ -2130,104 +1953,52 @@ function openVideo(originalVideo){
     "false"
   );
 
-  document.body.classList.add(
-    "video-open"
-  );
+  document.body.classList.add("video-open");
 
 
   /*
-     Cargamos.
+     Cargar nuevamente.
   */
 
   expandedVideo.load();
 
 
   /*
-     Cuando los metadatos estén disponibles,
-     empezamos desde el principio.
+     Esperar a que el archivo esté listo.
   */
 
-  const playExpanded = () => {
+  expandedVideo.onloadedmetadata = () => {
 
-    if(!activeOriginalVideo){
-      return;
-    }
+    expandedVideo.currentTime =
+      0;
 
-    try{
-
-      expandedVideo.currentTime = 0;
-
-    }catch(e){}
-
-
-    expandedVideo.muted = false;
-
-    expandedVideo.volume = 1;
-
+    /*
+       El usuario acaba de tocar el video,
+       por lo que intentamos reproducir
+       directamente con sonido.
+    */
 
     const playPromise =
       expandedVideo.play();
-
 
     if(playPromise){
 
       playPromise.catch(() => {
 
         /*
-           Si el navegador móvil bloquea
-           inicialmente el sonido, hacemos
-           un segundo intento manteniendo
-           el video visible.
+           Si el navegador bloquea sonido,
+           dejamos el video listo para que
+           el siguiente toque lo reproduzca.
         */
 
-        expandedVideo.muted = false;
-
-        setTimeout(() => {
-
-          expandedVideo.play()
-            .catch(() => {});
-
-        },100);
+        expandedVideo.muted =
+          false;
 
       });
 
     }
 
   };
-
-
-  expandedVideo.addEventListener(
-    "loadedmetadata",
-    playExpanded,
-    {once:true}
-  );
-
-
-  expandedVideo.addEventListener(
-    "canplay",
-    playExpanded,
-    {once:true}
-  );
-
-
-  /*
-     Seguridad: segundo intento.
-  */
-
-  setTimeout(() => {
-
-    if(activeOriginalVideo){
-
-      if(expandedVideo.paused){
-
-        expandedVideo.play()
-          .catch(() => {});
-
-      }
-
-    }
-
-  },700);
 
 }
 
@@ -2240,102 +2011,75 @@ function closeExpandedVideo(){
 
   if(!activeOriginalVideo){
 
-    videoOverlay.classList.remove(
-      "active"
-    );
+    videoOverlay.classList.remove("active");
 
     videoOverlay.setAttribute(
       "aria-hidden",
       "true"
     );
 
-    document.body.classList.remove(
-      "video-open"
-    );
+    document.body.classList.remove("video-open");
 
     return;
 
   }
 
 
-  const videoToRestore =
-    activeOriginalVideo;
-
-
   /*
-     Detener completamente
-     el video ampliado.
+     Detener visor.
   */
 
   expandedVideo.pause();
 
-  expandedVideo.currentTime = 0;
+  expandedVideo.currentTime =
+    0;
 
-  expandedVideo.removeAttribute(
-    "src"
-  );
+  expandedVideo.removeAttribute("src");
 
   expandedVideo.load();
 
 
   /*
-     Ocultamos el visor.
+     Recuperar video pequeño.
   */
 
-  videoOverlay.classList.remove(
-    "active"
+  activeOriginalVideo.muted =
+    true;
+
+  activeOriginalVideo.defaultMuted =
+    true;
+
+  activeOriginalVideo.loop =
+    true;
+
+  activeOriginalVideo.playsInline =
+    true;
+
+  activeOriginalVideo.currentTime =
+    0;
+
+
+  /*
+     Volver a reproducir.
+  */
+
+  startSmallVideo(
+    activeOriginalVideo
   );
+
+
+  activeOriginalVideo =
+    null;
+
+
+  videoOverlay.classList.remove("active");
 
   videoOverlay.setAttribute(
     "aria-hidden",
     "true"
   );
 
-  document.body.classList.remove(
-    "video-open"
-  );
-
-
-  /*
-     Restauramos el video pequeño.
-  */
-
-  videoToRestore.muted = true;
-
-  videoToRestore.defaultMuted = true;
-
-  videoToRestore.loop = true;
-
-  videoToRestore.currentTime = 0;
-
-
-  /*
-     Esperamos un instante para que
-     el navegador termine de cerrar
-     el overlay antes de reproducir.
-  */
-
-  setTimeout(() => {
-
-    videoToRestore.play()
-      .catch(() => {
-
-        /*
-           Segundo intento.
-        */
-
-        videoToRestore.muted = true;
-
-        videoToRestore.play()
-          .catch(() => {});
-
-      });
-
-  },50);
-
-
-  activeOriginalVideo =
-    null;
+  document.body.classList.remove("video-open");
 
 }
 
@@ -2347,35 +2091,26 @@ function closeExpandedVideo(){
 videoWrappers.forEach(wrapper => {
 
   const video =
-    wrapper.querySelector(
-      ".testimonial-video"
-    );
+    wrapper.querySelector("video");
 
+  wrapper.addEventListener("click", () => {
 
-  wrapper.addEventListener(
-    "click",
-    event => {
+    openVideo(video);
 
-      event.preventDefault();
-
-      openVideo(video);
-
-    }
-  );
+  });
 
 });
 
 
 /* =========================================================
    CLIC EN VIDEO AMPLIADO
-   = VOLVER A TAMAÑO ORIGINAL
 ========================================================= */
 
 expandedVideo.addEventListener(
   "click",
   event => {
 
-    event.preventDefault();
+    event.stopPropagation();
 
     closeExpandedVideo();
 
@@ -2390,8 +2125,6 @@ expandedVideo.addEventListener(
 videoClose.addEventListener(
   "click",
   event => {
-
-    event.preventDefault();
 
     event.stopPropagation();
 
@@ -2409,10 +2142,7 @@ videoOverlay.addEventListener(
   "click",
   event => {
 
-    if(
-      event.target ===
-      videoOverlay
-    ){
+    if(event.target === videoOverlay){
 
       closeExpandedVideo();
 
@@ -2444,18 +2174,12 @@ document.addEventListener(
 
 
 /* =========================================================
-   CUANDO EL VIDEO AMPLIADO TERMINA
+   SI EL VIDEO AMPLIADO TERMINA
 ========================================================= */
 
 expandedVideo.addEventListener(
   "ended",
   () => {
-
-    /*
-       Al terminar el testimonio,
-       vuelve automáticamente
-       a su tarjeta pequeña.
-    */
 
     closeExpandedVideo();
 
@@ -2464,7 +2188,7 @@ expandedVideo.addEventListener(
 
 
 /* =========================================================
-   SI EL USUARIO CAMBIA DE PESTAÑA
+   SI EL USUARIO SALE DE LA PÁGINA
 ========================================================= */
 
 document.addEventListener(
@@ -2479,43 +2203,28 @@ document.addEventListener(
 
       }
 
-      originalVideos.forEach(
-        video => {
+      originalVideos.forEach(video => {
 
-          video.muted = true;
+        video.pause();
+
+        video.muted =
+          true;
+
+      });
+
+    }else{
+
+      originalVideos.forEach(video => {
+
+        if(!activeOriginalVideo){
+
+          startSmallVideo(video);
 
         }
-      );
+
+      });
 
     }
-
-  }
-);
-
-
-/* =========================================================
-   RECUPERAR REPRODUCCIÓN DE VIDEOS
-========================================================= */
-
-window.addEventListener(
-  "pageshow",
-  () => {
-
-    if(activeOriginalVideo){
-      return;
-    }
-
-    originalVideos.forEach(
-      video => {
-
-        video.muted = true;
-        video.loop = true;
-
-        video.play()
-          .catch(() => {});
-
-      }
-    );
 
   }
 );
